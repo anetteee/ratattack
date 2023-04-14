@@ -59,9 +59,6 @@ public class CollisionSystem extends IteratingSystem {
                 HealthComponent entityHealth = healthMapper.get(hittableEntity);
                 BulletEffectComponent bulletEffect = bulletEffectMapper.get(entity);
 
-                System.out.println(bulletEffect);
-                System.out.println(bulletEffect.getEffect());
-
                 entityHealth.setHealth((entityHealth.getHealth()-hitStrength.strength));
 
 
