@@ -3,8 +3,14 @@ package com.ratattack.game;
 public class GameSettings {
 
     //Nyttige konstanter
-    public static final long ratSpawnrate = 2000;
-    public static final long grandChildSpawnrate = 2000;
+    public static final long startRatSpawnrate = 4000;
+    public static final long startGrandChildSpawnrate = 12000;
+
+    public static final int startSpeedRat = -3;
+    public static final int startSpeedGrandchild = -1;
+    public static final int easySpeed = -7;
+    public static final int mediumSpeed = -10;
+    public static final int highSpeed = -25;
     public static final int laneNr = 4;
     public static boolean debug = false; //OBS: ShapeRenderer fører til OutOfMemoryError når programmet har kjørt lenge
 

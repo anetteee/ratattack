@@ -84,21 +84,13 @@ public class SpawnSystem extends IteratingSystem {
 
 
         VelocityComponent velocity = rat.getComponent(VelocityComponent.class);
-        min = 1;
-        max = 10;
-        randomNumber = random.nextInt(max - min + 1) + min;
-
         velocity.x = 0;
-        velocity.y = -randomNumber;
+        velocity.y = GameSettings.startSpeedRat;
 
         BoundsComponent bounds = rat.getComponent(RectangleBoundsComponent.class);
         bounds.setSize(2*(texture.getWidth()/3), (texture.getHeight()));
         bounds.setCenter(position.x, position.y);
-
         rat.getComponent(HealthComponent.class).setHealth(GameSettings.ratStartHealth);
-
-
-
         engine.addEntity(rat);
     }
 
@@ -115,8 +107,6 @@ public class SpawnSystem extends IteratingSystem {
         Texture texture = new Texture("grandchild.png");
         grandChildEntity.getComponent(SpriteComponent.class).sprite = new Sprite(texture);
 
-
-
         Random random = new Random();
 
         PositionComponent position = grandChildEntity.getComponent(PositionComponent.class);
@@ -128,12 +118,8 @@ public class SpawnSystem extends IteratingSystem {
         position.y = 1500;
 
         VelocityComponent velocity = grandChildEntity.getComponent(VelocityComponent.class);
-        min = 1;
-        max = 10;
-        randomNumber = random.nextInt(max - min + 1) + min;
-
         velocity.x = 0;
-        velocity.y = -randomNumber;
+        velocity.y = GameSettings.startSpeedGrandchild;
 
         BoundsComponent bounds = grandChildEntity.getComponent(RectangleBoundsComponent.class);
         bounds.setSize(2*(texture.getWidth()/3), (texture.getHeight()));

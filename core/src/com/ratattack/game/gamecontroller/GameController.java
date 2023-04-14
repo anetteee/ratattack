@@ -45,6 +45,8 @@ public class GameController {
 
     public ScreenContext screenContext;
 
+    private long gameStartTime;
+
     private GameController() {
         stage = new Stage(new ScreenViewport());
         Gdx.input.setInputProcessor(stage);
@@ -113,7 +115,7 @@ public class GameController {
     public void addSystems(PooledEngine engine) {
         engine.addSystem(new UserSystem());
         engine.addSystem(new MovementSystem());
-        engine.addSystem(new SpawnSystem(engine, GameSettings.ratSpawnrate, GameSettings.grandChildSpawnrate));
+        engine.addSystem(new SpawnSystem(engine, GameSettings.startRatSpawnrate, GameSettings.startGrandChildSpawnrate));
         engine.addSystem(new CollisionSystem());
         engine.addSystem(new BoundsSystem());
         engine.addSystem(new RenderSystem(batch, shapeRenderer));
@@ -139,6 +141,7 @@ public class GameController {
         catch (Exception e) {
             System.out.println("Error with field creation");
         }
+        gameStartTime = System.currentTimeMillis();
     }
 
     public void play() {
@@ -168,6 +171,10 @@ public class GameController {
 
     public void setGame(RatAttack game) {
         this.game = game;
+    }
+
+    public long getGameStartTime() {
+        return gameStartTime;
     }
 
 }

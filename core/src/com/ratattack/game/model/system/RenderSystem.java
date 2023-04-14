@@ -24,6 +24,7 @@ import com.ratattack.game.model.components.HealthComponent;
 import com.ratattack.game.model.components.PositionComponent;
 import com.ratattack.game.model.components.RectangleBoundsComponent;
 import com.ratattack.game.model.components.SpriteComponent;
+import com.ratattack.game.model.components.VelocityComponent;
 
 public class RenderSystem extends IteratingSystem {
 
@@ -59,6 +60,28 @@ public class RenderSystem extends IteratingSystem {
 
         batch.begin();
 
+        if (entity.getComponent(VelocityComponent.class) != null) {
+
+            VelocityComponent velocity = entity.getComponent(VelocityComponent.class);
+
+            long now = System.currentTimeMillis();
+            long timeElapsed = now - gameController.getGameStartTime();
+
+            if (timeElapsed > 10000) {
+                velocity.y = GameSettings.easySpeed;
+                BitmapFont font = new BitmapFont();
+                font.setColor(Color.RED);
+                font.getData().setScale(5);
+                String s = Integer.toString(entity.getComponent(HealthComponent.class).getHealth());
+                font.draw(gameController.getBatch(),s, positionComponent.x+215, positionComponent.y+200);
+                if(timeElapsed > 20000) {
+                    velocity.y = GameSettings.mediumSpeed;
+                    if(timeElapsed > 30000) {
+                        velocity.y = GameSettings.highSpeed;
+                    }
+                }
+            }
+        }
 
         if (entity.getComponent(HealthComponent.class) != null) {
             BitmapFont font = new BitmapFont();
