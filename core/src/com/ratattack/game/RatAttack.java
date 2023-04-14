@@ -44,9 +44,7 @@ public class RatAttack extends Game {
 		highscore = new Highscore(_FBIC);
 
 		//FIREBASE
-		highscore.submitHighscore("Melissa", 9000);
-		//System.out.println("fra ratAttack ");
-		//dataHolder.PrintSomeValue();
+		//highscore.submitHighscore("hello", 300);
 	}
 
 	@Override

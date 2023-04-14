@@ -10,12 +10,11 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
-
-import static android.content.ContentValues.TAG;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.HashMap;
+import java.util.List;
 
 // Her er logikk for Firebase
 public class AndroidInterfaceClass implements FirebaseInterface {
@@ -30,24 +29,30 @@ public class AndroidInterfaceClass implements FirebaseInterface {
         highscores = database.getReference("highscores");
     }
 
+
     @Override
-    public void getHighscores(ArrayList<Score> scorelist) {
+    public void getHighscores(HashMap<String, Score> scoreMap) {
         System.out.println("Getting highcores");
         highscores.get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
             @Override
             public void onComplete(@NonNull Task<DataSnapshot> task) {
-                //String key = "";
                 System.out.println("Got highcores");
                 Iterable<DataSnapshot> response = task.getResult().getChildren();
+                List<Score> scores = new ArrayList<>();
                 for (DataSnapshot child : response) {
-                    scorelist.add(child.getValue(Score.class));
-                    //sånn er det mulig å få tak i key:)
-                    //key = child.getKey();
+                    Score score = child.getValue(Score.class);
+                    scores.add(score);
                 }
-                Collections.sort(scorelist);
+                Collections.sort(scores);
+                for (int i = 0; i < scores.size(); i++) {
+                    scoreMap.put(String.valueOf(i), scores.get(i));
+                }
             }
         });
     }
+
+
+
 
     @Override
     public void addHighscore(Score score,  final DataHolderClass dataHolder) {

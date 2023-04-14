@@ -42,7 +42,6 @@ public class HighscoreScreen implements Screen {
         //dataHolder = gameController.getDataHolderClass();
         highscore = new Highscore(_FBIC);
         new ScoreManager();
-        //highscore.submitHighscore("Rebecca", 780);
         System.out.println("Denne er fra HighScoreScreen");
         _dataHolderClass.PrintSomeValue();
     }
