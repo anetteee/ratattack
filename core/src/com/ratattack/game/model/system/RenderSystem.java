@@ -58,9 +58,14 @@ public class RenderSystem extends IteratingSystem {
 
             if (levelChangeTimes[mid] == timeElapsed) {
                 return mid;
-            } else if (levelChangeTimes[mid] < timeElapsed) {
+            }
+
+            else if((mid+1) == levelChangeTimes.length ) {
+                return left;
+            }
+            else if (timeElapsed >= levelChangeTimes[mid+1]) {
                 left = mid + 1;
-            } else {
+            }  else {
                 right = mid - 1;
             }
         }
