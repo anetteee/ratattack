@@ -4,11 +4,13 @@ import com.ratattack.game.FirebaseInterface;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.LinkedHashMap;
+import java.util.TreeMap;
 
 public class DesktopInterfaceClass implements FirebaseInterface {
 
     @Override
-    public void getHighscores(HashMap<String, Score> scoreMap) {
+    public void getHighscores(LinkedHashMap<String, Score> scoreMap) {
 
     }
 

@@ -1,19 +1,24 @@
 package com.ratattack.game;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.ratattack.game.gamecontroller.GameController;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.TreeMap;
 
 public class Highscore {
-    private  HashMap<String, Score>  scoreList = new HashMap<>();
+    private LinkedHashMap<String, Score> scoreList = new LinkedHashMap<>();
     private BitmapFont font;
+    private BitmapFont currFont;
     FirebaseInterface _FBIC;
 
     DataHolderClass dataholder;
@@ -22,7 +27,10 @@ public class Highscore {
     public Highscore(FirebaseInterface _FBIC) {
         this._FBIC = _FBIC;
         font = new BitmapFont();
+        currFont = new BitmapFont();
+        currFont.setColor(Color.RED);
         font.getData().setScale(6f, 6f);
+        currFont.getData().setScale(6f, 6f);
         dataholder = GameController.getInstance().getDataHolderClass();
         fetchHighscores();
     }
@@ -38,47 +46,30 @@ public class Highscore {
         return number;
     }
 
-    /*
     public void render(SpriteBatch batch) {
         int xPosition = Gdx.graphics.getWidth() / 2 - 400;
         int yPosition = Gdx.graphics.getHeight() - 150;
         font.draw(batch, "HIGHSCORE LIST", xPosition, yPosition);
-        for (int i = 0; i < getNumberOfElements(scoreList)  ; i++) {
-            int xPos = Gdx.graphics.getWidth() / 2 - 350;
-            int yPos = Gdx.graphics.getHeight() - 300 - (i * 100);
-            String text = (i + 1) + ". " + scoreList.get(i).toString();
-            font.draw(batch, text, xPos, yPos);
-        }
-    }
-
-     */
-
-    public void render(SpriteBatch batch) {
-        int xPosition = Gdx.graphics.getWidth() / 2 - 400;
-        int yPosition = Gdx.graphics.getHeight() - 150;
-        font.draw(batch, "HIGHSCORE LIST", xPosition, yPosition);
+        int i = 1;
         for (Map.Entry<String, Score> entry : scoreList.entrySet()) {
-            int rank = Integer.parseInt(entry.getKey()) + 1;
+            //int rank = Integer.parseInt(entry.getKey());
             int xPos = Gdx.graphics.getWidth() / 2 - 350;
-            int yPos = Gdx.graphics.getHeight() - 300 - (rank * 100);
-            String text = rank + ". " + entry.getValue().toString();
-            font.draw(batch, text, xPos, yPos);
+            int yPos = Gdx.graphics.getHeight() - 300 - (i*100);
+            String text = String.valueOf(i) + ". " + entry.getValue().toString();
+            if (entry.getKey().equals(dataholder.getSomeValue())) {
+                currFont.draw(batch, text, xPos, yPos);
+            }
+            else {
+                font.draw(batch, text, xPos, yPos);
+            }
+            i++;
         }
     }
-
 
 
     public void fetchHighscores() {
         this.scoreList.clear();
         _FBIC.getHighscores(this.scoreList);
-        List<Score> scores = new ArrayList<>(scoreList.values());
-        Collections.sort(scores);
-        scoreList.clear();
-        int i = 0;
-        for (Score score : scores) {
-            scoreList.put(String.valueOf(i), score);
-            i++;
-        }
     }
 
 
