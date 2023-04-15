@@ -103,9 +103,6 @@ public class GameController {
         //Add systems to engine
         addSystems(engine);
 
-        //Add listeners
-        engine.addEntityListener(new GameEntityListener(engine));
-
         //Add entities
         addEntities();
 
