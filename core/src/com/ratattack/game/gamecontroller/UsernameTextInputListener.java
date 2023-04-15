@@ -8,12 +8,13 @@ public class UsernameTextInputListener implements Input.TextInputListener {
 
     @Override
     public void input(String userName) {
-        GameController.getInstance().setPlayer(new Player(userName));
+        GameController.getInstance().getPlayer().setName(userName);
         GameController.getInstance().play();
     }
 
     @Override
     public void canceled() {
-
+        GameController.getInstance().screenContext.changeScreen("MENU");
+        GameController.getInstance().pause();
     }
 }

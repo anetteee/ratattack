@@ -1,5 +1,7 @@
 package com.ratattack.game.model.buttons;
 
+import static java.lang.Math.min;
+
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
@@ -40,11 +42,12 @@ public class UpgradeButton extends Observer {
             public void clicked(InputEvent inputEvent, float xpos, float ypos) {
                 if (canAffordUpgrade) {
                     GameController.getInstance().field.grandmaButtons.get(i).upgrade();
-                    nextPrice += 1;
+                    nextPrice = min(nextPrice+1 ,4);
 
                     //If the player can not afford the next upgrade
                     if (!(ShootingStrategy.prices[nextPrice] < GameController.getInstance().getPlayer().getBalance())) {
-                        button.setBackground(buttonNotUpgradeable);
+                        button.getStyle().down = buttonNotUpgradeable;
+                        button.getStyle().up = buttonNotUpgradeable;
                         canAffordUpgrade = false;
                     }
                 }
@@ -58,7 +61,8 @@ public class UpgradeButton extends Observer {
     @Override
     public void update() {
         if (!canAffordUpgrade && (ShootingStrategy.prices[nextPrice] < GameController.getInstance().getPlayer().getBalance())) {
-            button.setBackground(buttonUpgradeable);
+            button.getStyle().down = buttonUpgradeable;
+            button.getStyle().up = buttonUpgradeable;
             canAffordUpgrade = true;
         }
     }

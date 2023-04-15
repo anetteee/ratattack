@@ -6,7 +6,7 @@ import java.util.ArrayList;
 
 public class Player {
 
-    private final ArrayList<Observer> balanceObservers = new ArrayList<>();
+    public final ArrayList<Observer> balanceObservers = new ArrayList<>();
     private final ArrayList<Observer> scoreObservers = new ArrayList<>();
     private int score;
 
