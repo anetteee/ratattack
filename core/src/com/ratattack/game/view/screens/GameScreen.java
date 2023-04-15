@@ -85,7 +85,6 @@ public class GameScreen implements Screen {
 
     @Override
     public void render(float delta) {
-        Player.setBalance(5000); // denne er kun for å teste at balance vises på skjermen
         gameController.field.draw();
         Button balanceLabel = makeLabel(balanceLabelTexture, 1.1f, 1.1f);
         Button coin = makeCoin(coinTexture, 1.13f, 1.1f);
