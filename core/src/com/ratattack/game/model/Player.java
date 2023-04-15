@@ -29,7 +29,7 @@ public class Player {
         this.name = name;
     }
 
-    public static void setBalance(int newBalance) {
+    public void setBalance(int newBalance) {
         balance = newBalance;
         notifyBalanceObservers();
     }
