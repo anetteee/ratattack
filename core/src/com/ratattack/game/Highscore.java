@@ -29,8 +29,8 @@ public class Highscore {
         font = new BitmapFont();
         currFont = new BitmapFont();
         currFont.setColor(Color.RED);
-        font.getData().setScale(6f, 6f);
-        currFont.getData().setScale(6f, 6f);
+        font.getData().setScale(4f, 4f);
+        currFont.getData().setScale(4f, 4f);
         dataholder = GameController.getInstance().getDataHolderClass();
         fetchHighscores();
     }
@@ -52,9 +52,12 @@ public class Highscore {
         font.draw(batch, "HIGHSCORE LIST", xPosition, yPosition);
         int i = 1;
         for (Map.Entry<String, Score> entry : scoreList.entrySet()) {
+            if (i > 10) {
+                break;
+            }
             //int rank = Integer.parseInt(entry.getKey());
             int xPos = Gdx.graphics.getWidth() / 2 - 350;
-            int yPos = Gdx.graphics.getHeight() - 300 - (i*100);
+            int yPos = Gdx.graphics.getHeight() - 200 - (i*100);
             String text = String.valueOf(i) + ". " + entry.getValue().toString();
             if (entry.getKey().equals(dataholder.getSomeValue())) {
                 currFont.draw(batch, text, xPos, yPos);
