@@ -1,21 +1,22 @@
 package com.ratattack.game.view.screens;
 
-import com.badlogic.ashley.core.PooledEngine;
-import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
+import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.BitmapFont;
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Button;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
-import com.badlogic.gdx.utils.viewport.ScreenViewport;
 import com.ratattack.game.gamecontroller.GameController;
-import java.util.ArrayList;
+import com.ratattack.game.model.Player;
 
-public class GameScreen implements Screen {
+
+public class GameScreen<TextView> implements Screen{
 
     /***
      * TODO: LEGG TIL KOMMENTARER
@@ -25,7 +26,12 @@ public class GameScreen implements Screen {
     private final GameController gameController = GameController.getInstance();
     Texture goToMenuTexture = new Texture("gotomenubutton.png");
     Texture goToTutorialTexture = new Texture("watchtutorialbutton.png");
+    Texture balanceLabelTexture = new Texture("informationBox.png");
+    Texture coinTexture = new Texture("coins.png");
     private final Stage stage = gameController.getStage();
+    SpriteBatch batch = GameController.getInstance().getBatch();
+    private BitmapFont font;
+
 
     public GameScreen() {
         gameController.setUpGame();
@@ -47,20 +53,45 @@ public class GameScreen implements Screen {
         return b;
     }
 
+    private Button makeLabel(Texture texture, float xPos, float yPos){
+        Button l = new Button(new TextureRegionDrawable(new TextureRegion(texture)));
+        l.setSize(Gdx.graphics.getWidth()/7f  ,   Gdx.graphics.getHeight()/7f);
+        l.setPosition(Gdx.graphics.getWidth() / xPos - l.getWidth()/2f,Gdx.graphics.getHeight() / yPos - l.getHeight() / 2f);
+        return l;
+    }
+
+    private Button makeCoin(Texture texture, float xPos, float yPos){
+        Button c = new Button(new TextureRegionDrawable(new TextureRegion(texture)));
+        c.setSize(Gdx.graphics.getWidth()/20f  ,   Gdx.graphics.getHeight()/15f);
+        //c.setSize(2,2);
+        c.setPosition(Gdx.graphics.getWidth() / xPos - c.getWidth()/2f,Gdx.graphics.getHeight() / yPos - c.getHeight() / 2f);
+        return c;
+    }
+
     @Override
     public void show() {
-        Button goToMenuScreenB = makeButton(goToMenuTexture,2f,"MENU");
-        Button goToTutorialScreenB = makeButton(goToTutorialTexture,5f,"TUTORIAL");
+        Button goToMenuScreenB = makeButton(goToMenuTexture, 2f, "MENU");
+        Button goToTutorialScreenB = makeButton(goToTutorialTexture, 5f, "TUTORIAL");
 
         stage.addActor(goToMenuScreenB);
         stage.addActor(goToTutorialScreenB);
+
+        font = new BitmapFont();
+        font.getData().setScale(5);
     }
 
     @Override
     public void render(float delta) {
-
-       gameController.field.draw();
-       stage.draw();
+        Player.setBalance(5000); // denne er kun for å teste at balance vises på skjermen
+        gameController.field.draw();
+        Button balanceLabel = makeLabel(balanceLabelTexture, 1.1f, 1.1f);
+        Button coin = makeCoin(coinTexture, 1.13f, 1.1f);
+        batch.begin();
+        balanceLabel.draw(batch, 1f);
+        coin.draw(batch,2f);
+        font.draw(batch, String.valueOf(Player.getBalance()),2700, 1340);
+        batch.end();
+        stage.draw();
 
     }
 

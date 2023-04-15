@@ -6,7 +6,7 @@ public class Player {
 
     private String name;
 
-    private int balance;
+    private static int balance;
 
     public Player(String name) {
         this.name = name;
@@ -22,7 +22,7 @@ public class Player {
         this.name = name;
     }
 
-    public void setBalance(int newBalance) {
+    public static void setBalance(int newBalance) {
         balance = newBalance;
     }
 
@@ -30,7 +30,7 @@ public class Player {
         return score;
     }
 
-    public int getBalance() {
+    public static int getBalance() {
         return balance;
     }
 
