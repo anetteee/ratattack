@@ -82,7 +82,6 @@ public class SpawnSystem extends IteratingSystem {
         position.x = gameController.field.laneDividers.get(randomNumber) + texture.getWidth();
         position.y = 1500;
 
-
         VelocityComponent velocity = rat.getComponent(VelocityComponent.class);
         velocity.x = 0;
         velocity.y = GameSettings.startSpeedRat;

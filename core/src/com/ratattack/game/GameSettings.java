@@ -1,10 +1,14 @@
 package com.ratattack.game;
 
+import java.util.ArrayList;
+
 public class GameSettings {
 
     //Nyttige konstanter
     public static final long startRatSpawnrate = 4000;
     public static final long startGrandChildSpawnrate = 12000;
+    public static final int[] ratSpeed = {-3, -7, -10, -15};
+    public static final int[] changeLevelTime = {0, 10000, 20000, 30000};
 
     public static final int startSpeedRat = -3;
     public static final int startSpeedGrandchild = -1;

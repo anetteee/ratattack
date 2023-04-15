@@ -6,6 +6,7 @@ import static com.ratattack.game.model.ComponentMappers.spriteMapper;
 import com.badlogic.ashley.core.Entity;
 import com.badlogic.ashley.core.Family;
 import com.badlogic.ashley.systems.IteratingSystem;
+import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Texture;
@@ -47,6 +48,24 @@ public class RenderSystem extends IteratingSystem {
         super.update(deltaTime);
         //System.out.println(getEngine().getEntitiesFor(renderFamily));
     }
+
+    public static int getIndexOfRatSpeedArray(int[] levelChangeTimes, int timeElapsed) {
+        int left = 0;
+        int right = levelChangeTimes.length - 1;
+
+        while (left <= right) {
+            int mid = left + (right - left) / 2;
+
+            if (levelChangeTimes[mid] == timeElapsed) {
+                return mid;
+            } else if (levelChangeTimes[mid] < timeElapsed) {
+                left = mid + 1;
+            } else {
+                right = mid - 1;
+            }
+        }
+        return left;
+    }
     @Override
     protected void processEntity(Entity entity, float deltaTime) {
         SpriteComponent spriteComponent = spriteMapper.get(entity);
@@ -60,27 +79,52 @@ public class RenderSystem extends IteratingSystem {
 
         batch.begin();
 
-        if (entity.getComponent(VelocityComponent.class) != null) {
+        if ((entity.getComponent(HealthComponent.class) != null)
+        && (entity.getComponent(BalanceComponent.class) == null)) {
 
             VelocityComponent velocity = entity.getComponent(VelocityComponent.class);
 
             long now = System.currentTimeMillis();
             long timeElapsed = now - gameController.getGameStartTime();
 
-            if (timeElapsed > 10000) {
-                velocity.y = GameSettings.easySpeed;
+            int index = getIndexOfRatSpeedArray(GameSettings.changeLevelTime, (int) timeElapsed);
+            velocity.y = GameSettings.ratSpeed[index];
+
+            System.out.println(velocity.y);
+
+            /*
+            if(timeElapsed > 8000 && timeElapsed<10000) {
                 BitmapFont font = new BitmapFont();
                 font.setColor(Color.RED);
-                font.getData().setScale(5);
-                String s = Integer.toString(entity.getComponent(HealthComponent.class).getHealth());
-                font.draw(gameController.getBatch(),s, positionComponent.x+215, positionComponent.y+200);
+                font.getData().setScale(20);
+                font.draw(gameController.getBatch(), "LEVEL UP 1", 400, 1000);
+            }
+
+            if (timeElapsed > 10000) {
+                velocity.y = GameSettings.easySpeed;
+
+                if(timeElapsed>18000 && timeElapsed<20000) {
+                    BitmapFont font = new BitmapFont();
+                    font.setColor(Color.RED);
+                    font.getData().setScale(20);
+                    font.draw(gameController.getBatch(), "LEVEL UP 2", 400, 1000);
+                }
+
                 if(timeElapsed > 20000) {
                     velocity.y = GameSettings.mediumSpeed;
+
+                    if(timeElapsed>28000 && timeElapsed<30000) {
+                        BitmapFont font = new BitmapFont();
+                        font.setColor(Color.RED);
+                        font.getData().setScale(20);
+                        font.draw(gameController.getBatch(), "LEVEL UP 3", 400, 1000);
+                    }
                     if(timeElapsed > 30000) {
                         velocity.y = GameSettings.highSpeed;
                     }
                 }
             }
+            */
         }
 
         if (entity.getComponent(HealthComponent.class) != null) {
@@ -89,7 +133,6 @@ public class RenderSystem extends IteratingSystem {
             font.getData().setScale(5);
             String s = Integer.toString(entity.getComponent(HealthComponent.class).getHealth());
             font.draw(gameController.getBatch(),s, positionComponent.x+215, positionComponent.y+200);
-
         }
 
 
