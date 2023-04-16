@@ -17,8 +17,9 @@ import java.util.TreeMap;
 
 public class Highscore {
     private LinkedHashMap<String, Score> scoreList = new LinkedHashMap<>();
-    private BitmapFont font;
-    private BitmapFont currFont;
+    private BitmapFont fontText;
+    private BitmapFont PinkFont;
+    private BitmapFont bigFont;
     FirebaseInterface _FBIC;
 
     DataHolderClass dataholder;
@@ -26,12 +27,15 @@ public class Highscore {
 
     public Highscore(FirebaseInterface _FBIC) {
         this._FBIC = _FBIC;
-        font = new BitmapFont();
-        font.setColor(Color.DARK_GRAY);
-        currFont = new BitmapFont();
-        currFont.setColor(Color.PINK);
-        font.getData().setScale(4f, 4f);
-        currFont.getData().setScale(4f, 4f);
+        fontText = new BitmapFont();
+        bigFont = new BitmapFont();
+        fontText.setColor(Color.DARK_GRAY);
+        bigFont.setColor(Color.DARK_GRAY);
+        bigFont.getData().setScale(7f, 7f);
+        PinkFont = new BitmapFont();
+        PinkFont.setColor(Color.PINK);
+        fontText.getData().setScale(4f, 4f);
+        PinkFont.getData().setScale(4f, 4f);
         dataholder = GameController.getInstance().getDataHolderClass();
         fetchHighscores();
     }
@@ -48,9 +52,9 @@ public class Highscore {
     }
 
     public void render(SpriteBatch batch) {
-        int yPosition = Gdx.graphics.getHeight() - 100;
-        int xPos = Gdx.graphics.getWidth() / 2 - 270;
-        font.draw(batch, "HIGHSCORE LIST", xPos, yPosition);
+        int yPosition = Gdx.graphics.getHeight() - 50;
+        int xPos = Gdx.graphics.getWidth() / 2 - 425;
+        bigFont.draw(batch, "HIGHSCORE LIST", xPos, yPosition);
         boolean isTopTen = false;
         int j = 0;
         int i = 1;
@@ -59,10 +63,10 @@ public class Highscore {
                 int yPos = Gdx.graphics.getHeight() - 100 - (i * 100);
                 String text = String.valueOf(i) + ". " + entry.getValue().toString();
                 if (entry.getKey().equals(dataholder.getSomeValue())) {
-                    currFont.draw(batch, text, xPos, yPos);
+                    PinkFont.draw(batch, text, xPos, yPos);
                     isTopTen = true;
                 } else {
-                    font.draw(batch, text, xPos, yPos);
+                    fontText.draw(batch, text, xPos, yPos);
                 }
                 i++;
                 j=i-1;
@@ -71,8 +75,8 @@ public class Highscore {
             int strek = Gdx.graphics.getHeight() - 100 - (10 * 100);
             if (!isTopTen && entry.getKey().equals(dataholder.getSomeValue())) {
                 String currText = String.valueOf(j) + ". " + entry.getValue().toString();
-                font.draw(batch, "_______________________", xPos, strek);
-                currFont.draw(batch, currText, xPos, currYPos);
+                fontText.draw(batch, "_______________________", xPos, strek);
+                PinkFont.draw(batch, currText, xPos, currYPos);
             }
             j++;
         }
