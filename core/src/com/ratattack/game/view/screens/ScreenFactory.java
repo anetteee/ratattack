@@ -4,7 +4,6 @@ import com.badlogic.gdx.Screen;
 import com.ratattack.game.DataHolderClass;
 import com.ratattack.game.FirebaseInterface;
 import com.ratattack.game.gamecontroller.GameController;
-import com.ratattack.game.screens.HighscoreScreen;
 
 public class ScreenFactory {
 

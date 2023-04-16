@@ -6,7 +6,6 @@ import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.ratattack.game.gamecontroller.*;
-import com.ratattack.game.screens.*;
 
 public class RatAttack extends Game {
 	Texture img;
