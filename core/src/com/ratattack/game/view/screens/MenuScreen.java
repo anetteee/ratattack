@@ -15,9 +15,15 @@ import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
 import com.badlogic.gdx.utils.viewport.ScreenViewport;
+import com.ratattack.game.DataHolderClass;
+import com.ratattack.game.FirebaseInterface;
+import com.ratattack.game.Highscore;
 import com.ratattack.game.gamecontroller.GameController;
 
 public class MenuScreen implements Screen {
+    //Highscore highscore;
+    FirebaseInterface _FBIC;
+    DataHolderClass _dataHolderClass;
 
     /***
      * TODO: LEGG TIL KOMMENTARER
@@ -32,7 +38,6 @@ public class MenuScreen implements Screen {
 
 
 
-
     Texture playGameTexture = new Texture("playgamebutton.png");
     Texture watchTutorialTexture = new Texture("watchtutorialbutton.png");
     Texture highscoreTexture = new Texture("highscorebutton.png");
@@ -41,7 +46,9 @@ public class MenuScreen implements Screen {
 
     private final Stage stage = gameController.getStage();
 
-    public MenuScreen() {
+    public MenuScreen(FirebaseInterface FBIC, DataHolderClass dataHolderClass) {
+        _FBIC = FBIC;
+        _dataHolderClass = dataHolderClass;
 
         System.out.println(stage);
     }
@@ -54,7 +61,7 @@ public class MenuScreen implements Screen {
         title.setSize(Gdx.graphics.getWidth()/3f,  Gdx.graphics.getHeight()/2f);
         title.setPosition(Gdx.graphics.getWidth()/2f - title.getWidth()/2f, Gdx.graphics.getHeight()/2f);
 
-        Button highscoreButton = makeButton(highscoreTexture,5f,"TUTORIAL"); //TODO: endre til HIGHSCORE SCREEN
+        Button highscoreButton = makeButton(highscoreTexture,5f,"HIGHSCORE");
         Button playGameButton = makeButton(playGameTexture,2f,"GAME");
         Button watchTutorialButton = makeButton(watchTutorialTexture,1.25f,"TUTORIAL");
 
