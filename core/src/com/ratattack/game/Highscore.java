@@ -48,25 +48,33 @@ public class Highscore {
     }
 
     public void render(SpriteBatch batch) {
-        int xPosition = Gdx.graphics.getWidth() / 2 - 350;
         int yPosition = Gdx.graphics.getHeight() - 100;
-        font.draw(batch, "HIGHSCORE LIST", xPosition, yPosition);
+        int xPos = Gdx.graphics.getWidth() / 2 - 270;
+        font.draw(batch, "HIGHSCORE LIST", xPos, yPosition);
+        boolean isTopTen = false;
+        int j = 0;
         int i = 1;
         for (Map.Entry<String, Score> entry : scoreList.entrySet()) {
-            if (i > 10) {
-                break;
+            if (i < 11){
+                int yPos = Gdx.graphics.getHeight() - 100 - (i * 100);
+                String text = String.valueOf(i) + ". " + entry.getValue().toString();
+                if (entry.getKey().equals(dataholder.getSomeValue())) {
+                    currFont.draw(batch, text, xPos, yPos);
+                    isTopTen = true;
+                } else {
+                    font.draw(batch, text, xPos, yPos);
+                }
+                i++;
+                j=i-1;
             }
-            //int rank = Integer.parseInt(entry.getKey());
-            int xPos = Gdx.graphics.getWidth() / 2 - 350;
-            int yPos = Gdx.graphics.getHeight() - 100 - (i*100);
-            String text = String.valueOf(i) + ". " + entry.getValue().toString();
-            if (entry.getKey().equals(dataholder.getSomeValue())) {
-                currFont.draw(batch, text, xPos, yPos);
+            int currYPos = Gdx.graphics.getHeight() - 100 - (11 * 100);
+            int strek = Gdx.graphics.getHeight() - 100 - (10 * 100);
+            if (!isTopTen && entry.getKey().equals(dataholder.getSomeValue())) {
+                String currText = String.valueOf(j) + ". " + entry.getValue().toString();
+                font.draw(batch, "_______________________", xPos, strek);
+                currFont.draw(batch, currText, xPos, currYPos);
             }
-            else {
-                font.draw(batch, text, xPos, yPos);
-            }
-            i++;
+            j++;
         }
     }
 
