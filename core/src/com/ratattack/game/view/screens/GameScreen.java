@@ -1,9 +1,13 @@
 package com.ratattack.game.view.screens;
 
+import com.badlogic.ashley.core.Entity;
+import com.badlogic.ashley.core.PooledEngine;
+import com.badlogic.ashley.utils.ImmutableArray;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
+import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
@@ -14,6 +18,8 @@ import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
 import com.ratattack.game.gamecontroller.GameController;
 import com.ratattack.game.model.Player;
 import com.ratattack.game.gamecontroller.UsernameTextInputListener;
+import com.ratattack.game.model.components.SpriteComponent;
+import com.ratattack.game.model.system.SpawnSystem;
 
 public class GameScreen implements Screen {
 
@@ -30,6 +36,8 @@ public class GameScreen implements Screen {
     private final Stage stage = gameController.getStage();
     SpriteBatch batch = GameController.getInstance().getBatch();
     private BitmapFont font;
+    private boolean screenIsChanges = false;
+    private PooledEngine engine;
 
 
 
@@ -50,9 +58,17 @@ public class GameScreen implements Screen {
             public void clicked(InputEvent inputEvent, float xpos, float ypos) {
                 //screencontext bytter screen vha state
                 gameController.screenContext.changeScreen(nextScreen);
-
+                screenIsChanges = true;
             }
         });
+        //For å teste:
+        /**
+        engine = GameController.getInstance().getEngine();
+        for (Entity entity : engine.getEntities()) {
+            Texture textureTest = entity.getComponent(SpriteComponent.class).sprite.getTexture();
+            System.out.println(textureTest);
+        }
+        **/
         return b;
     }
 
@@ -127,6 +143,15 @@ public class GameScreen implements Screen {
     @Override
     public void dispose() {
         stage.dispose();
+        if (screenIsChanges = true){
+            batch.dispose();
+            engine = GameController.getInstance().getEngine();
+            for (Entity entity : engine.getEntities()){
+                Texture texture = entity.getComponent(SpriteComponent.class).sprite.getTexture();
+                texture.dispose();
+;            }
+            engine.removeAllEntities();
+        }
     }
 
 }

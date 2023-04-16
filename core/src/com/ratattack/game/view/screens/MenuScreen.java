@@ -40,6 +40,7 @@ public class MenuScreen implements Screen {
     int height = Gdx.graphics.getHeight();
 
     private final Stage stage = gameController.getStage();
+    private boolean screenIsChanged = false;
 
     public MenuScreen() {
 
@@ -87,6 +88,7 @@ public class MenuScreen implements Screen {
             public void clicked(InputEvent inputEvent, float xpos, float ypos) {
                 //screencontext bytter screen vha state
                 gameController.screenContext.changeScreen(nextScreen);
+                screenIsChanged = true;
             }
         });
         return b;
@@ -117,5 +119,8 @@ public class MenuScreen implements Screen {
     @Override
     public void dispose() {
         batch.dispose();
+        if (screenIsChanged = true){
+            stage.dispose();
+        }
     }
 }

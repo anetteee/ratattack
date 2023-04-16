@@ -32,6 +32,8 @@ public class TutorialScreen implements Screen {/***
     int height = Gdx.graphics.getHeight();
 
     private final Stage stage = gameController.getStage();
+    private boolean screenIsChanged = false;
+
 
     public TutorialScreen() {
         System.out.println(stage);
@@ -109,6 +111,9 @@ public class TutorialScreen implements Screen {/***
     public void dispose() {
         font.dispose();
         batch.dispose();
+        if (screenIsChanged = true){
+            stage.dispose();
+        }
 
     }
 }
