@@ -10,16 +10,41 @@ import com.ratattack.game.gamecontroller.*;
 public class RatAttack extends Game {
 	Texture img;
 
+	//FIREBASE
+	FirebaseInterface _FBIC;
+	DataHolderClass dataHolder;
+
+	Highscore highscore;
+
+	public RatAttack(FirebaseInterface FBIC) {
+		_FBIC = FBIC;
+	}
+
+
+
 	GameController gameController;
 	
 	@Override
 	public void create () {
 		gameController = GameController.getInstance();
 		gameController.setUpAshley();
+		gameController.setFirebaseInterface(_FBIC);
+		dataHolder = new DataHolderClass();
+		gameController.setDataHolderClass(dataHolder);
 		gameController.setGame(this);
 		gameController.setStartScreen();
+		highscore = new Highscore(_FBIC);
 
-		img = new Texture("rats.png");
+		//FIREBASE
+		/*
+		highscore.submitHighscore("Miriam", 998);
+		highscore.submitHighscore("Ole", 300);
+		highscore.submitHighscore("Bjørn", 500);
+		highscore.submitHighscore("lise", 700);
+
+		 */
+		//highscore.submitHighscore("Anne", 2);
+
 	}
 
 	@Override

@@ -4,6 +4,8 @@ import com.badlogic.ashley.core.PooledEngine;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.ratattack.game.DataHolderClass;
+import com.ratattack.game.FirebaseInterface;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.utils.viewport.ScreenViewport;
@@ -45,6 +47,9 @@ public class GameController {
     private static PooledEngine engine;
 
     public ScreenContext screenContext;
+
+    FirebaseInterface _FBIC;
+    DataHolderClass dataHolder;
 
     private GameController() {
         stage = new Stage(new ScreenViewport());
@@ -168,6 +173,20 @@ public class GameController {
         this.game = game;
     }
 
+    public FirebaseInterface getFirebaseInterface() {
+        return _FBIC;
+    }
+
+    public void  setFirebaseInterface(FirebaseInterface FBIC) {
+        this._FBIC = FBIC;
+    }
+    public void setDataHolderClass(DataHolderClass dataHolder) {
+        this.dataHolder = dataHolder;
+    }
+
+    public DataHolderClass getDataHolderClass(){
+        return dataHolder;
+    }
     public void setPlayer(Player player) {
         this.player = player;
     }
