@@ -27,6 +27,12 @@ import com.ratattack.game.model.components.RectangleBoundsComponent;
 import com.ratattack.game.model.components.SpriteComponent;
 import com.ratattack.game.model.components.VelocityComponent;
 
+import java.awt.Window;
+import java.util.Timer;
+import java.util.TimerTask;
+
+import jdk.internal.net.http.common.Log;
+
 public class RenderSystem extends IteratingSystem {
 
     private static final Family renderFamily = Family.all(SpriteComponent.class, PositionComponent.class).get();
@@ -71,6 +77,21 @@ public class RenderSystem extends IteratingSystem {
         }
         return left;
     }
+
+    public void showLevelUpMessage() {
+        final BitmapFont font = new BitmapFont();
+        font.setColor(Color.RED);
+        font.getData().setScale(20);
+        new Timer().scheduleAtFixedRate(new TimerTask(){
+            @Override
+            public void run(){
+                // Draw the "LEVEL UP" text using the previously created BitmapFont
+                batch.begin();
+                font.draw(gameController.getBatch(), "LEVEL UP", 400, 1000);
+            }
+        }, 8000, 10000);
+        batch.end();
+    }
     @Override
     protected void processEntity(Entity entity, float deltaTime) {
         SpriteComponent spriteComponent = spriteMapper.get(entity);
@@ -79,8 +100,6 @@ public class RenderSystem extends IteratingSystem {
         if (bounds == null) {
             bounds = entity.getComponent(RectangleBoundsComponent.class);
         }
-
-        Texture texture = spriteComponent.sprite.getTexture();
 
         batch.begin();
 
@@ -94,6 +113,20 @@ public class RenderSystem extends IteratingSystem {
 
             int index = getIndexOfRatSpeedArray(GameSettings.changeLevelTime, (int) timeElapsed);
             velocity.y = GameSettings.ratSpeed[index];
+
+            BitmapFont font = new BitmapFont();
+            font.setColor(Color.RED);
+            font.getData().setScale(20);
+            for(int i = 0; i < GameSettings.showLevelUpMessageStartTime.length; i++) {
+                    if ((timeElapsed > GameSettings.showLevelUpMessageStartTime[i]) && (timeElapsed < GameSettings.showLevelUpMessageEndTime[i])) {
+                        font.draw(gameController.getBatch(), "LEVEL UP", 400, 1000);
+                    } else {
+                        font.draw(gameController.getBatch(), "", 400, 1000);
+                    }
+            }
+
+
+            // Schedule the timer to update the font every 10 second
 
             System.out.println(velocity.y);
 
@@ -132,6 +165,10 @@ public class RenderSystem extends IteratingSystem {
             */
         }
 
+        Texture texture = spriteComponent.sprite.getTexture();
+
+       // batch.begin();
+
         if (entity.getComponent(HealthComponent.class) != null) {
             BitmapFont font = new BitmapFont();
             font.setColor(Color.RED);
@@ -139,7 +176,6 @@ public class RenderSystem extends IteratingSystem {
             String s = Integer.toString(entity.getComponent(HealthComponent.class).getHealth());
             font.draw(gameController.getBatch(),s, positionComponent.x+215, positionComponent.y+200);
         }
-
 
         batch.draw(texture, positionComponent.x, positionComponent.y);
         batch.end();
