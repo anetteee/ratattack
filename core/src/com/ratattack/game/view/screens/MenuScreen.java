@@ -44,7 +44,7 @@ public class MenuScreen implements Screen {
 
     public MenuScreen() {
 
-        System.out.println(stage);
+        //System.out.println(stage);
     }
 
     @Override
@@ -122,5 +122,6 @@ public class MenuScreen implements Screen {
         if (screenIsChanged = true){
             stage.dispose();
         }
+        screenIsChanged = false;
     }
 }

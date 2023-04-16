@@ -114,6 +114,7 @@ public class TutorialScreen implements Screen {/***
         if (screenIsChanged = true){
             stage.dispose();
         }
+        screenIsChanged = false;
 
     }
 }

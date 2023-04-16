@@ -152,6 +152,7 @@ public class GameScreen implements Screen {
 ;            }
             engine.removeAllEntities();
         }
+        screenIsChanges = false;
     }
 
 }
