@@ -27,8 +27,9 @@ public class Highscore {
     public Highscore(FirebaseInterface _FBIC) {
         this._FBIC = _FBIC;
         font = new BitmapFont();
+        font.setColor(Color.DARK_GRAY);
         currFont = new BitmapFont();
-        currFont.setColor(Color.RED);
+        currFont.setColor(Color.PINK);
         font.getData().setScale(4f, 4f);
         currFont.getData().setScale(4f, 4f);
         dataholder = GameController.getInstance().getDataHolderClass();
@@ -47,8 +48,8 @@ public class Highscore {
     }
 
     public void render(SpriteBatch batch) {
-        int xPosition = Gdx.graphics.getWidth() / 2 - 400;
-        int yPosition = Gdx.graphics.getHeight() - 150;
+        int xPosition = Gdx.graphics.getWidth() / 2 - 350;
+        int yPosition = Gdx.graphics.getHeight() - 100;
         font.draw(batch, "HIGHSCORE LIST", xPosition, yPosition);
         int i = 1;
         for (Map.Entry<String, Score> entry : scoreList.entrySet()) {
@@ -57,7 +58,7 @@ public class Highscore {
             }
             //int rank = Integer.parseInt(entry.getKey());
             int xPos = Gdx.graphics.getWidth() / 2 - 350;
-            int yPos = Gdx.graphics.getHeight() - 200 - (i*100);
+            int yPos = Gdx.graphics.getHeight() - 100 - (i*100);
             String text = String.valueOf(i) + ". " + entry.getValue().toString();
             if (entry.getKey().equals(dataholder.getSomeValue())) {
                 currFont.draw(batch, text, xPos, yPos);

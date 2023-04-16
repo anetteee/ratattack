@@ -17,7 +17,7 @@ public class HighscoreScreen implements Screen {
     GameController gameController = GameController.getInstance();
     SpriteBatch batch2;
 
-    Texture background = new Texture("bluebackground.png");
+    Texture background = new Texture("lane.png");
     int width = Gdx.graphics.getWidth();
     int height = Gdx.graphics.getHeight();
     DataHolderClass _dataHolderClass;

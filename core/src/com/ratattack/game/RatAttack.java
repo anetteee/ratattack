@@ -39,7 +39,7 @@ public class RatAttack extends Game {
 		highscore = new Highscore(_FBIC);
 
 		//FIREBASE
-		highscore.submitHighscore("Tester", 999);
+		highscore.submitHighscore("Miriam", 998);
 		/*
 		highscore.submitHighscore("Ole", 300);
 		highscore.submitHighscore("Bjørn", 500);
