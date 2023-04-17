@@ -8,6 +8,7 @@ import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Button;
+import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
 import com.badlogic.gdx.utils.viewport.ScreenViewport;
@@ -42,15 +43,23 @@ public class HighscoreScreen implements Screen {
     @Override
     public void show() {
         batch2 = new SpriteBatch();
+        int yPosition = Gdx.graphics.getHeight() - 50;
+        int xPos = (Gdx.graphics.getWidth() / 2 - 425);
+        final Image title = new Image(new Texture("ratattacklogo.png"));
+        title.setSize(Gdx.graphics.getWidth()/3f,  Gdx.graphics.getHeight()/3f);
+        title.setPosition(Gdx.graphics.getWidth() / 2 - 475, Gdx.graphics.getHeight() -400);
+
         //gameController = GameController.getInstance();
         //dataHolder = gameController.getDataHolderClass();
         highscore = new Highscore(_FBIC);
         //new ScoreManager();
-        System.out.println("Denne er fra HighScoreScreen");
-        _dataHolderClass.PrintSomeValue();
+        //System.out.println("Denne er fra HighScoreScreen");
+        //_dataHolderClass.PrintSomeValue();
 
         Button goToMenuScreenB = makeButton(gotoMenuTexture,5f,"MENU");
         stage.addActor(goToMenuScreenB);
+        stage.addActor(title);
+        System.out.println(gameController.getPlayer().getName());
     }
 
     @Override

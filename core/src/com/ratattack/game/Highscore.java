@@ -54,7 +54,7 @@ public class Highscore {
     public void render(SpriteBatch batch) {
         int yPosition = Gdx.graphics.getHeight() - 50;
         int xPos = Gdx.graphics.getWidth() / 2 - 425;
-        bigFont.draw(batch, "HIGHSCORE LIST", xPos, yPosition);
+        //bigFont.draw(batch, "HIGHSCORE LIST", xPos, yPosition);
         boolean isTopTen = false;
         int j = 0;
         int i = 1;
