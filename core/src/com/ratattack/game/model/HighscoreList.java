@@ -7,12 +7,12 @@ import com.ratattack.game.gamecontroller.GameController;
 
 import java.util.LinkedHashMap;
 
-public class Highscore {
+public class HighscoreList {
     private final LinkedHashMap<String, Score> scoreList = new LinkedHashMap<>();
     FirebaseInterface _FBIC;
     DataHolderClass dataholder;
 
-    public Highscore(FirebaseInterface _FBIC) {
+    public HighscoreList(FirebaseInterface _FBIC) {
         this._FBIC = _FBIC;
 
         dataholder = GameController.getInstance().getDataHolderClass();

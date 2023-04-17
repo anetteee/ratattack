@@ -16,7 +16,7 @@ import com.ratattack.game.backend.FirebaseInterface;
 import com.ratattack.game.gamecontroller.GameController;
 
 public class MenuScreen implements Screen {
-    //Highscore highscore;
+    //HighscoreList highscoreList;
     FirebaseInterface _FBIC;
     DataHolderClass _dataHolderClass;
 

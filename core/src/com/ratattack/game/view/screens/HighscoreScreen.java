@@ -14,7 +14,7 @@ import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
 import com.ratattack.game.backend.DataHolderClass;
 import com.ratattack.game.backend.FirebaseInterface;
-import com.ratattack.game.model.Highscore;
+import com.ratattack.game.model.HighscoreList;
 import com.ratattack.game.backend.Score;
 import com.ratattack.game.gamecontroller.GameController;
 
@@ -32,7 +32,7 @@ public class HighscoreScreen implements Screen {
     int width = Gdx.graphics.getWidth();
     int height = Gdx.graphics.getHeight();
     DataHolderClass _dataHolderClass;
-    Highscore highscore;
+    HighscoreList highscoreList;
     String userName;
 
     FirebaseInterface _FBIC;
@@ -54,14 +54,14 @@ public class HighscoreScreen implements Screen {
 
 
         _FBIC = FBIC;
-        highscore = new Highscore(_FBIC);
+        highscoreList = new HighscoreList(_FBIC);
 
         //Hvis det nettopp har blitt spilt et spill er gameOver variabelen true, og scoren skal pushes til databasen
         if (gameController.getIsGameOver()) {
-            //highscore.submitHighscore(gameController.getPlayer().getName(), gameController.getPlayer().getScore());
+            //highscoreList.submitHighscore(gameController.getPlayer().getName(), gameController.getPlayer().getScore());
             gameController.setIsGameOver(false);
         }
-        highscore.fetchHighscores();
+        highscoreList.fetchHighscores();
         //Ellers skal bare scorelisten vises
 
         _dataHolderClass = dataHolderClass;
@@ -87,7 +87,7 @@ public class HighscoreScreen implements Screen {
         boolean isTopTen = false;
         int j = 0;
         int i = 1;
-        for (Map.Entry<String, Score> entry : highscore.getScoreList().entrySet()) {
+        for (Map.Entry<String, Score> entry : highscoreList.getScoreList().entrySet()) {
             if (i < 11){
                 int yPos = Gdx.graphics.getHeight() - 100 - (i * 100);
                 String text = String.valueOf(i) + ". " + entry.getValue().toString();

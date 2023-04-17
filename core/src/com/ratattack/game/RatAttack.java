@@ -7,21 +7,17 @@ import com.badlogic.gdx.graphics.Texture;
 import com.ratattack.game.backend.DataHolderClass;
 import com.ratattack.game.backend.FirebaseInterface;
 import com.ratattack.game.gamecontroller.*;
-import com.ratattack.game.model.Highscore;
+import com.ratattack.game.model.HighscoreList;
 
 public class RatAttack extends Game {
-	Texture img;
 
 	//FIREBASE
 	FirebaseInterface _FBIC;
 	DataHolderClass dataHolder;
 
-	Highscore highscore;
-
 	public RatAttack(FirebaseInterface FBIC) {
 		_FBIC = FBIC;
 	}
-
 
 
 	GameController gameController;
@@ -35,18 +31,6 @@ public class RatAttack extends Game {
 		gameController.setDataHolderClass(dataHolder);
 		gameController.setGame(this);
 		gameController.setStartScreen();
-		highscore = new Highscore(_FBIC);
-
-		//FIREBASE
-		/*
-		highscore.submitHighscore("Miriam", 998);
-		highscore.submitHighscore("Ole", 300);
-		highscore.submitHighscore("Bjørn", 500);
-		highscore.submitHighscore("lise", 700);
-
-		 */
-		//highscore.submitHighscore("Anne", 2);
-
 	}
 
 	@Override
@@ -62,7 +46,6 @@ public class RatAttack extends Game {
 		gameController.getBatch().dispose();
 		gameController.getShapeRenderer().dispose();
 		gameController.getStage().dispose();
-		img.dispose();
 	}
 
 	@Override
