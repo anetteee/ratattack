@@ -19,6 +19,7 @@ import com.ratattack.game.model.components.BulletEffectComponent;
 import com.ratattack.game.model.components.CircleBoundsComponent;
 import com.ratattack.game.model.components.HealthComponent;
 import com.ratattack.game.model.components.PositionComponent;
+import com.ratattack.game.model.components.SpriteComponent;
 import com.ratattack.game.model.components.StrengthComponent;
 import com.ratattack.game.model.components.VelocityComponent;
 
@@ -75,6 +76,7 @@ public class CollisionSystem extends IteratingSystem {
                 //Remove entity if it has lost all health
                 if (entityHealth.getHealth() <= 0) {
                     getEngine().removeEntity(hittableEntity);
+                    hittableEntity.getComponent(SpriteComponent.class).sprite.getTexture().dispose();
                 }
 
                 //Remove bullet
