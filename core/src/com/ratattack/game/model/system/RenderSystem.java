@@ -10,6 +10,7 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
+import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.math.Circle;
@@ -33,6 +34,7 @@ public class RenderSystem extends IteratingSystem {
     int windowWidth = Gdx.graphics.getWidth();
     int windowHeight = Gdx.graphics.getHeight();
     private final GameController gameController = GameController.getInstance();
+    private boolean isGameOVer = false;
 
 
     public RenderSystem(SpriteBatch batch, ShapeRenderer renderer) {
@@ -102,6 +104,16 @@ public class RenderSystem extends IteratingSystem {
                int oldBalance = gameController.getPlayer().getBalance();
                int newBalance = oldBalance + balance;
                gameController.getPlayer().setBalance(newBalance);
+            }
+            if(entity.getComponent(HealthComponent.class) != null){
+                Texture possibleRattexture = entity.getComponent(SpriteComponent.class).sprite.getTexture();
+                // Game over
+                if (possibleRattexture.toString() == "rat.png"){
+                    isGameOVer = true;
+                    // TODO: gjøre det synlig for brukeren at spillet er over
+                    gameController.screenContext.changeScreen("HIGHSCORE");
+
+                }
             }
             getEngine().removeEntity(entity);
         }
