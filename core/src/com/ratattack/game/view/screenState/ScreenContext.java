@@ -34,8 +34,7 @@ public class ScreenContext {
         pop();
         states.push(state);
     }
-
-    public void changeScreen(String type){
+    public void changeScreen(String type) {
         gameController.getStage().clear();
         gameController.getEngine().removeAllEntities();
         states.peek().changeScreen(type);

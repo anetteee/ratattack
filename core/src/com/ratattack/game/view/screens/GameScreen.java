@@ -57,7 +57,6 @@ public class GameScreen implements Screen {
             public void clicked(InputEvent inputEvent, float xpos, float ypos) {
                 //screencontext bytter screen vha state
                 gameController.screenContext.changeScreen("MENU");
-
             }
         });
 

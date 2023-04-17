@@ -28,10 +28,7 @@ public class MenuScreen implements Screen {
 
     SpriteBatch batch = GameController.getInstance().getBatch();
 
-
     Texture background = new Texture("greenbackground.png");
-
-
 
     Texture playGameTexture = new Texture("playgamebutton.png");
     Texture watchTutorialTexture = new Texture("watchtutorialbutton.png");
@@ -50,8 +47,6 @@ public class MenuScreen implements Screen {
 
     @Override
     public void show() {
-
-
         final Image title = new Image(new Texture("ratattacklogo.png"));
         title.setSize(Gdx.graphics.getWidth()/3f,  Gdx.graphics.getHeight()/2f);
         title.setPosition(Gdx.graphics.getWidth()/2f - title.getWidth()/2f, Gdx.graphics.getHeight()/2f);
@@ -60,24 +55,17 @@ public class MenuScreen implements Screen {
         Button playGameButton = makeButton(playGameTexture,2f,"NAME");
         Button watchTutorialButton = makeButton(watchTutorialTexture,1.25f,"TUTORIAL");
 
-
         stage.addActor(title);
         stage.addActor(highscoreButton);
         stage.addActor(playGameButton);
         stage.addActor(watchTutorialButton);
-
-
     }
-
-
 
     @Override
     public void render(float delta) {
-
         batch.begin();
         batch.draw(background, 0, 0, width, height);
         batch.end();
-
     }
 
     private Button makeButton(Texture texture, float xPos, final String nextScreen){

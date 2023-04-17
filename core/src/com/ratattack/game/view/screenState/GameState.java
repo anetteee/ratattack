@@ -48,14 +48,14 @@ public class GameState implements State {
             } else if (type.equalsIgnoreCase("TUTORIAL")) {
                 State state = new TutorialState(screenContext);
                 changeState(state);
-
+            } else if (type.equalsIgnoreCase("MENU")) {
+                State state = new MenuState(screenContext);
+                changeState(state);
             }
-
         } else {
             currentScreen = ScreenFactory.getScreen(type);
             renderScreen();
         }
-
     }
 
     @Override
