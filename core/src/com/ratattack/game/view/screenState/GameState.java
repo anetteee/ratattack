@@ -3,7 +3,12 @@ package com.ratattack.game.view.screenState;
 import com.badlogic.gdx.Screen;
 import com.ratattack.game.gamecontroller.GameController;
 import com.ratattack.game.model.system.SpawnSystem;
+import com.ratattack.game.view.screens.GameScreen;
+import com.ratattack.game.view.screens.HighscoreScreen;
+import com.ratattack.game.view.screens.MenuScreen;
 import com.ratattack.game.view.screens.ScreenFactory;
+import com.ratattack.game.view.screens.HighscoreScreen;
+import com.ratattack.game.view.screens.TutorialScreen;
 
 public class GameState implements State {
 
@@ -32,15 +37,25 @@ public class GameState implements State {
 
         return type.equalsIgnoreCase("MENU") ||
                 type.equalsIgnoreCase("TUTORIAL")
+                || type.equalsIgnoreCase("HIGHSCORE")
         || type.equalsIgnoreCase("NAME");
     }
 
     @Override
     public void changeScreen(String type) {
-
         if(shouldChangeState(type)){
-            State state = type.equalsIgnoreCase("MENU") ? new MenuState(screenContext): new TutorialState(screenContext);
-            changeState(state);
+            if (type.equalsIgnoreCase("NAME")) {
+                State state = new NameState(screenContext);
+                changeState(state);
+            } else if (type.equalsIgnoreCase("HIGHSCORE")) {
+                State state = new HighScoreState(screenContext);
+                changeState(state);
+            } else if (type.equalsIgnoreCase("TUTORIAL")) {
+                State state = new TutorialState(screenContext);
+                changeState(state);
+
+            }
+
         } else {
             currentScreen = ScreenFactory.getScreen(type);
             renderScreen();

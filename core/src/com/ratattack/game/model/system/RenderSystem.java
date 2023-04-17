@@ -11,6 +11,7 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
+import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.math.Circle;
@@ -18,6 +19,7 @@ import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.Shape2D;
 import com.ratattack.game.GameSettings;
 import com.ratattack.game.gamecontroller.GameController;
+import com.ratattack.game.model.Player;
 import com.ratattack.game.model.components.BalanceComponent;
 import com.ratattack.game.model.components.BoundsComponent;
 import com.ratattack.game.model.components.CircleBoundsComponent;
@@ -155,9 +157,18 @@ public class RenderSystem extends IteratingSystem {
             // of the player when grandchild has crossed the whole field.
             if(entity.getComponent(BalanceComponent.class) != null) {
                int balance = entity.getComponent(BalanceComponent.class).getBalance();
-               int oldBalance = gameController.getPlayer().getBalance();
+               int oldBalance = Player.getBalance();
                int newBalance = oldBalance + balance;
                gameController.getPlayer().setBalance(newBalance);
+            }
+            if(entity.getComponent(HealthComponent.class) != null){
+                Texture possibleRattexture = entity.getComponent(SpriteComponent.class).sprite.getTexture();
+                // Game over
+                if (possibleRattexture.toString().equals("rat.png")){
+                    GameController.getInstance().setIsGameOver(true);
+                    // TODO: gjøre det synlig for brukeren at spillet er over
+                    gameController.screenContext.changeScreen("HIGHSCORE");
+                }
             }
             getEngine().removeEntity(entity);
         }

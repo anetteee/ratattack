@@ -1,4 +1,4 @@
-package com.ratattack.game;
+package com.ratattack.game.backend;
 
 public class ScoreManager {
     public static ScoreManager instance;
