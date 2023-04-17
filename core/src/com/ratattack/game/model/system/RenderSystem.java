@@ -33,6 +33,9 @@ import java.util.TimerTask;
 
 import jdk.internal.net.http.common.Log;
 
+/**
+ * Class that renders all entities used in the game.
+ */
 public class RenderSystem extends IteratingSystem {
 
     private static final Family renderFamily = Family.all(SpriteComponent.class, PositionComponent.class).get();
@@ -41,7 +44,6 @@ public class RenderSystem extends IteratingSystem {
     int windowWidth = Gdx.graphics.getWidth();
     int windowHeight = Gdx.graphics.getHeight();
     private final GameController gameController = GameController.getInstance();
-
 
     public RenderSystem(SpriteBatch batch, ShapeRenderer renderer) {
         super(renderFamily);
@@ -54,6 +56,12 @@ public class RenderSystem extends IteratingSystem {
         super.update(deltaTime);
     }
 
+    /**
+     * Method for finding the time where a rats speed should increase.
+     * @param levelChangeTimes list of time period for speed to increase
+     * @param timeElapsed the time elapsed since the game started
+     * @return index of the speed that should be set
+     */
     public static int getIndexOfRatSpeedArray(int[] levelChangeTimes, int timeElapsed) {
         int left = 0;
         int right = levelChangeTimes.length - 1;
@@ -88,7 +96,7 @@ public class RenderSystem extends IteratingSystem {
         }
 
         batch.begin();
-
+        // Make game more difficult by increasing the speed of all rats
         if ((entity.getComponent(HealthComponent.class) != null)
         && (entity.getComponent(BalanceComponent.class) == null)) {
 
@@ -99,8 +107,9 @@ public class RenderSystem extends IteratingSystem {
 
             int index = getIndexOfRatSpeedArray(GameSettings.changeLevelTime, (int) timeElapsed);
             velocity.y = GameSettings.ratSpeed[index];
+            System.out.println(velocity.y);
 
-
+            // Show feedback about level up to user
             Texture texture = new Texture("levelup.png");
             for(int i = 0; i < GameSettings.showLevelUpMessageStartTime.length; i++) {
                     if ((timeElapsed > GameSettings.showLevelUpMessageStartTime[i]) && (timeElapsed < GameSettings.showLevelUpMessageEndTime[i])) {
@@ -109,8 +118,8 @@ public class RenderSystem extends IteratingSystem {
             }
         }
 
+        // Show the health of rats and grandchildren
         Texture texture = spriteComponent.sprite.getTexture();
-
         if (entity.getComponent(HealthComponent.class) != null) {
             BitmapFont font = new BitmapFont();
             font.setColor(Color.RED);
@@ -125,8 +134,6 @@ public class RenderSystem extends IteratingSystem {
         if (bounds == null) return;//If the entity does not have bounds, don´t render the bound or remove entity
 
         //Check if the entity has moved out of the screen
-        //300 må endres til texture.getheigth() - men då kreves det at begge
-        //sprites er av samme størrelse - altså begge bildene!
         Rectangle windowBounds = new Rectangle(0, -300, windowWidth, (windowHeight + (spriteComponent.sprite.getTexture().getHeight())*2));
 
         Circle circle = null;
