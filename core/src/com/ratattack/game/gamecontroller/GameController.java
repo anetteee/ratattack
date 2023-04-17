@@ -12,7 +12,7 @@ import com.ratattack.game.GameSettings;
 import com.ratattack.game.RatAttack;
 import com.ratattack.game.model.Player;
 import com.ratattack.game.model.system.CollisionSystem;
-import com.ratattack.game.view.Field;
+import com.ratattack.game.model.Field;
 import com.ratattack.game.model.GameWorld;
 import com.ratattack.game.view.screenState.MenuState;
 import com.ratattack.game.view.screenState.ScreenContext;

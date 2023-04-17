@@ -1,4 +1,4 @@
-package com.ratattack.game.view;
+package com.ratattack.game.model;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
