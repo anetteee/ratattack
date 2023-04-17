@@ -2,10 +2,9 @@ package com.ratattack.game.gamecontroller;
 
 import com.badlogic.ashley.core.PooledEngine;
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.ratattack.game.DataHolderClass;
-import com.ratattack.game.FirebaseInterface;
+import com.ratattack.game.backend.DataHolderClass;
+import com.ratattack.game.backend.FirebaseInterface;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.utils.viewport.ScreenViewport;
@@ -17,7 +16,6 @@ import com.ratattack.game.view.Field;
 import com.ratattack.game.model.GameWorld;
 import com.ratattack.game.view.state.MenuState;
 import com.ratattack.game.view.state.ScreenContext;
-import com.ratattack.game.model.system.CollisionSystem;
 import com.ratattack.game.model.system.BoundsSystem;
 import com.ratattack.game.model.system.MovementSystem;
 import com.ratattack.game.model.system.RenderSystem;
@@ -35,6 +33,7 @@ public class GameController {
 
     public Field field;
     private Boolean paused = true;
+    private Boolean isGameOver = false;
 
     Stage stage;
     SpriteBatch batch;
@@ -194,4 +193,13 @@ public class GameController {
     public Player getPlayer() {
         return player;
     }
+
+    public void setIsGameOver(Boolean gameOver) {
+        isGameOver = gameOver;
+    }
+
+    public Boolean getIsGameOver() {
+        return isGameOver;
+    }
+
 }

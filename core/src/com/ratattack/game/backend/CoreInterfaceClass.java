@@ -1,9 +1,6 @@
-package com.ratattack.game;
+package com.ratattack.game.backend;
 
-import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.LinkedHashMap;
-import java.util.TreeMap;
 
 public class CoreInterfaceClass implements FirebaseInterface {
 

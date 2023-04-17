@@ -41,21 +41,6 @@ public class GameScreen implements Screen {
 
     }
 
-    private Button makeButton(Texture texture, float xPos, final String nextScreen){
-        Button b = new Button(new TextureRegionDrawable(new TextureRegion(texture)));
-        b.setSize(Gdx.graphics.getWidth()/10f  ,   Gdx.graphics.getHeight()/7f);
-        b.setPosition(Gdx.graphics.getWidth() / xPos - b.getWidth()/2f,Gdx.graphics.getHeight() / 10f*3f - b.getHeight() / 2f);
-        b.addListener(new ClickListener() {
-            @Override
-            public void clicked(InputEvent inputEvent, float xpos, float ypos) {
-                //screencontext bytter screen vha state
-                gameController.screenContext.changeScreen(nextScreen);
-
-            }
-        });
-        return b;
-    }
-
     private Button makeLabel(Texture texture, float xPos, float yPos){
         Button l = new Button(new TextureRegionDrawable(new TextureRegion(texture)));
         l.setSize(Gdx.graphics.getWidth()/7f  ,   Gdx.graphics.getHeight()/7f);
@@ -63,21 +48,21 @@ public class GameScreen implements Screen {
         return l;
     }
 
-    private Button makeCoin(Texture texture, float xPos, float yPos){
-        Button c = new Button(new TextureRegionDrawable(new TextureRegion(texture)));
-        c.setSize(Gdx.graphics.getWidth()/20f  ,   Gdx.graphics.getHeight()/15f);
-        //c.setSize(2,2);
-        c.setPosition(Gdx.graphics.getWidth() / xPos - c.getWidth()/2f,Gdx.graphics.getHeight() / yPos - c.getHeight() / 2f);
-        return c;
-    }
-
     @Override
     public void show() {
-        Button goToMenuScreenB = makeButton(goToMenuTexture, 2f, "MENU");
-        Button goToTutorialScreenB = makeButton(goToTutorialTexture, 5f, "TUTORIAL");
+        Button goToMenuScreenB = new Button(new TextureRegionDrawable(new TextureRegion(goToMenuTexture)));
+        goToMenuScreenB.setSize(Gdx.graphics.getWidth()/10f  ,   Gdx.graphics.getHeight()/7f);
+        goToMenuScreenB.setPosition(Gdx.graphics.getWidth() / 2f - goToMenuScreenB.getWidth()/2f,Gdx.graphics.getHeight() / 10f*3f - goToMenuScreenB.getHeight() / 2f);
+        goToMenuScreenB.addListener(new ClickListener() {
+            @Override
+            public void clicked(InputEvent inputEvent, float xpos, float ypos) {
+                //screencontext bytter screen vha state
+                gameController.screenContext.changeScreen("MENU");
+
+            }
+        });
 
         stage.addActor(goToMenuScreenB);
-        stage.addActor(goToTutorialScreenB);
 
         font = new BitmapFont();
         font.getData().setScale(5);
@@ -87,9 +72,13 @@ public class GameScreen implements Screen {
     public void render(float delta) {
         gameController.field.draw();
         Button balanceLabel = makeLabel(balanceLabelTexture, 1.1f, 1.1f);
-        Button coin = makeCoin(coinTexture, 1.13f, 1.1f);
         batch.begin();
         balanceLabel.draw(batch, 1f);
+        Button coin = new Button(new TextureRegionDrawable(new TextureRegion(coinTexture)));
+        coin.setSize(Gdx.graphics.getWidth()/20f  ,   Gdx.graphics.getHeight()/15f);
+        //c.setSize(2,2);
+        coin.setPosition(Gdx.graphics.getWidth() / 1.13f - coin.getWidth()/2f,Gdx.graphics.getHeight() / 1.1f - coin.getHeight() / 2f);
+
         coin.draw(batch,2f);
         font.draw(batch, String.valueOf(Player.getBalance()),2700, 1340);
         batch.end();
