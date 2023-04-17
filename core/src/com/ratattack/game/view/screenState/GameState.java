@@ -3,12 +3,7 @@ package com.ratattack.game.view.screenState;
 import com.badlogic.gdx.Screen;
 import com.ratattack.game.gamecontroller.GameController;
 import com.ratattack.game.model.system.SpawnSystem;
-import com.ratattack.game.view.screens.GameScreen;
-import com.ratattack.game.view.screens.HighscoreScreen;
-import com.ratattack.game.view.screens.MenuScreen;
 import com.ratattack.game.view.screens.ScreenFactory;
-import com.ratattack.game.view.screens.HighscoreScreen;
-import com.ratattack.game.view.screens.TutorialScreen;
 
 public class GameState implements State {
 
