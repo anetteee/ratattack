@@ -109,7 +109,6 @@ public class RenderSystem extends IteratingSystem {
 
             int index = getIndexOfRatSpeedArray(GameSettings.changeLevelTime, (int) timeElapsed);
             velocity.y = GameSettings.ratSpeed[index];
-            System.out.println(velocity.y);
 
             // Show feedback about level up to user
             Texture texture = new Texture("levelup.png");
