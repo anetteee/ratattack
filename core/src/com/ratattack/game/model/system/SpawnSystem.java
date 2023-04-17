@@ -90,6 +90,7 @@ public class SpawnSystem extends IteratingSystem {
         bounds.setSize(2*(texture.getWidth()/3), (texture.getHeight()));
         bounds.setCenter(position.x, position.y);
         rat.getComponent(HealthComponent.class).setHealth(GameSettings.ratStartHealth);
+
         engine.addEntity(rat);
     }
 

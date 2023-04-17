@@ -20,8 +20,6 @@ public class GameScreen implements Screen {
     /***
      * TODO: LEGG TIL KOMMENTARER
      * */
-
-
     private final GameController gameController = GameController.getInstance();
     Texture goToMenuTexture = new Texture("gotomenubutton.png");
     Texture goToTutorialTexture = new Texture("watchtutorialbutton.png");
