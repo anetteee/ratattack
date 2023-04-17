@@ -2,22 +2,17 @@ package com.ratattack.game.view.screens;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
-import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Texture;
-import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Button;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
-import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
-import com.badlogic.gdx.utils.viewport.ScreenViewport;
-import com.ratattack.game.DataHolderClass;
-import com.ratattack.game.FirebaseInterface;
-import com.ratattack.game.Highscore;
+import com.ratattack.game.backend.DataHolderClass;
+import com.ratattack.game.backend.FirebaseInterface;
 import com.ratattack.game.gamecontroller.GameController;
 
 public class MenuScreen implements Screen {
@@ -62,7 +57,7 @@ public class MenuScreen implements Screen {
         title.setPosition(Gdx.graphics.getWidth()/2f - title.getWidth()/2f, Gdx.graphics.getHeight()/2f);
 
         Button highscoreButton = makeButton(highscoreTexture,5f,"HIGHSCORE");
-        Button playGameButton = makeButton(playGameTexture,2f,"GAME");
+        Button playGameButton = makeButton(playGameTexture,2f,"NAME");
         Button watchTutorialButton = makeButton(watchTutorialTexture,1.25f,"TUTORIAL");
 
 

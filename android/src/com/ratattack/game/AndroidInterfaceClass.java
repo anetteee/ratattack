@@ -5,6 +5,10 @@ import android.util.Log;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.ratattack.game.backend.DataHolderClass;
+import com.ratattack.game.backend.FirebaseInterface;
+import com.ratattack.game.backend.Score;
+
 import java.util.AbstractMap;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -63,6 +67,6 @@ public class AndroidInterfaceClass implements FirebaseInterface {
         DatabaseReference highscoreRef = database.getReference("highscores/" + myKey);
         highscoreRef.setValue(score);
         //System.out.println("HER ER MYKEY: "+ myKey);
-        dataHolder.setSomeValue(myKey);
+        dataHolder.setKeyValue(myKey);
     }
 }

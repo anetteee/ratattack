@@ -3,8 +3,8 @@ package com.ratattack.game.gamecontroller;
 import com.badlogic.ashley.core.PooledEngine;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.ratattack.game.DataHolderClass;
-import com.ratattack.game.FirebaseInterface;
+import com.ratattack.game.backend.DataHolderClass;
+import com.ratattack.game.backend.FirebaseInterface;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.utils.viewport.ScreenViewport;
@@ -33,6 +33,7 @@ public class GameController {
 
     public Field field;
     private Boolean paused = true;
+    private Boolean isGameOver = false;
 
     Stage stage;
     SpriteBatch batch;
@@ -48,6 +49,8 @@ public class GameController {
 
     FirebaseInterface _FBIC;
     DataHolderClass dataHolder;
+
+    private long gameStartTime;
 
     private GameController() {
         stage = new Stage(new ScreenViewport());
@@ -114,7 +117,7 @@ public class GameController {
     public void addSystems(PooledEngine engine) {
         engine.addSystem(new UserSystem());
         engine.addSystem(new MovementSystem());
-        engine.addSystem(new SpawnSystem(engine, GameSettings.ratSpawnrate, GameSettings.grandChildSpawnrate));
+        engine.addSystem(new SpawnSystem(engine, GameSettings.startRatSpawnrate, GameSettings.startGrandChildSpawnrate));
         engine.addSystem(new CollisionSystem());
         engine.addSystem(new BoundsSystem());
         engine.addSystem(new RenderSystem(batch, shapeRenderer));
@@ -140,6 +143,7 @@ public class GameController {
         catch (Exception e) {
             System.out.println("Error with field creation");
         }
+        gameStartTime = System.currentTimeMillis();
     }
 
     public void play() {
@@ -192,4 +196,17 @@ public class GameController {
     public Player getPlayer() {
         return player;
     }
+
+    public long getGameStartTime() {
+        return gameStartTime;
+    }
+
+    public void setIsGameOver(Boolean gameOver) {
+        isGameOver = gameOver;
+    }
+
+    public Boolean getIsGameOver() {
+        return isGameOver;
+    }
+
 }

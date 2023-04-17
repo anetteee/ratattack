@@ -1,11 +1,10 @@
 package com.ratattack.game;
 
-import com.ratattack.game.FirebaseInterface;
+import com.ratattack.game.backend.DataHolderClass;
+import com.ratattack.game.backend.FirebaseInterface;
+import com.ratattack.game.backend.Score;
 
-import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.LinkedHashMap;
-import java.util.TreeMap;
 
 public class DesktopInterfaceClass implements FirebaseInterface {
 

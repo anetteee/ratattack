@@ -4,8 +4,10 @@ import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.Texture;
-import com.badlogic.gdx.scenes.scene2d.Stage;
+import com.ratattack.game.backend.DataHolderClass;
+import com.ratattack.game.backend.FirebaseInterface;
 import com.ratattack.game.gamecontroller.*;
+import com.ratattack.game.model.Highscore;
 
 public class RatAttack extends Game {
 	Texture img;
