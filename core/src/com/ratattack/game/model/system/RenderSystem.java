@@ -109,7 +109,6 @@ public class RenderSystem extends IteratingSystem {
 
             int index = getIndexOfRatSpeedArray(GameSettings.changeLevelTime, (int) timeElapsed);
             velocity.y = GameSettings.ratSpeed[index];
-            System.out.println(velocity.y);
 
             // Show feedback about level up to user
             Texture texture = new Texture("levelup.png");
@@ -160,6 +159,12 @@ public class RenderSystem extends IteratingSystem {
                int oldBalance = Player.getBalance();
                int newBalance = oldBalance + balance;
                gameController.getPlayer().setBalance(newBalance);
+
+               int scoreFromGrandchild = 5;
+               int playerScore = gameController.getPlayer().getScore();
+               int updateScore = scoreFromGrandchild + playerScore;
+               gameController.getPlayer().setScore(updateScore);
+               System.out.println(gameController.getPlayer().getScore());
             }
             if(entity.getComponent(HealthComponent.class) != null){
                 Texture possibleRattexture = entity.getComponent(SpriteComponent.class).sprite.getTexture();
