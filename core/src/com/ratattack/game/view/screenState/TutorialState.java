@@ -1,23 +1,24 @@
-package com.ratattack.game.view.state;
+package com.ratattack.game.view.screenState;
 
-import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Screen;
 import com.ratattack.game.gamecontroller.GameController;
 import com.ratattack.game.model.system.SpawnSystem;
 import com.ratattack.game.view.screens.ScreenFactory;
 
-public class MenuState implements State {
+public class TutorialState implements State {
+
 
     /***
      * TODO: LEGG TIL KOMMENTARER
      * */
 
-    private final ScreenContext stateManager;
+
+    private ScreenContext screenContext;
     private Screen currentScreen;
 
-    public MenuState(ScreenContext stateManager) {
-        this.stateManager = stateManager;
-        currentScreen = ScreenFactory.getScreen("MENU");
+    public TutorialState(ScreenContext screenContext) {
+        this.screenContext = screenContext;
+        currentScreen = ScreenFactory.getScreen("TUTORIAL");
 
         renderScreen();
 
@@ -25,31 +26,32 @@ public class MenuState implements State {
 
     @Override
     public void changeState(State state) {
-        stateManager.changeState(state);
+        screenContext.changeState(state);
 
     }
 
-
     @Override
     public boolean shouldChangeState(String type) {
-
-        return type.equalsIgnoreCase("GAME") ||  type.equalsIgnoreCase("TUTORIAL");
+        return type.equalsIgnoreCase("GAME") ||
+                type.equalsIgnoreCase("MENU") ;
     }
 
     @Override
     public void changeScreen(String type) {
         if(shouldChangeState(type)){
-            State state = type.equalsIgnoreCase("GAME") ? new GameState(stateManager): new TutorialState(stateManager);
+            State state = type.equalsIgnoreCase("GAME") ? new GameState(screenContext): new MenuState(screenContext);
             changeState(state);
-        } else {
+        }
+        else {
             currentScreen = ScreenFactory.getScreen(type);
             renderScreen();
         }
-
     }
 
     @Override
     public void renderScreen() {
+
+
         GameController.getInstance().getEngine().getSystem(SpawnSystem.class).setProcessing(false);
         GameController.getInstance().getGame().setScreen(currentScreen);
 

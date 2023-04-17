@@ -1,4 +1,4 @@
-package com.ratattack.game.view.state;
+package com.ratattack.game.view.screenState;
 
 import com.ratattack.game.gamecontroller.GameController;
 
