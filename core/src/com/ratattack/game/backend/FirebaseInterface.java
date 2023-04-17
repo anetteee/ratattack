@@ -1,7 +1,5 @@
-package com.ratattack.game;
+package com.ratattack.game.backend;
 
-import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.LinkedHashMap;
 
 // Her initialiserer vi bare hvilke functioner de andre klassene skal ha
@@ -9,9 +7,9 @@ import java.util.LinkedHashMap;
 public interface FirebaseInterface {
 
 
-    public void getHighscores(LinkedHashMap<String, Score> scoreMap);
+    void getHighscores(LinkedHashMap<String, Score> scoreMap);
 
 
-    public void addHighscore(Score score, DataHolderClass dataHolder);
+    void addHighscore(Score score, DataHolderClass dataHolder);
 
 }

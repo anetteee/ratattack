@@ -5,18 +5,16 @@ import com.ratattack.game.gamecontroller.GameController;
 import com.ratattack.game.model.system.SpawnSystem;
 import com.ratattack.game.view.screens.ScreenFactory;
 
-public class GameState implements State {
+public class NameState implements State {
 
-
-    /***
-     * TODO: LEGG TIL KOMMENTARER
-     * */
     private final ScreenContext screenContext;
     private Screen currentScreen;
 
-    public GameState(ScreenContext screenContext) {
+
+    public NameState(ScreenContext screenContext) {
         this.screenContext = screenContext;
-        currentScreen = ScreenFactory.getScreen("GAME");
+
+        currentScreen = ScreenFactory.getScreen("NAME");
 
         renderScreen();
     }
@@ -25,25 +23,25 @@ public class GameState implements State {
     public void changeState(State state) {
 
         screenContext.changeState(state);
+
     }
 
     @Override
     public boolean shouldChangeState(String type) {
 
         return type.equalsIgnoreCase("MENU") ||
-                type.equalsIgnoreCase("TUTORIAL")
-                || type.equalsIgnoreCase("HIGHSCORE")
-        || type.equalsIgnoreCase("NAME");
+                type.equalsIgnoreCase("TUTORIAL") ||
+                type.equalsIgnoreCase("GAME");
     }
 
     @Override
     public void changeScreen(String type) {
         if(shouldChangeState(type)){
-            if (type.equalsIgnoreCase("NAME")) {
-                State state = new NameState(screenContext);
+            if (type.equalsIgnoreCase("MENU")) {
+                State state = new MenuState(screenContext);
                 changeState(state);
-            } else if (type.equalsIgnoreCase("HIGHSCORE")) {
-                State state = new HighScoreState(screenContext);
+            } else if (type.equalsIgnoreCase("GAME")) {
+                State state = new GameState(screenContext);
                 changeState(state);
             } else if (type.equalsIgnoreCase("TUTORIAL")) {
                 State state = new TutorialState(screenContext);
@@ -60,7 +58,8 @@ public class GameState implements State {
 
     @Override
     public void renderScreen() {
-        GameController.getInstance().getEngine().getSystem(SpawnSystem.class).setProcessing(true);
         GameController.getInstance().getGame().setScreen(currentScreen);
+
+
     }
 }

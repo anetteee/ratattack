@@ -41,7 +41,7 @@ public class TutorialScreen implements Screen {/***
     @Override
     public void show() {
 
-        Button goToGameScreenB = makeButton(gotoGameTexture,2f,"GAME");
+        Button goToGameScreenB = makeButton(gotoGameTexture,2f,"NAME");
         Button goToMenuScreenB = makeButton(gotoMenuTexture,5f,"MENU");
 
 
