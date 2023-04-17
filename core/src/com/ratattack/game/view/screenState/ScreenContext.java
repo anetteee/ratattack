@@ -39,6 +39,7 @@ public class ScreenContext {
         gameController.getStage().clear();
         gameController.getEngine().removeAllEntities();
         states.peek().changeScreen(type);
+        System.out.println("Dette er state id-en" + states.peek());
 
     }
 

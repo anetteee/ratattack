@@ -35,9 +35,10 @@ public class GameScreen implements Screen {
 
     public GameScreen() {
         gameController.setUpGame();
+        gameController.play();
 
-        UsernameTextInputListener listener = new UsernameTextInputListener();
-        Gdx.input.getTextInput(listener, "What is your name?", "", "Username");
+        //UsernameTextInputListener listener = new UsernameTextInputListener();
+        //Gdx.input.getTextInput(listener, "What is your name?", "", "Username");
 
     }
 

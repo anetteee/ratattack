@@ -21,6 +21,8 @@ public interface State {
      */
     boolean shouldChangeState(String type);
 
+
+
     /***
      * Sets current screen to the screen with the given type if not a trigger of new state.
      * Renders the current screen to the game application.

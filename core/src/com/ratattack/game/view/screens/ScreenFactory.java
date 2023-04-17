@@ -14,6 +14,8 @@ public class ScreenFactory {
         switch (screenType) {
             case "MENU":
                 return new MenuScreen(_FBIC, _dataHolderClass);
+            case "NAME":
+                return new NameScreen();
             case "GAME":
                 return new GameScreen();
             case "TUTORIAL":

@@ -62,7 +62,7 @@ public class MenuScreen implements Screen {
         title.setPosition(Gdx.graphics.getWidth()/2f - title.getWidth()/2f, Gdx.graphics.getHeight()/2f);
 
         Button highscoreButton = makeButton(highscoreTexture,5f,"HIGHSCORE");
-        Button playGameButton = makeButton(playGameTexture,2f,"GAME");
+        Button playGameButton = makeButton(playGameTexture,2f,"NAME");
         Button watchTutorialButton = makeButton(watchTutorialTexture,1.25f,"TUTORIAL");
 
 
