@@ -4,11 +4,21 @@ import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.Texture;
-import com.badlogic.gdx.scenes.scene2d.Stage;
+import com.ratattack.game.backend.DataHolderClass;
+import com.ratattack.game.backend.FirebaseInterface;
 import com.ratattack.game.gamecontroller.*;
+import com.ratattack.game.model.HighscoreList;
 
 public class RatAttack extends Game {
-	Texture img;
+
+	//FIREBASE
+	FirebaseInterface _FBIC;
+	DataHolderClass dataHolder;
+
+	public RatAttack(FirebaseInterface FBIC) {
+		_FBIC = FBIC;
+	}
+
 
 	GameController gameController;
 	
@@ -16,10 +26,11 @@ public class RatAttack extends Game {
 	public void create () {
 		gameController = GameController.getInstance();
 		gameController.setUpAshley();
+		gameController.setFirebaseInterface(_FBIC);
+		dataHolder = new DataHolderClass();
+		gameController.setDataHolderClass(dataHolder);
 		gameController.setGame(this);
 		gameController.setStartScreen();
-
-		img = new Texture("rats.png");
 	}
 
 	@Override
@@ -35,7 +46,6 @@ public class RatAttack extends Game {
 		gameController.getBatch().dispose();
 		gameController.getShapeRenderer().dispose();
 		gameController.getStage().dispose();
-		img.dispose();
 	}
 
 	@Override

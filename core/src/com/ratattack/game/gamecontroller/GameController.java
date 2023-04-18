@@ -2,8 +2,9 @@ package com.ratattack.game.gamecontroller;
 
 import com.badlogic.ashley.core.PooledEngine;
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.ratattack.game.backend.DataHolderClass;
+import com.ratattack.game.backend.FirebaseInterface;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.utils.viewport.ScreenViewport;
@@ -11,17 +12,15 @@ import com.ratattack.game.GameSettings;
 import com.ratattack.game.RatAttack;
 import com.ratattack.game.model.Player;
 import com.ratattack.game.model.system.CollisionSystem;
-import com.ratattack.game.view.Field;
+import com.ratattack.game.model.Field;
 import com.ratattack.game.model.GameWorld;
-import com.ratattack.game.view.state.MenuState;
-import com.ratattack.game.view.state.ScreenContext;
-import com.ratattack.game.model.system.CollisionSystem;
+import com.ratattack.game.view.screenState.MenuState;
+import com.ratattack.game.view.screenState.ScreenContext;
 import com.ratattack.game.model.system.BoundsSystem;
 import com.ratattack.game.model.system.MovementSystem;
 import com.ratattack.game.model.system.RenderSystem;
 import com.ratattack.game.model.system.SpawnSystem;
 import com.ratattack.game.model.system.UserSystem;
-import com.ratattack.game.view.screens.OptionScreen;
 import com.ratattack.game.view.screens.ScreenFactory;
 import com.ratattack.game.view.screens.TutorialScreen;
 
@@ -33,6 +32,7 @@ public class GameController {
 
     public Field field;
     private Boolean paused = true;
+    private Boolean isGameOver = false;
 
     Stage stage;
     SpriteBatch batch;
@@ -45,6 +45,11 @@ public class GameController {
     private static PooledEngine engine;
 
     public ScreenContext screenContext;
+
+    FirebaseInterface _FBIC;
+    DataHolderClass dataHolder;
+
+    private long gameStartTime;
 
     private GameController() {
         stage = new Stage(new ScreenViewport());
@@ -86,11 +91,6 @@ public class GameController {
         }
     }
 
-    private void setOptionsScreen() {
-        OptionScreen optionScreen = new OptionScreen();
-        game.setScreen(optionScreen);
-    }
-
     private void setTutorialScreen() {
         TutorialScreen tutorialScreen = new TutorialScreen();
         game.setScreen(tutorialScreen);
@@ -111,7 +111,7 @@ public class GameController {
     public void addSystems(PooledEngine engine) {
         engine.addSystem(new UserSystem());
         engine.addSystem(new MovementSystem());
-        engine.addSystem(new SpawnSystem(engine, GameSettings.ratSpawnrate, GameSettings.grandChildSpawnrate));
+        engine.addSystem(new SpawnSystem(engine, GameSettings.startRatSpawnrate, GameSettings.startGrandChildSpawnrate));
         engine.addSystem(new CollisionSystem());
         engine.addSystem(new BoundsSystem());
         engine.addSystem(new RenderSystem(batch, shapeRenderer));
@@ -137,6 +137,7 @@ public class GameController {
         catch (Exception e) {
             System.out.println("Error with field creation");
         }
+        gameStartTime = System.currentTimeMillis();
     }
 
     public void play() {
@@ -168,6 +169,20 @@ public class GameController {
         this.game = game;
     }
 
+    public FirebaseInterface getFirebaseInterface() {
+        return _FBIC;
+    }
+
+    public void  setFirebaseInterface(FirebaseInterface FBIC) {
+        this._FBIC = FBIC;
+    }
+    public void setDataHolderClass(DataHolderClass dataHolder) {
+        this.dataHolder = dataHolder;
+    }
+
+    public DataHolderClass getDataHolderClass(){
+        return dataHolder;
+    }
     public void setPlayer(Player player) {
         this.player = player;
     }
@@ -175,4 +190,25 @@ public class GameController {
     public Player getPlayer() {
         return player;
     }
+
+    public long getGameStartTime() {
+        return gameStartTime;
+    }
+
+    public void setIsGameOver(Boolean gameOver) {
+        isGameOver = gameOver;
+    }
+
+    public Boolean getIsGameOver() {
+        return isGameOver;
+    }
+
+    public Boolean getPaused() {
+        return paused;
+    }
+
+    public void setPaused(Boolean change) {
+        paused = change;
+    }
+
 }

@@ -1,6 +1,5 @@
-package com.ratattack.game.view.state;
+package com.ratattack.game.view.screenState;
 
-import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Screen;
 import com.ratattack.game.gamecontroller.GameController;
 import com.ratattack.game.model.system.SpawnSystem;
@@ -12,11 +11,11 @@ public class MenuState implements State {
      * TODO: LEGG TIL KOMMENTARER
      * */
 
-    private final ScreenContext stateManager;
+    private final ScreenContext screenContext;
     private Screen currentScreen;
 
     public MenuState(ScreenContext stateManager) {
-        this.stateManager = stateManager;
+        this.screenContext = stateManager;
         currentScreen = ScreenFactory.getScreen("MENU");
 
         renderScreen();
@@ -25,7 +24,7 @@ public class MenuState implements State {
 
     @Override
     public void changeState(State state) {
-        stateManager.changeState(state);
+        screenContext.changeState(state);
 
     }
 
@@ -33,14 +32,25 @@ public class MenuState implements State {
     @Override
     public boolean shouldChangeState(String type) {
 
-        return type.equalsIgnoreCase("GAME") ||  type.equalsIgnoreCase("TUTORIAL");
+        return type.equalsIgnoreCase("GAME") ||
+                type.equalsIgnoreCase("TUTORIAL")
+                || type.equalsIgnoreCase("NAME");
     }
 
     @Override
     public void changeScreen(String type) {
         if(shouldChangeState(type)){
-            State state = type.equalsIgnoreCase("GAME") ? new GameState(stateManager): new TutorialState(stateManager);
-            changeState(state);
+            if (type.equalsIgnoreCase("NAME")) {
+                State state = new NameState(screenContext);
+                changeState(state);
+            } else if (type.equalsIgnoreCase("GAME")) {
+                State state = new GameState(screenContext);
+                changeState(state);
+            } else if (type.equalsIgnoreCase("TUTORIAL")) {
+                State state = new TutorialState(screenContext);
+                changeState(state);
+
+            }
         } else {
             currentScreen = ScreenFactory.getScreen(type);
             renderScreen();

@@ -1,4 +1,4 @@
-package com.ratattack.game.view.state;
+package com.ratattack.game.view.screenState;
 
 import com.ratattack.game.gamecontroller.GameController;
 
@@ -34,11 +34,11 @@ public class ScreenContext {
         pop();
         states.push(state);
     }
-
-    public void changeScreen(String type){
+    public void changeScreen(String type) {
         gameController.getStage().clear();
         gameController.getEngine().removeAllEntities();
         states.peek().changeScreen(type);
+        System.out.println("Dette er state id-en" + states.peek());
 
     }
 

@@ -9,7 +9,7 @@ public class UsernameTextInputListener implements Input.TextInputListener {
     @Override
     public void input(String userName) {
         GameController.getInstance().getPlayer().setName(userName);
-        GameController.getInstance().play();
+        GameController.getInstance().screenContext.changeScreen("GAME");
     }
 
     @Override

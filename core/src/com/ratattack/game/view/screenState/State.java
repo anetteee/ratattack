@@ -1,4 +1,4 @@
-package com.ratattack.game.view.state;
+package com.ratattack.game.view.screenState;
 
 
 public interface State {
@@ -20,6 +20,8 @@ public interface State {
      * @return: boolean of whether to change state or not.
      */
     boolean shouldChangeState(String type);
+
+
 
     /***
      * Sets current screen to the screen with the given type if not a trigger of new state.

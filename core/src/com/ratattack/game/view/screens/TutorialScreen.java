@@ -43,32 +43,25 @@ public class TutorialScreen implements Screen {/***
     @Override
     public void show() {
 
-        Button goToGameScreenB = makeButton(gotoGameTexture,2f,"GAME");
+        Button goToGameScreenB = makeButton(gotoGameTexture,2f,"NAME");
         Button goToMenuScreenB = makeButton(gotoMenuTexture,5f,"MENU");
 
-
+        /*
         font = new BitmapFont();
         font.setColor(Color.RED);
         font.getData().setScale(10);
+         */
 
         stage.addActor(goToGameScreenB);
         stage.addActor(goToMenuScreenB);
-
-
     }
-
-
 
     @Override
     public void render(float delta) {
-
-
         batch.begin();
         batch.draw(background, 0, 0, width, height);
-        font.draw(batch, "TUTORIAL SCREEN", 400, 200);
+        //font.draw(batch, "TUTORIAL SCREEN", 400, 200);
         batch.end();
-
-
     }
 
     private Button makeButton(Texture texture, float xPos, final String nextScreen){

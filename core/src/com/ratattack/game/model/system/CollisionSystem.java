@@ -14,6 +14,8 @@ import com.badlogic.ashley.core.PooledEngine;
 import com.badlogic.ashley.systems.IteratingSystem;
 import com.badlogic.ashley.utils.ImmutableArray;
 import com.ratattack.game.GameSettings;
+import com.ratattack.game.gamecontroller.GameController;
+import com.ratattack.game.model.components.BalanceComponent;
 import com.ratattack.game.model.components.BoundsComponent;
 import com.ratattack.game.model.components.BulletEffectComponent;
 import com.ratattack.game.model.components.CircleBoundsComponent;
@@ -34,6 +36,8 @@ public class CollisionSystem extends IteratingSystem {
     public CollisionSystem() {
         super(bulletEntitiesFamily);
     }
+    private final GameController gameController = GameController.getInstance();
+
 
     @Override
     protected void processEntity(Entity entity, float deltaTime) {
@@ -62,7 +66,6 @@ public class CollisionSystem extends IteratingSystem {
 
                 entityHealth.setHealth((entityHealth.getHealth()-hitStrength.strength));
 
-
                 //Legg inn sjekk av om kula har en powerup, og apply effekten til entiteten
 
                 if (bulletEffect.getEffect().equals("FREEZE")) {
@@ -71,10 +74,32 @@ public class CollisionSystem extends IteratingSystem {
                     velocity.y = GameSettings.freezeVelocity;
                 }
 
-
-
                 //Remove entity if it has lost all health
                 if (entityHealth.getHealth() <= 0) {
+
+                    // Add score if rat is shot
+                    if (hittableEntity.getComponent(BalanceComponent.class) == null) {
+
+                        // Update highscore on grandchild arriving
+                        int scoreFromGrandchild = 10;
+                        int playerScore = gameController.getPlayer().getScore();
+                        int updateScore = scoreFromGrandchild + playerScore;
+                        gameController.getPlayer().setScore(updateScore);
+                        System.out.println(gameController.getPlayer().getScore());
+                    }
+
+                    // Decrease score if grandchild is shot
+                    if (hittableEntity.getComponent(BalanceComponent.class) != null) {
+
+                        // Update highscore on grandchild arriving
+                        int scoreFromGrandchild = -10;
+                        int playerScore = gameController.getPlayer().getScore();
+                        int updateScore = scoreFromGrandchild + playerScore;
+                        gameController.getPlayer().setScore(updateScore);
+                        System.out.println(gameController.getPlayer().getScore());
+                    }
+
+
                     getEngine().removeEntity(hittableEntity);
                     hittableEntity.getComponent(SpriteComponent.class).sprite.getTexture().dispose();
                 }
