@@ -140,6 +140,8 @@ public class HighscoreScreen implements Screen {
         return b;
     }
 
+
+
     @Override
     public void resize(int width, int height) {
 
