@@ -108,8 +108,19 @@ public class RenderSystem extends IteratingSystem {
                 // Game over
                 if (possibleRattexture.toString().equals("rat.png")){
                     GameController.getInstance().setIsGameOver(true);
+
+                    // Strip string of state to be able to switch to the right screen when game over
+                    String state = gameController.screenContext.states.peek().toString();
+                    String strippedState = state.substring(36, state.length() - 8);
+
+                    if(strippedState.contains("TutorialState")) {
+                        gameController.screenContext.changeScreen("TUTORIALEND");
+                    } else {
+                        gameController.screenContext.changeScreen("HIGHSCORE");
+                    }
                     // TODO: gjøre det synlig for brukeren at spillet er over
-                    gameController.screenContext.changeScreen("HIGHSCORE");
+                    System.out.println("GAME OVER!!!!!!");
+                    //gameController.screenContext.changeScreen("HIGHSCORE");
                 }
             }
             getEngine().removeEntity(entity);

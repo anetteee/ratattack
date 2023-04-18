@@ -132,15 +132,18 @@ public class GameController {
         stage.draw();
     }
 
-    public void setUpGame() {
+    public void setUpLanes(int laneNr) {
         try {
-            field = new Field();
+            field = new Field(laneNr);
         }
         catch (Exception e) {
             System.out.println("Error with field creation");
         }
         gameStartTime = System.currentTimeMillis();
     }
+
+
+
 
     public void play() {
         paused = false;
