@@ -87,7 +87,6 @@ public class RenderSystem extends IteratingSystem {
         return left;
     }
 
-
     @Override
     protected void processEntity(Entity entity, float deltaTime) {
         SpriteComponent spriteComponent = spriteMapper.get(entity);
@@ -165,9 +164,18 @@ public class RenderSystem extends IteratingSystem {
                 // Game over
                 if (possibleRattexture.toString().equals("rat.png")){
                     GameController.getInstance().setIsGameOver(true);
+
+                    String state = gameController.screenContext.states.peek().toString();
+                    String strippedState = state.substring(36, state.length() - 8);
+                    System.out.println(strippedState);
+                    if(strippedState.contains("TutorialState")) {
+                        gameController.screenContext.changeScreen("TUTORIALEND");
+                    } else {
+                        gameController.screenContext.changeScreen("HIGHSCORE");
+                    }
                     // TODO: gjøre det synlig for brukeren at spillet er over
                     System.out.println("GAME OVER!!!!!!");
-                    gameController.screenContext.changeScreen("HIGHSCORE");
+                    //gameController.screenContext.changeScreen("HIGHSCORE");
                 }
             }
             getEngine().removeEntity(entity);

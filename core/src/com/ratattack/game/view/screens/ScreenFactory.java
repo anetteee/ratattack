@@ -22,6 +22,8 @@ public class ScreenFactory {
                 return new TutorialScreen();
             case "HIGHSCORE":
                 return new HighscoreScreen(_FBIC, dataHolder);
+            case "TUTORIALEND":
+                return new TutorialEndScreen();
             default:
                 return null;
         }

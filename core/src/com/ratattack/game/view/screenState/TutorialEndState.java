@@ -5,24 +5,16 @@ import com.ratattack.game.gamecontroller.GameController;
 import com.ratattack.game.model.system.SpawnSystem;
 import com.ratattack.game.view.screens.ScreenFactory;
 
-public class TutorialState implements State {
-
-
-    /***
-     * TODO: LEGG TIL KOMMENTARER
-     * */
-
-
+public class TutorialEndState implements State {
     private ScreenContext screenContext;
     private Screen currentScreen;
 
-    public TutorialState(ScreenContext screenContext) {
+    public TutorialEndState(ScreenContext screenContext) {
         this.screenContext = screenContext;
-        currentScreen = ScreenFactory.getScreen("TUTORIAL");
+        currentScreen = ScreenFactory.getScreen("TUTORIALEND");
 
         renderScreen();
     }
-
     @Override
     public void changeState(State state) {
         screenContext.changeState(state);
@@ -30,22 +22,23 @@ public class TutorialState implements State {
 
     @Override
     public boolean shouldChangeState(String type) {
-        return type.equalsIgnoreCase("NAME") ||
-                type.equalsIgnoreCase("MENU") ||
-                type.equalsIgnoreCase("TUTORIALEND");
+        return  type.equalsIgnoreCase("MENU") ||
+                type.equalsIgnoreCase("TUTORIAL") ||
+                type.equalsIgnoreCase("NAME");
     }
 
     @Override
     public void changeScreen(String type) {
+
         if(shouldChangeState(type)){
-            if (type.equalsIgnoreCase("NAME")) {
-                State state = new NameState(screenContext);
-                changeState(state);
-            } else if (type.equalsIgnoreCase("MENU")) {
+            if (type.equalsIgnoreCase("MENU")) {
                 State state = new MenuState(screenContext);
                 changeState(state);
-            } else if (type.equalsIgnoreCase("TUTORIALEND")) {
-                State state = new TutorialEndState(screenContext);
+            } else if (type.equalsIgnoreCase("TUTORIAL")) {
+                State state = new TutorialState(screenContext);
+                changeState(state);
+            } else if (type.equalsIgnoreCase("NAME")) {
+                State state = new NameState(screenContext);
                 changeState(state);
             }
         } else {
@@ -56,13 +49,7 @@ public class TutorialState implements State {
 
     @Override
     public void renderScreen() {
-        GameController.getInstance().getEngine().getSystem(SpawnSystem.class).setProcessing(true);
+        GameController.getInstance().getEngine().getSystem(SpawnSystem.class).setProcessing(false);
         GameController.getInstance().getGame().setScreen(currentScreen);
-
-
-
-
     }
-
-
 }
