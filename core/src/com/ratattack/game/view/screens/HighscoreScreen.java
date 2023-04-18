@@ -28,7 +28,7 @@ public class HighscoreScreen implements Screen {
     private final BitmapFont fontText;
     private final BitmapFont PinkFont;
     private final BitmapFont bigFont;
-    Texture background = new Texture("lane.png");
+    Texture background = new Texture("lightgreenbackground.png");
     int width = Gdx.graphics.getWidth();
     int height = Gdx.graphics.getHeight();
     DataHolderClass _dataHolderClass;
