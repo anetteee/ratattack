@@ -42,7 +42,7 @@ public class GameScreen implements Screen {
 
 
     public GameScreen() {
-        gameController.setUpGame();
+        gameController.setUpLanes(GameSettings.gameLaneNr);
         gameController.play();
 
         goToMenuScreenB = new Button(new TextureRegionDrawable(new TextureRegion(goToMenuTexture)));
@@ -111,8 +111,7 @@ public class GameScreen implements Screen {
 
     @Override
     public void render(float delta) {
-        gameController.field.draw();
-        stage.draw();
+        gameController.field.draw(GameSettings.gameLaneNr);
 
         //If screen is paused, draw pauseTexture
         if (GameController.getInstance().getPaused().equals(true)) {

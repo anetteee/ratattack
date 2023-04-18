@@ -53,8 +53,8 @@ public class MenuScreen implements Screen {
         title.setPosition(Gdx.graphics.getWidth()/2f - title.getWidth()/2f, Gdx.graphics.getHeight()/2f);
 
         Button highscoreButton = makeButton(highscoreTexture,5f, 3f,"HIGHSCORE");
-        Button playGameButton = makeButton(playGameTexture,2f, 3f,"NAME");
-        Button watchTutorialButton = makeButton(watchTutorialTexture,1.25f, 3f,"TUTORIAL");
+        Button playGameButton = makeButton(playGameTexture,2f, 3f, "NAME");
+        Button watchTutorialButton = makeButton(watchTutorialTexture,1.25f, 3f,"GAMERULES");
 
         stage.addActor(title);
         stage.addActor(highscoreButton);
@@ -106,5 +106,6 @@ public class MenuScreen implements Screen {
     @Override
     public void dispose() {
         batch.dispose();
+        stage.dispose();
     }
 }
