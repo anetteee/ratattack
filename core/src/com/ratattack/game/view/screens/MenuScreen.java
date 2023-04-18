@@ -28,7 +28,7 @@ public class MenuScreen implements Screen {
 
     SpriteBatch batch = GameController.getInstance().getBatch();
 
-    Texture background = new Texture("greenbackground.png");
+    Texture background = new Texture("darkgreenbackground.png");
 
     Texture playGameTexture = new Texture("playgamebutton.png");
     Texture watchTutorialTexture = new Texture("watchtutorialbutton.png");

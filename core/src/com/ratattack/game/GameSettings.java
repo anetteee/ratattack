@@ -11,7 +11,7 @@ public class GameSettings {
 
 
     // Constants for adding difficulty to game
-    public static final int[] ratSpeed = {-3, -7, -10, -15};
+    public static final int[] ratSpeed = {-6, -7, -10, -15};
     public static final int[] changeLevelTime = {0, 10000, 20000, 30000};
     public static final int[] showLevelUpMessageStartTime = {9000, 19000, 29000};
     public static final int[] showLevelUpMessageEndTime = {10000, 20000, 30000};
