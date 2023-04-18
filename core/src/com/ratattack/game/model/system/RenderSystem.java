@@ -97,6 +97,9 @@ public class RenderSystem extends IteratingSystem {
             bounds = entity.getComponent(RectangleBoundsComponent.class);
         }
 
+
+
+
         batch.begin();
         // Make game more difficult by increasing the speed of all rats
         if ((entity.getComponent(HealthComponent.class) != null)

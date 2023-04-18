@@ -10,6 +10,7 @@ import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Button;
+import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
 import com.ratattack.game.backend.DataHolderClass;
@@ -74,6 +75,11 @@ public class HighscoreScreen implements Screen {
         _dataHolderClass.PrintKeyValue();
 
         Button goToMenuScreenB = makeButton(gotoMenuTexture,5f,"MENU");
+        final Image title = new Image(new Texture("ratattacklogo.png"));
+        title.setSize(Gdx.graphics.getWidth()/3f, Gdx.graphics.getHeight()/3f);
+        title.setPosition(Gdx.graphics.getWidth()/2-475, Gdx.graphics.getHeight()-400);
+
+        stage.addActor(title);
         stage.addActor(goToMenuScreenB);
     }
 
@@ -83,7 +89,6 @@ public class HighscoreScreen implements Screen {
         batch.draw(background, 0, 0, width, height);
         int yPosition = Gdx.graphics.getHeight() - 50;
         int xPos = Gdx.graphics.getWidth() / 2 - 425;
-        bigFont.draw(batch, "HIGHSCORE LIST", xPos, yPosition);
         boolean isTopTen = false;
         int j = 0;
         int i = 1;
