@@ -30,7 +30,8 @@ public class TutorialState implements State {
     public boolean shouldChangeState(String type) {
         return type.equalsIgnoreCase("MENU") ||
                 type.equalsIgnoreCase("TUTORIALEND") ||
-                type.equalsIgnoreCase("GAMERULES");
+                type.equalsIgnoreCase("GAMERULES")
+                || type.equalsIgnoreCase(("NAME"));
     }
 
     @Override
@@ -44,6 +45,9 @@ public class TutorialState implements State {
                 changeState(state);
             } else if (type.equalsIgnoreCase("GAMERULES")) {
                 State state = new GameRulesState(screenContext);
+                changeState(state);
+            } else if (type.equalsIgnoreCase("NAME")) {
+                State state = new NameState(screenContext);
                 changeState(state);
             }
         } else {

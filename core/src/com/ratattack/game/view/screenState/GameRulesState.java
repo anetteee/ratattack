@@ -43,7 +43,7 @@ public class GameRulesState implements State {
     }
     @Override
     public void renderScreen() {
-        //GameController.getInstance().getEngine().getSystem(SpawnSystem.class).setProcessing(false);
+        GameController.getInstance().getEngine().getSystem(SpawnSystem.class).setProcessing(false);
         GameController.getInstance().getGame().setScreen(currentScreen);
     }
 }
