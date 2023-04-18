@@ -52,8 +52,10 @@ public class TutorialState implements State {
     public void renderScreen() {
 
 
-        GameController.getInstance().getEngine().getSystem(SpawnSystem.class).setProcessing(false);
+        GameController.getInstance().getEngine().getSystem(SpawnSystem.class).setProcessing(true);
         GameController.getInstance().getGame().setScreen(currentScreen);
+
+
 
 
     }

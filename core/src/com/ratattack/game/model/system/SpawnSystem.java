@@ -23,6 +23,8 @@ import com.ratattack.game.model.components.RectangleBoundsComponent;
 import com.ratattack.game.model.components.SpriteComponent;
 import com.ratattack.game.model.components.VelocityComponent;
 
+import java.util.Arrays;
+import java.util.List;
 import java.util.Random;
 
 public class SpawnSystem extends IteratingSystem {
@@ -61,7 +63,11 @@ public class SpawnSystem extends IteratingSystem {
 
     }
 
+
+
+
     private void spawnRat() {
+
         Entity rat = new Entity();
         rat.add(new SpriteComponent());
         rat.add(new VelocityComponent());
@@ -72,15 +78,54 @@ public class SpawnSystem extends IteratingSystem {
         Texture texture = new Texture("rat.png");
         rat.getComponent(SpriteComponent.class).sprite = new Sprite(texture);
 
-        Random random = new Random();
+        //POSITION:
 
         PositionComponent position = rat.getComponent(PositionComponent.class);
-        int min = 0;
-        int max = 3;
-        int randomNumber = random.nextInt(max - min + 1) + min;
-
-        position.x = gameController.field.laneDividers.get(randomNumber) + texture.getWidth();
         position.y = 1500;
+        int numberOfLaneDividers = gameController.field.laneDividers.size();
+
+/**
+
+        //For å vise x-koordinatene til de ulike lanesene
+        for (int i = 0; i < gameController.field.laneDividers.size(); i++) {
+            System.out.println("lanedivider:::::: " + gameController.field.laneDividers.get(i));
+        }
+
+
+ */
+
+        int antallLanes = gameController.field.laneDividers.size();
+        int breddeSkjerm = Gdx.graphics.getWidth();
+        int breddRotte = texture.getWidth();
+
+        System.out.println("antall lanes " + antallLanes);
+        System.out.println("bredde skjerm " + breddeSkjerm);
+        System.out.println("bredde rotte " + breddRotte);
+
+
+
+
+
+
+        int indexInLaneDividers = (int) (Math.random()*gameController.field.laneDividers.size());
+        System.out.println("random index in lavedividers som brukes: " + indexInLaneDividers);
+        position.x = gameController.field.laneDividers.get(indexInLaneDividers) + gameController.field.getLaneWidth()/2 - texture.getWidth()/2;
+
+        /*
+        if ((numberOfLaneDividers%2 != 0)) {
+
+        }
+        else {
+            position.x = gameController.field.laneDividers.get(indexInLaneDividers) + gameController.field.getLaneWidth()/2 - texture.getWidth()/2;
+        }
+
+         */
+
+
+
+
+
+        //VELOCITY:
 
         VelocityComponent velocity = rat.getComponent(VelocityComponent.class);
         velocity.x = 0;
@@ -93,6 +138,7 @@ public class SpawnSystem extends IteratingSystem {
 
         engine.addEntity(rat);
     }
+
 
     private void spawnGrandChild() {
         Entity grandChildEntity = new Entity();
@@ -110,9 +156,14 @@ public class SpawnSystem extends IteratingSystem {
         Random random = new Random();
 
         PositionComponent position = grandChildEntity.getComponent(PositionComponent.class);
-        int min = 0;
-        int max = 3;
-        int randomNumber = random.nextInt(max - min + 1) + min;
+        //int min = 0;
+        //int max = 3;
+        //int randomNumber = random.nextInt(max - min + 1) + min;
+
+
+        //mitt
+        int numberOfLaneDividers = gameController.field.laneDividers.size();
+        int randomNumber = random.nextInt(numberOfLaneDividers);
 
         position.x = gameController.field.laneDividers.get(randomNumber) + (texture.getWidth()*2)/3;
         position.y = 1500;

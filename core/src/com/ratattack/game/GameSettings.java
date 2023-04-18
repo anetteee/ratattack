@@ -1,13 +1,12 @@
 package com.ratattack.game;
 
-import java.util.ArrayList;
-
 public class GameSettings {
 
     // Constants for spawntime and lane number
     public static final long startRatSpawnrate = 4000;
     public static final long startGrandChildSpawnrate = 12000;
-    public static final int laneNr = 4;
+    public static final int gameLaneNr = 4;
+    public static final int tutorialLaneNr = 10;
     public static boolean debug = false; //OBS: ShapeRenderer fører til OutOfMemoryError når programmet har kjørt lenge
 
 

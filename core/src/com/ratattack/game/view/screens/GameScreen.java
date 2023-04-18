@@ -11,9 +11,9 @@ import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Button;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
+import com.ratattack.game.GameSettings;
 import com.ratattack.game.gamecontroller.GameController;
 import com.ratattack.game.model.Player;
-import com.ratattack.game.gamecontroller.UsernameTextInputListener;
 
 public class GameScreen implements Screen {
 
@@ -32,11 +32,8 @@ public class GameScreen implements Screen {
 
 
     public GameScreen() {
-        gameController.setUpGame();
+        gameController.setUpLanes(GameSettings.gameLaneNr);
         gameController.play();
-
-        //UsernameTextInputListener listener = new UsernameTextInputListener();
-        //Gdx.input.getTextInput(listener, "What is your name?", "", "Username");
 
     }
 
@@ -68,7 +65,7 @@ public class GameScreen implements Screen {
 
     @Override
     public void render(float delta) {
-        gameController.field.draw();
+        gameController.field.draw(GameSettings.gameLaneNr);
         Button balanceLabel = makeLabel(balanceLabelTexture, 1.1f, 1.1f);
         batch.begin();
         balanceLabel.draw(batch, 1f);

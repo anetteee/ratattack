@@ -20,14 +20,18 @@ public class Field {
     public ArrayList<Integer> laneDividers = new ArrayList<>();
     public ArrayList<GrandmotherButton> grandmaButtons = new ArrayList<>();
 
-    int width = Gdx.graphics.getWidth();
-    int height = Gdx.graphics.getHeight();
+    int widthOfScreen = Gdx.graphics.getWidth();
+    int heightOfScreen = Gdx.graphics.getHeight();
 
-    public Field() {
+
+    int laneWidth;
+
+    public Field(int laneNumber) {
         // Setter opp hvor lanesene er separert.
         // Brukes til å finne ut hvor de skal tegnes, og hvor enheter skal spawne/tegnes.
-        int laneWidth = width/GameSettings.laneNr;
-        for (int i = 0; i < GameSettings.laneNr; i++) {
+
+        laneWidth = widthOfScreen /laneNumber;
+        for (int i = 0; i < laneNumber; i++) {
             laneDividers.add(laneWidth*i);
 
             GrandmotherButton grandmaBtn = new GrandmotherButton(laneWidth, i);
@@ -36,15 +40,26 @@ public class Field {
             new UpgradeButton(laneWidth, i);
 
             GameController.getInstance().getStage().addActor(grandmaBtn.getButton());
-            }
+        }
 
-        //backgroundBox = new Texture("backgroundBox.png");
     }
 
-    public void draw() {
+    public int getLaneWidth(){
+        return laneWidth;
+    }
+
+
+
+
+
+
+    public void draw(int laneNr) {
         batch.begin();
         for (Integer i : laneDividers) {
-            batch.draw(lane, i, 0, (float) width/GameSettings.laneNr, height);
+            //opprinnelig
+            //batch.draw(lane, i, 0, (float) width/GameSettings.laneNr, height);
+            //mitt
+            batch.draw(lane, i, 0, (float) widthOfScreen /laneNr, heightOfScreen);
         }
         batch.end();
     }

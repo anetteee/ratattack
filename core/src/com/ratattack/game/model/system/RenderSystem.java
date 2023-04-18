@@ -166,6 +166,7 @@ public class RenderSystem extends IteratingSystem {
                 if (possibleRattexture.toString().equals("rat.png")){
                     GameController.getInstance().setIsGameOver(true);
                     // TODO: gjøre det synlig for brukeren at spillet er over
+                    System.out.println("GAME OVER!!!!!!");
                     gameController.screenContext.changeScreen("HIGHSCORE");
                 }
             }
