@@ -29,6 +29,8 @@ public class GameScreen implements Screen {
     private final Stage stage = gameController.getStage();
     SpriteBatch batch = GameController.getInstance().getBatch();
     private BitmapFont font;
+    float xPosition = Gdx.graphics.getWidth()/1.1f;
+    float yPosition = Gdx.graphics.getHeight()/1.08f;
 
 
 
@@ -68,30 +70,26 @@ public class GameScreen implements Screen {
             }
         });
 
-        stage.addActor(goToMenuScreenB);
-    }
-
-    @Override
-    public void render(float delta) {
-        gameController.field.draw();
-        Button backgroundBoxLabel = makeLabel(backgroundBox, 1.1f, 1.045f);
-        Button coin = makeCoin(coinTexture, 1.13f, 1.0455f);
-
-
-        float xPosition = Gdx.graphics.getWidth()/1.1f;
-        float yPosition = Gdx.graphics.getHeight()/1.08f;
-
         font = new BitmapFont();
         font.getData().setScale(5);
         Label.LabelStyle labelStyle = new Label.LabelStyle();
         labelStyle.font = font;
         Label balanceLabel = new Label(String.valueOf(Player.getBalance()), labelStyle);
         balanceLabel.setPosition(xPosition,yPosition);
+
+        Button backgroundBoxLabel = makeLabel(backgroundBox, 1.1f, 1.045f);
+        Button coin = makeCoin(coinTexture, 1.13f, 1.0455f);
+
         stage.addActor(backgroundBoxLabel);
         stage.addActor(coin);
         stage.addActor(balanceLabel);
-        stage.draw();
+        stage.addActor(goToMenuScreenB);
+    }
 
+    @Override
+    public void render(float delta) {
+        gameController.field.draw();
+        stage.draw();
     }
 
 
@@ -123,6 +121,7 @@ public class GameScreen implements Screen {
 
     @Override
     public void dispose() {
+        batch.dispose();
         stage.dispose();
     }
 
