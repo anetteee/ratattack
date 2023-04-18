@@ -33,7 +33,8 @@ public class TutorialState implements State {
     @Override
     public boolean shouldChangeState(String type) {
         return type.equalsIgnoreCase("GAME") ||
-                type.equalsIgnoreCase("MENU") ;
+                type.equalsIgnoreCase("MENU") ||
+                type.equalsIgnoreCase("HIGHSCORE");
     }
 
     @Override
@@ -44,6 +45,9 @@ public class TutorialState implements State {
                 changeState(state);
             } else if (type.equalsIgnoreCase("MENU")) {
                 State state = new MenuState(screenContext);
+                changeState(state);
+            } else if (type.equalsIgnoreCase("HIGHSCORE")) {
+                State state = new HighScoreState(screenContext);
                 changeState(state);
             }
         } else {
