@@ -4,6 +4,7 @@ import com.badlogic.gdx.Screen;
 import com.ratattack.game.backend.DataHolderClass;
 import com.ratattack.game.backend.FirebaseInterface;
 import com.ratattack.game.gamecontroller.GameController;
+import com.ratattack.game.view.screenState.GameRulesState;
 
 public class ScreenFactory {
 
@@ -24,6 +25,8 @@ public class ScreenFactory {
                 return new HighscoreScreen(_FBIC, dataHolder);
             case "TUTORIALEND":
                 return new TutorialEndScreen();
+            case "GAMERULES":
+                return new GameRulesScreen();
             default:
                 return null;
         }

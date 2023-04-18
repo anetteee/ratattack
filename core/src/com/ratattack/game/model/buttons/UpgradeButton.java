@@ -33,7 +33,7 @@ public class UpgradeButton extends Observer {
         id = i;
 
         button = new Button(buttonNotUpgradeable);
-        button.setSize(20, 20);
+        button.setSize(200, 200);
         button.setPosition(laneWidth * i + (float) (laneWidth - upgradeTexture.getWidth()) / 2, GameSettings.grandmotherLine);
 
 

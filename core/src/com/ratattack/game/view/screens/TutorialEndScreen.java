@@ -2,7 +2,9 @@ package com.ratattack.game.view.screens;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
+import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
@@ -44,9 +46,8 @@ public class TutorialEndScreen implements Screen {
 
     @Override
     public void show() {
-
         Button playGameButton = makeButton(playGameTexture,2f,"NAME");
-        Button watchTutorialButton = makeButton(watchTutorialTexture,1.25f,"TUTORIAL");
+        Button watchTutorialButton = makeButton(watchTutorialTexture,1.25f,"GAMERULES");
         Button goToMenuScreenB = makeButton(gotoMenuTexture,5f,"MENU");
         stage.addActor(goToMenuScreenB);
         stage.addActor(playGameButton);
@@ -55,8 +56,14 @@ public class TutorialEndScreen implements Screen {
 
     @Override
     public void render(float delta) {
+
+        BitmapFont font = new BitmapFont();
+        font.setColor(Color.BLACK);
+        font.getData().scale(5);
+
         batch.begin();
         batch.draw(background, 0, 0, width, height);
+        font.draw(gameController.getBatch(), "GAME OVER! Do you want to run the tutorial again?", 150, Gdx.graphics.getHeight() - 200);
         batch.end();
     }
 
@@ -83,5 +90,6 @@ public class TutorialEndScreen implements Screen {
     @Override
     public void dispose() {
         batch.dispose();
+        stage.dispose();
     }
 }

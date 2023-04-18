@@ -10,6 +10,7 @@ import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Button;
+import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
 import com.badlogic.gdx.utils.viewport.ScreenViewport;
@@ -22,13 +23,13 @@ public class TutorialScreen implements Screen {/***
 
     private final GameController gameController = GameController.getInstance();
 
-
     private BitmapFont font;
     SpriteBatch batch = GameController.getInstance().getBatch();
 
-    Texture background = new Texture("greenbackground.png");
+    Texture background = new Texture("mainbackground2.png");
     Texture gotoGameTexture = new Texture("playgamebutton.png");
     Texture gotoMenuTexture = new Texture("gotomenubutton.png");
+
     int width = Gdx.graphics.getWidth();
     int height = Gdx.graphics.getHeight();
 
@@ -38,35 +39,32 @@ public class TutorialScreen implements Screen {/***
         System.out.println(stage);
         gameController.setUpLanes(GameSettings.tutorialLaneNr);
         gameController.play();
-
     }
 
     @Override
     public void show() {
-
         Button goToGameScreenB = makeButton(gotoGameTexture,2f,"NAME");
         Button goToMenuScreenB = makeButton(gotoMenuTexture,5f,"MENU");
 
-        /*
         font = new BitmapFont();
         font.setColor(Color.RED);
-        font.getData().setScale(10);
-         */
+        font.getData().setScale(3);
 
         stage.addActor(goToGameScreenB);
         stage.addActor(goToMenuScreenB);
-
     }
 
     @Override
     public void render(float delta) {
         gameController.field.draw(GameSettings.tutorialLaneNr);
-
-        //batch.begin();
-        //batch.draw(background, 0, 0, width, height);
-        //font.draw(batch, "TUTORIAL SCREEN", 400, 200);
-        //batch.end();
         stage.draw();
+
+        batch.begin();
+        font.draw(gameController.getBatch(), "CLICK GRANDMA TO SHOOT!", 650, 200);
+        font.draw(gameController.getBatch(), "CLICK GRANDMA TO SHOOT!", 1800, 200);
+
+        font.draw(gameController.getBatch(), "UPGRADE BULLET HERE", 100, 400);
+        batch.end();
     }
 
     private Button makeButton(Texture texture, float xPos, final String nextScreen){
@@ -82,8 +80,6 @@ public class TutorialScreen implements Screen {/***
         });
         return b;
     }
-
-
 
     @Override
     public void resize(int width, int height) {
@@ -108,8 +104,7 @@ public class TutorialScreen implements Screen {/***
 
     @Override
     public void dispose() {
-        //batch.dispose();
+        batch.dispose();
         stage.dispose();
-
     }
 }

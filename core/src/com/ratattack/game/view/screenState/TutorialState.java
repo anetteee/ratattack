@@ -11,8 +11,6 @@ public class TutorialState implements State {
     /***
      * TODO: LEGG TIL KOMMENTARER
      * */
-
-
     private ScreenContext screenContext;
     private Screen currentScreen;
 
@@ -30,22 +28,22 @@ public class TutorialState implements State {
 
     @Override
     public boolean shouldChangeState(String type) {
-        return type.equalsIgnoreCase("NAME") ||
-                type.equalsIgnoreCase("MENU") ||
-                type.equalsIgnoreCase("TUTORIALEND");
+        return type.equalsIgnoreCase("MENU") ||
+                type.equalsIgnoreCase("TUTORIALEND") ||
+                type.equalsIgnoreCase("GAMERULES");
     }
 
     @Override
     public void changeScreen(String type) {
         if(shouldChangeState(type)){
-            if (type.equalsIgnoreCase("NAME")) {
-                State state = new NameState(screenContext);
-                changeState(state);
-            } else if (type.equalsIgnoreCase("MENU")) {
+            if (type.equalsIgnoreCase("MENU")) {
                 State state = new MenuState(screenContext);
                 changeState(state);
             } else if (type.equalsIgnoreCase("TUTORIALEND")) {
                 State state = new TutorialEndState(screenContext);
+                changeState(state);
+            } else if (type.equalsIgnoreCase("GAMERULES")) {
+                State state = new GameRulesState(screenContext);
                 changeState(state);
             }
         } else {
@@ -58,10 +56,6 @@ public class TutorialState implements State {
     public void renderScreen() {
         GameController.getInstance().getEngine().getSystem(SpawnSystem.class).setProcessing(true);
         GameController.getInstance().getGame().setScreen(currentScreen);
-
-
-
-
     }
 
 

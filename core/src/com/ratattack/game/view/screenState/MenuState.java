@@ -32,30 +32,27 @@ public class MenuState implements State {
     @Override
     public boolean shouldChangeState(String type) {
 
-        return type.equalsIgnoreCase("GAME") ||
-                type.equalsIgnoreCase("TUTORIAL")
+        return type.equalsIgnoreCase("HIGHSCORE") ||
+                type.equalsIgnoreCase("GAMERULES")
                 || type.equalsIgnoreCase("NAME");
     }
-
     @Override
     public void changeScreen(String type) {
         if(shouldChangeState(type)){
             if (type.equalsIgnoreCase("NAME")) {
                 State state = new NameState(screenContext);
                 changeState(state);
-            } else if (type.equalsIgnoreCase("GAME")) {
-                State state = new GameState(screenContext);
+            } else if (type.equalsIgnoreCase("HIGHSCORE")) {
+                State state = new HighScoreState(screenContext);
                 changeState(state);
-            } else if (type.equalsIgnoreCase("TUTORIAL")) {
-                State state = new TutorialState(screenContext);
+            } else if (type.equalsIgnoreCase("GAMERULES")) {
+                State state = new GameRulesState(screenContext);
                 changeState(state);
-
             }
         } else {
             currentScreen = ScreenFactory.getScreen(type);
             renderScreen();
         }
-
     }
 
     @Override

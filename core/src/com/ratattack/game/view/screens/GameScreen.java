@@ -32,7 +32,6 @@ public class GameScreen implements Screen {
     public GameScreen() {
         gameController.setUpLanes(GameSettings.gameLaneNr);
         gameController.play();
-
     }
 
     private Button makeLabel(Texture texture, float xPos, float yPos){

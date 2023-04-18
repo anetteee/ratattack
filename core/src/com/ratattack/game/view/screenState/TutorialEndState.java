@@ -23,19 +23,18 @@ public class TutorialEndState implements State {
     @Override
     public boolean shouldChangeState(String type) {
         return  type.equalsIgnoreCase("MENU") ||
-                type.equalsIgnoreCase("TUTORIAL") ||
-                type.equalsIgnoreCase("NAME");
+                type.equalsIgnoreCase("NAME") ||
+                type.equalsIgnoreCase("GAMERULES");
     }
 
     @Override
     public void changeScreen(String type) {
-
         if(shouldChangeState(type)){
             if (type.equalsIgnoreCase("MENU")) {
                 State state = new MenuState(screenContext);
                 changeState(state);
-            } else if (type.equalsIgnoreCase("TUTORIAL")) {
-                State state = new TutorialState(screenContext);
+            } else if (type.equalsIgnoreCase("GAMERULES")) {
+                State state = new GameRulesState(screenContext);
                 changeState(state);
             } else if (type.equalsIgnoreCase("NAME")) {
                 State state = new NameState(screenContext);
