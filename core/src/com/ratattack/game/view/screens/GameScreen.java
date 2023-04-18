@@ -12,6 +12,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.Button;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
+import com.ratattack.game.GameSettings;
 import com.ratattack.game.gamecontroller.GameController;
 import com.ratattack.game.model.Player;
 import com.ratattack.game.gamecontroller.UsernameTextInputListener;
@@ -30,15 +31,11 @@ public class GameScreen implements Screen {
     SpriteBatch batch = GameController.getInstance().getBatch();
     private BitmapFont font;
 
-
-
     public GameScreen() {
-        gameController.setUpGame();
+        gameController.setUpLanes(GameSettings.gameLaneNr);
         gameController.play();
 
     }
-
-
 
     private Button makeLabel(Texture texture, float xPos, float yPos){
         Button l = new Button(new TextureRegionDrawable(new TextureRegion(texture)));
@@ -73,11 +70,10 @@ public class GameScreen implements Screen {
 
     @Override
     public void render(float delta) {
-        gameController.field.draw();
+        gameController.field.draw(GameSettings.gameLaneNr);
         Button backgroundBoxLabel = makeLabel(backgroundBox, 1.1f, 1.045f);
         Button coin = makeCoin(coinTexture, 1.13f, 1.0455f);
-
-
+        //batch.begin();
         float xPosition = Gdx.graphics.getWidth()/1.1f;
         float yPosition = Gdx.graphics.getHeight()/1.08f;
 
@@ -90,6 +86,8 @@ public class GameScreen implements Screen {
         stage.addActor(backgroundBoxLabel);
         stage.addActor(coin);
         stage.addActor(balanceLabel);
+
+
         stage.draw();
 
     }

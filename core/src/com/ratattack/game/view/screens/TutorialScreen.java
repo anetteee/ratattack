@@ -13,6 +13,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.Button;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
 import com.badlogic.gdx.utils.viewport.ScreenViewport;
+import com.ratattack.game.GameSettings;
 import com.ratattack.game.gamecontroller.GameController;
 
 public class TutorialScreen implements Screen {/***
@@ -35,6 +36,8 @@ public class TutorialScreen implements Screen {/***
 
     public TutorialScreen() {
         System.out.println(stage);
+        gameController.setUpLanes(GameSettings.tutorialLaneNr);
+        gameController.play();
 
     }
 
@@ -52,14 +55,18 @@ public class TutorialScreen implements Screen {/***
 
         stage.addActor(goToGameScreenB);
         stage.addActor(goToMenuScreenB);
+
     }
 
     @Override
     public void render(float delta) {
-        batch.begin();
-        batch.draw(background, 0, 0, width, height);
+        gameController.field.draw(GameSettings.tutorialLaneNr);
+
+        //batch.begin();
+        //batch.draw(background, 0, 0, width, height);
         //font.draw(batch, "TUTORIAL SCREEN", 400, 200);
-        batch.end();
+        //batch.end();
+        stage.draw();
     }
 
     private Button makeButton(Texture texture, float xPos, final String nextScreen){
@@ -86,6 +93,7 @@ public class TutorialScreen implements Screen {/***
     @Override
     public void pause() {
 
+
     }
 
     @Override
@@ -100,8 +108,8 @@ public class TutorialScreen implements Screen {/***
 
     @Override
     public void dispose() {
-        font.dispose();
-        batch.dispose();
+        //batch.dispose();
+        stage.dispose();
 
     }
 }

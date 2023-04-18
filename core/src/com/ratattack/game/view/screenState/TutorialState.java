@@ -33,16 +33,24 @@ public class TutorialState implements State {
     @Override
     public boolean shouldChangeState(String type) {
         return type.equalsIgnoreCase("GAME") ||
-                type.equalsIgnoreCase("MENU") ;
+                type.equalsIgnoreCase("MENU") ||
+                type.equalsIgnoreCase("HIGHSCORE");
     }
 
     @Override
     public void changeScreen(String type) {
         if(shouldChangeState(type)){
-            State state = type.equalsIgnoreCase("GAME") ? new GameState(screenContext): new MenuState(screenContext);
-            changeState(state);
-        }
-        else {
+            if (type.equalsIgnoreCase("GAME")) {
+                State state = new GameState(screenContext);
+                changeState(state);
+            } else if (type.equalsIgnoreCase("MENU")) {
+                State state = new MenuState(screenContext);
+                changeState(state);
+            } else if (type.equalsIgnoreCase("HIGHSCORE")) {
+                State state = new HighScoreState(screenContext);
+                changeState(state);
+            }
+        } else {
             currentScreen = ScreenFactory.getScreen(type);
             renderScreen();
         }
@@ -52,8 +60,10 @@ public class TutorialState implements State {
     public void renderScreen() {
 
 
-        GameController.getInstance().getEngine().getSystem(SpawnSystem.class).setProcessing(false);
+        GameController.getInstance().getEngine().getSystem(SpawnSystem.class).setProcessing(true);
         GameController.getInstance().getGame().setScreen(currentScreen);
+
+
 
 
     }
