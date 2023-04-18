@@ -58,19 +58,22 @@ public class GameScreen implements Screen {
         });
 
         playPauseButton = new Button(pauseTexture);
-        playPauseButton.setSize(Gdx.graphics.getWidth()/10f  ,   Gdx.graphics.getHeight()/5f);
-        playPauseButton.setPosition(Gdx.graphics.getWidth() / 2f - playPauseButton.getWidth()/2f,Gdx.graphics.getHeight() / 10f - playPauseButton.getHeight() / 2f);
+        playPauseButton.setSize(Gdx.graphics.getWidth()/20f  ,   Gdx.graphics.getHeight()/10f);
+        playPauseButton.setPosition(Gdx.graphics.getWidth() / 30f - playPauseButton.getWidth()/2f,Gdx.graphics.getHeight() / 1.05f - playPauseButton.getHeight() / 2f);
         playPauseButton.addListener(new ClickListener() {
             @Override
             public void clicked(InputEvent inputEvent, float xpos, float ypos) {
                 if (GameController.getInstance().getPaused()) {
+                    System.out.println("Klikk 1");
                     GameController.getInstance().setPaused(false);
-                    playPauseButton.getStyle().up = playTexture;
-                    playPauseButton.getStyle().down = playTexture;
+                    playPauseButton.getStyle().up = pauseTexture;
+                    playPauseButton.getStyle().down = pauseTexture;
+                    stage.clear();
                     stage.addActor(navBar);
                     stage.addActor(coin);
                     stage.addActor(balanceLabel);
                     stage.addActor(goToMenuScreenB);
+                    stage.addActor(playPauseButton);
                     for (int i = 0; i < GameController.getInstance().field.grandmaButtons.size(); i++) {
                         stage.addActor(GameController.getInstance().field.grandmaButtons.get(i).getButton());
                         stage.addActor(GameController.getInstance().field.upgradeButtons.get(i).getButton());
@@ -78,9 +81,10 @@ public class GameScreen implements Screen {
 
                 }
                 else {
+                    System.out.println("Klikk 2");
                     GameController.getInstance().setPaused(true);
-                    playPauseButton.getStyle().up = pauseTexture;
-                    playPauseButton.getStyle().down = pauseTexture;
+                    playPauseButton.getStyle().up = playTexture;
+                    playPauseButton.getStyle().down = playTexture;
                     stage.clear();
                     stage.addActor(playPauseButton);
                 }
