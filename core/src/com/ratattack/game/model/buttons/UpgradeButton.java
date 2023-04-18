@@ -12,6 +12,7 @@ import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
 import com.ratattack.game.GameSettings;
 import com.ratattack.game.gamecontroller.GameController;
 import com.ratattack.game.gamecontroller.Observer;
+import com.ratattack.game.model.Player;
 import com.ratattack.game.model.shootingStrategy.ShootingStrategy;
 
 public class UpgradeButton extends Observer {
@@ -45,7 +46,7 @@ public class UpgradeButton extends Observer {
                     nextPrice = min(nextPrice+1 ,4);
 
                     //If the player can not afford the next upgrade
-                    if (!(ShootingStrategy.prices[nextPrice] < GameController.getInstance().getPlayer().getBalance())) {
+                    if (!(ShootingStrategy.prices[nextPrice] < Player.getBalance())) {
                         button.getStyle().down = buttonNotUpgradeable;
                         button.getStyle().up = buttonNotUpgradeable;
                         canAffordUpgrade = false;
@@ -60,10 +61,14 @@ public class UpgradeButton extends Observer {
 
     @Override
     public void update() {
-        if (!canAffordUpgrade && (ShootingStrategy.prices[nextPrice] < GameController.getInstance().getPlayer().getBalance())) {
+        if (!canAffordUpgrade && (ShootingStrategy.prices[nextPrice] < Player.getBalance())) {
             button.getStyle().down = buttonUpgradeable;
             button.getStyle().up = buttonUpgradeable;
             canAffordUpgrade = true;
         }
+    }
+
+    public Button getButton() {
+        return button;
     }
 }
