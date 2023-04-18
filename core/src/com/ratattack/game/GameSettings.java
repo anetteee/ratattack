@@ -1,11 +1,9 @@
 package com.ratattack.game;
 
-import java.util.ArrayList;
-
 public class GameSettings {
 
     // Constants for spawntime and lane number
-    public static final long startRatSpawnrate = 4000;
+    public static long ratSpawnrate = 4000;
     public static final long startGrandChildSpawnrate = 12000;
     public static final int laneNr = 4;
     public static boolean debug = false; //OBS: ShapeRenderer fører til OutOfMemoryError når programmet har kjørt lenge
@@ -13,9 +11,8 @@ public class GameSettings {
 
     // Constants for adding difficulty to game
     public static final int[] ratSpeed = {-3, -7, -10, -15};
-    public static final int[] changeLevelTime = {0, 10000, 20000, 30000};
-    public static final int[] showLevelUpMessageStartTime = {9000, 19000, 29000};
-    public static final int[] showLevelUpMessageEndTime = {10000, 20000, 30000};
+    public static final int[] spawnRates = {4000, 3000, 2000, 1000};
+    public static final int[] changeLevelScore = {20, 50, 70, 100};
 
     //Setup for rendering on screen
     public static int grandmotherLine = 20;
