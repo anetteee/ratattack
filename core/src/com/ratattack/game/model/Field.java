@@ -19,6 +19,7 @@ public class Field {
 
     public ArrayList<Integer> laneDividers = new ArrayList<>();
     public ArrayList<GrandmotherButton> grandmaButtons = new ArrayList<>();
+    public ArrayList<UpgradeButton> upgradeButtons = new ArrayList<>();
 
     int width = Gdx.graphics.getWidth();
     int height = Gdx.graphics.getHeight();
@@ -33,7 +34,8 @@ public class Field {
             GrandmotherButton grandmaBtn = new GrandmotherButton(laneWidth, i);
             grandmaButtons.add(grandmaBtn);
 
-            new UpgradeButton(laneWidth, i);
+            UpgradeButton upgradeBtn = new UpgradeButton(laneWidth, i);
+            upgradeButtons.add(upgradeBtn);
 
             GameController.getInstance().getStage().addActor(grandmaBtn.getButton());
             }
