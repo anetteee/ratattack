@@ -29,8 +29,6 @@ public class GameScreen implements Screen {
     SpriteBatch batch = GameController.getInstance().getBatch();
     private BitmapFont font;
 
-
-
     public GameScreen() {
         gameController.setUpLanes(GameSettings.gameLaneNr);
         gameController.play();

@@ -39,10 +39,14 @@ public class TutorialState implements State {
     @Override
     public void changeScreen(String type) {
         if(shouldChangeState(type)){
-            State state = type.equalsIgnoreCase("GAME") ? new GameState(screenContext): new MenuState(screenContext);
-            changeState(state);
-        }
-        else {
+            if (type.equalsIgnoreCase("GAME")) {
+                State state = new GameState(screenContext);
+                changeState(state);
+            } else if (type.equalsIgnoreCase("MENU")) {
+                State state = new MenuState(screenContext);
+                changeState(state);
+            }
+        } else {
             currentScreen = ScreenFactory.getScreen(type);
             renderScreen();
         }
