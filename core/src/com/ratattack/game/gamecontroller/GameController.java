@@ -21,7 +21,6 @@ import com.ratattack.game.model.system.MovementSystem;
 import com.ratattack.game.model.system.RenderSystem;
 import com.ratattack.game.model.system.SpawnSystem;
 import com.ratattack.game.model.system.UserSystem;
-import com.ratattack.game.view.screens.OptionScreen;
 import com.ratattack.game.view.screens.ScreenFactory;
 import com.ratattack.game.view.screens.TutorialScreen;
 
@@ -90,11 +89,6 @@ public class GameController {
         } catch (Exception e) {
             System.out.println("No game instance set for the game controller");
         }
-    }
-
-    private void setOptionsScreen() {
-        OptionScreen optionScreen = new OptionScreen();
-        game.setScreen(optionScreen);
     }
 
     private void setTutorialScreen() {
@@ -207,6 +201,14 @@ public class GameController {
 
     public Boolean getIsGameOver() {
         return isGameOver;
+    }
+
+    public Boolean getPaused() {
+        return paused;
+    }
+
+    public void setPaused(Boolean change) {
+        paused = change;
     }
 
 }

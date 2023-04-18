@@ -15,6 +15,7 @@ import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
 import com.ratattack.game.gamecontroller.GameController;
 import com.ratattack.game.model.Player;
 import com.ratattack.game.gamecontroller.UsernameTextInputListener;
+import com.ratattack.game.model.system.RenderSystem;
 
 public class GameScreen implements Screen {
 
@@ -26,12 +27,14 @@ public class GameScreen implements Screen {
     Texture goToTutorialTexture = new Texture("watchtutorialbutton.png");
     Texture backgroundBox = new Texture("informationBox.png");
     Texture coinTexture = new Texture("coins.png");
+
+    TextureRegionDrawable pauseTexture = new TextureRegionDrawable(new TextureRegion(new Texture("watchtutorialbutton.png")));
+    TextureRegionDrawable playTexture = new TextureRegionDrawable(new TextureRegion(new Texture("pinkbutton.png")));
     private final Stage stage = gameController.getStage();
     SpriteBatch batch = GameController.getInstance().getBatch();
     private BitmapFont font;
     float xPosition = Gdx.graphics.getWidth()/1.1f;
     float yPosition = Gdx.graphics.getHeight()/1.08f;
-
 
 
     public GameScreen() {
@@ -70,6 +73,26 @@ public class GameScreen implements Screen {
             }
         });
 
+        final Button playPauseButton = new Button(pauseTexture);
+        playPauseButton.setSize(Gdx.graphics.getWidth()/10f  ,   Gdx.graphics.getHeight()/5f);
+        playPauseButton.setPosition(Gdx.graphics.getWidth() / 2f - playPauseButton.getWidth()/2f,Gdx.graphics.getHeight() / 10f - playPauseButton.getHeight() / 2f);
+        playPauseButton.addListener(new ClickListener() {
+            @Override
+            public void clicked(InputEvent inputEvent, float xpos, float ypos) {
+                if (GameController.getInstance().getPaused()) {
+                    GameController.getInstance().setPaused(false);
+                    playPauseButton.getStyle().up = playTexture;
+                    playPauseButton.getStyle().down = playTexture;
+                }
+                else {
+                    GameController.getInstance().setPaused(true);
+                    playPauseButton.getStyle().up = pauseTexture;
+                    playPauseButton.getStyle().down = pauseTexture;
+                }
+            }
+        });
+
+
         font = new BitmapFont();
         font.getData().setScale(5);
         Label.LabelStyle labelStyle = new Label.LabelStyle();
@@ -84,6 +107,7 @@ public class GameScreen implements Screen {
         stage.addActor(coin);
         stage.addActor(balanceLabel);
         stage.addActor(goToMenuScreenB);
+        stage.addActor(playPauseButton);
     }
 
     @Override
