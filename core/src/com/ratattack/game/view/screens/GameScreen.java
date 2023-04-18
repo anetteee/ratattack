@@ -4,7 +4,6 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
-import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.Stage;
@@ -13,8 +12,6 @@ import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
 import com.ratattack.game.gamecontroller.GameController;
-import com.ratattack.game.model.Player;
-import com.ratattack.game.gamecontroller.UsernameTextInputListener;
 
 public class GameScreen implements Screen {
 
@@ -22,13 +19,14 @@ public class GameScreen implements Screen {
      * TODO: LEGG TIL KOMMENTARER
      * */
     private final GameController gameController = GameController.getInstance();
-    Texture goToMenuTexture = new Texture("gotomenubutton.png");
-    Texture goToTutorialTexture = new Texture("watchtutorialbutton.png");
+    Texture goToMenuTexture = new Texture("goToMenu.png");
     Texture backgroundBox = new Texture("informationBox.png");
     Texture coinTexture = new Texture("coins.png");
     private final Stage stage = gameController.getStage();
-    SpriteBatch batch = GameController.getInstance().getBatch();
-    private BitmapFont font;
+    private BitmapFont fontBalance;
+    private BitmapFont fontScore;
+    private Label balance;
+    private Label score;
 
 
 
@@ -50,16 +48,47 @@ public class GameScreen implements Screen {
     private Button makeCoin(Texture texture, float xPos, float yPos){
         Button c = new Button(new TextureRegionDrawable(new TextureRegion(texture)));
         c.setSize(Gdx.graphics.getWidth()/20f  ,   Gdx.graphics.getHeight()/15f);
-        //c.setSize(2,2);
         c.setPosition(Gdx.graphics.getWidth() / xPos - c.getWidth()/1f,Gdx.graphics.getHeight() / yPos - c.getHeight() / 2.2f);
         return c;
+    }
+
+    private Label makeBalance(){
+        float xPositionBalance = Gdx.graphics.getWidth()/1.1f;
+        float yPositionBalance = Gdx.graphics.getHeight()/1.08f;
+        fontBalance = new BitmapFont();
+        fontBalance.getData().setScale(5);
+        Label.LabelStyle labelStyleBalance = new Label.LabelStyle();
+        labelStyleBalance.font = fontBalance;
+        Label balanceLabel = new Label(String.valueOf(gameController.getInstance().getPlayer().getBalance()), labelStyleBalance);
+        balanceLabel.setPosition(xPositionBalance,yPositionBalance);
+        return balanceLabel;
+    }
+
+    private void setBalance(){
+        balance.setText(gameController.getInstance().getPlayer().getBalance());
+    }
+
+    private Label makeScore(){
+        float xPositionScore = Gdx.graphics.getWidth()/10f;
+        float yPositionScore = Gdx.graphics.getHeight()/1.08f;
+        fontScore = new BitmapFont();
+        fontScore.getData().setScale(5);
+        Label.LabelStyle labelStyleScore = new Label.LabelStyle();
+        labelStyleScore.font = fontScore;
+        Label scoreLabel = new Label(String.valueOf(gameController.getInstance().getPlayer().getScore()), labelStyleScore);
+        scoreLabel.setPosition(xPositionScore,yPositionScore);
+        return scoreLabel;
+    }
+
+    private void setScore(){
+        score.setText(gameController.getInstance().getPlayer().getScore());
     }
 
     @Override
     public void show() {
         Button goToMenuScreenB = new Button(new TextureRegionDrawable(new TextureRegion(goToMenuTexture)));
-        goToMenuScreenB.setSize(Gdx.graphics.getWidth()/10f  ,   Gdx.graphics.getHeight()/7f);
-        goToMenuScreenB.setPosition(Gdx.graphics.getWidth() / 2f - goToMenuScreenB.getWidth()/2f,Gdx.graphics.getHeight() / 10f*3f - goToMenuScreenB.getHeight() / 2f);
+        goToMenuScreenB.setSize(Gdx.graphics.getWidth()/7.5f  ,   Gdx.graphics.getHeight()/20f);
+        goToMenuScreenB.setPosition(Gdx.graphics.getWidth() / 1.5f - goToMenuScreenB.getWidth()/1f,Gdx.graphics.getHeight() / 1.045f - goToMenuScreenB.getHeight() / 2.2f);
         goToMenuScreenB.addListener(new ClickListener() {
             @Override
             public void clicked(InputEvent inputEvent, float xpos, float ypos) {
@@ -67,31 +96,29 @@ public class GameScreen implements Screen {
                 gameController.screenContext.changeScreen("MENU");
             }
         });
+        Button backgroundBoxLabel = makeLabel(backgroundBox, 1.1f, 1.045f);
+        Button coin = makeCoin(coinTexture, 1.13f, 1.0455f);
+
+        stage.addActor(backgroundBoxLabel);
+        stage.addActor(coin);
 
         stage.addActor(goToMenuScreenB);
+
+        balance = makeBalance();
+        score = makeScore();
+
     }
 
     @Override
     public void render(float delta) {
         gameController.field.draw();
-        Button backgroundBoxLabel = makeLabel(backgroundBox, 1.1f, 1.045f);
-        Button coin = makeCoin(coinTexture, 1.13f, 1.0455f);
 
-
-        float xPosition = Gdx.graphics.getWidth()/1.1f;
-        float yPosition = Gdx.graphics.getHeight()/1.08f;
-
-        font = new BitmapFont();
-        font.getData().setScale(5);
-        Label.LabelStyle labelStyle = new Label.LabelStyle();
-        labelStyle.font = font;
-        Label balanceLabel = new Label(String.valueOf(Player.getBalance()), labelStyle);
-        balanceLabel.setPosition(xPosition,yPosition);
-        stage.addActor(backgroundBoxLabel);
-        stage.addActor(coin);
-        stage.addActor(balanceLabel);
         stage.draw();
 
+        setScore();
+        stage.addActor(score);
+        setBalance();
+        stage.addActor(balance);
     }
 
 
