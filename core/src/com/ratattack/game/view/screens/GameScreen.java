@@ -12,6 +12,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.Button;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
+import com.ratattack.game.GameSettings;
 import com.ratattack.game.gamecontroller.GameController;
 import com.ratattack.game.model.Player;
 import com.ratattack.game.gamecontroller.UsernameTextInputListener;
@@ -26,6 +27,7 @@ public class GameScreen implements Screen {
     Texture goToMenuTexture = new Texture("gotomenubutton.png");
     Texture goToTutorialTexture = new Texture("watchtutorialbutton.png");
     Texture backgroundBox = new Texture("informationBox.png");
+    Texture pauseScreenTexture = new Texture("purplebutton.png");
     Texture coinTexture = new Texture("coins.png");
 
     TextureRegionDrawable pauseTexture = new TextureRegionDrawable(new TextureRegion(new Texture("watchtutorialbutton.png")));
@@ -69,6 +71,7 @@ public class GameScreen implements Screen {
             @Override
             public void clicked(InputEvent inputEvent, float xpos, float ypos) {
                 //screencontext bytter screen vha state
+                GameSettings.ratSpawnrate = GameSettings.spawnRates[0];
                 gameController.screenContext.changeScreen("MENU");
             }
         });
@@ -113,6 +116,13 @@ public class GameScreen implements Screen {
     @Override
     public void render(float delta) {
         gameController.field.draw();
+
+        if (GameController.getInstance().getPaused().equals(true)) {
+            batch.begin();
+            batch.draw(pauseScreenTexture,0,0, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
+            batch.end();
+        }
+
         stage.draw();
     }
 
