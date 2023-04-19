@@ -120,7 +120,6 @@ public class RenderSystem extends IteratingSystem {
                     }
                     // TODO: gjøre det synlig for brukeren at spillet er over
                     System.out.println("GAME OVER!!!!!!");
-                    getEngine().getSystem(LevelupSystem.class).setLevel(0);
                     //gameController.screenContext.changeScreen("HIGHSCORE");
                 }
             }

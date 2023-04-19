@@ -1,9 +1,11 @@
 package com.ratattack.game.view.screens;
 
+import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Screen;
 import com.ratattack.game.backend.DataHolderClass;
 import com.ratattack.game.backend.FirebaseInterface;
 import com.ratattack.game.gamecontroller.GameController;
+import com.ratattack.game.model.system.LevelupSystem;
 import com.ratattack.game.view.screenState.GameRulesState;
 
 public class ScreenFactory {
@@ -18,6 +20,7 @@ public class ScreenFactory {
             case "NAME":
                 return new NameScreen();
             case "GAME":
+                GameController.getInstance().getEngine().getSystem(LevelupSystem.class).setLevel(0);
                 return new GameScreen();
             case "TUTORIAL":
                 return new TutorialScreen();
