@@ -1,5 +1,7 @@
 package com.ratattack.game.view.screens;
 
+import com.badlogic.ashley.core.Entity;
+import com.badlogic.ashley.core.PooledEngine;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.Color;
@@ -10,12 +12,11 @@ import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Button;
-import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
-import com.badlogic.gdx.utils.viewport.ScreenViewport;
 import com.ratattack.game.GameSettings;
 import com.ratattack.game.gamecontroller.GameController;
+import com.ratattack.game.model.components.SpriteComponent;
 
 public class TutorialScreen implements Screen {/***
  * TODO: LEGG TIL KOMMENTARER
@@ -26,15 +27,10 @@ public class TutorialScreen implements Screen {/***
     private BitmapFont font;
     SpriteBatch batch = GameController.getInstance().getBatch();
 
-    Texture background = new Texture("mainbackground2.png");
     Texture gotoGameTexture = new Texture("playgamebutton.png");
     Texture gotoMenuTexture = new Texture("gotomenubutton.png");
 
-    int width = Gdx.graphics.getWidth();
-    int height = Gdx.graphics.getHeight();
-
     private final Stage stage = gameController.getStage();
-    private boolean screenIsChanged = false;
 
 
     public TutorialScreen() {
@@ -107,10 +103,16 @@ public class TutorialScreen implements Screen {/***
     @Override
     public void dispose() {
         batch.dispose();
-        if (screenIsChanged = true){
-            stage.dispose();
+        PooledEngine engine = GameController.getInstance().getEngine();
+        for (Entity entity : engine.getEntities()){
+            if(entity.getComponent(SpriteComponent.class).sprite.getTexture() != null || gameController.getIsGameOver()){
+                entity.getComponent(SpriteComponent.class).sprite.getTexture().dispose();
+                entity.getComponent(SpriteComponent.class).sprite.getTexture().equals(null);
+            }
         }
-        screenIsChanged = false;
-
+        DisposeHelper.HelpTexture(gotoGameTexture);
+        DisposeHelper.HelpTexture(gotoMenuTexture);
+        DisposeHelper.HelpFont(font);
+        stage.dispose();
     }
 }

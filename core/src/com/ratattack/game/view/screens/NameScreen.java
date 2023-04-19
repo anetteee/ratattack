@@ -57,8 +57,7 @@ public class NameScreen implements Screen {
 
     @Override
     public void dispose() {
-
         batch.dispose();
-
+        DisposeHelper.HelpTexture(background);
     }
 }

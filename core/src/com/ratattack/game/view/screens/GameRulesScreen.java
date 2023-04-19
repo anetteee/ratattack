@@ -16,10 +16,9 @@ import com.ratattack.game.gamecontroller.GameController;
 public class GameRulesScreen implements Screen {
     private final GameController gameController = GameController.getInstance();
 
-    SpriteBatch batch = GameController.getInstance().getBatch();
     Texture background = new Texture("mainbackground2.png");
     Texture watchTutorialTexture = new Texture("watchtutorialbutton.png");
-
+    Texture newGameRules = new Texture("newgamerules.png");
     int width = Gdx.graphics.getWidth();
     int height = Gdx.graphics.getHeight();
     private final Stage stage = gameController.getStage();
@@ -30,7 +29,7 @@ public class GameRulesScreen implements Screen {
 
     @Override
     public void show() {
-        final Image title = new Image(new Texture("newgamerules.png"));
+        final Image title = new Image(newGameRules);
         title.setSize(Gdx.graphics.getWidth()/2f,  Gdx.graphics.getHeight()/2f);
         title.setPosition(Gdx.graphics.getWidth()/2f - title.getWidth()/2f, Gdx.graphics.getHeight()/4);
 
@@ -79,6 +78,7 @@ public class GameRulesScreen implements Screen {
 
     }
 
+
     @Override
     public void hide() {
 
@@ -87,6 +87,8 @@ public class GameRulesScreen implements Screen {
     @Override
     public void dispose() {
         stage.dispose();
-
+        DisposeHelper.HelpTexture(background);
+        DisposeHelper.HelpTexture(watchTutorialTexture);
+        DisposeHelper.HelpTexture(newGameRules);
     }
 }

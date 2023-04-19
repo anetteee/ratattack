@@ -38,13 +38,6 @@ public class GameScreen implements Screen {
     private final Label balance;
     private final Label score;
     SpriteBatch batch = GameController.getInstance().getBatch();
-    private BitmapFont font;
-    private boolean screenIsChanges = false;
-    private PooledEngine engine;
-
-    float xPosition = Gdx.graphics.getWidth()/1.1f;
-    float yPosition = Gdx.graphics.getHeight()/1.08f;
-
 
     public GameScreen() {
         gameController.setUpLanes(GameSettings.gameLaneNr);
@@ -162,20 +155,25 @@ public class GameScreen implements Screen {
         //throw new UnsupportedOperationException("Unimplemented method 'hide'");
     }
 
+
     @Override
     public void dispose() {
         batch.dispose();
         stage.dispose();
-        if (screenIsChanges = true){
-            batch.dispose();
-            engine = GameController.getInstance().getEngine();
-            for (Entity entity : engine.getEntities()){
-                Texture texture = entity.getComponent(SpriteComponent.class).sprite.getTexture();
-                texture.dispose();
-;            }
-            engine.removeAllEntities();
+        PooledEngine engine = GameController.getInstance().getEngine();
+        for (Entity entity : engine.getEntities()){
+            if(entity.getComponent(SpriteComponent.class).sprite.getTexture() != null || gameController.getIsGameOver()){
+                entity.getComponent(SpriteComponent.class).sprite.getTexture().dispose();
+                entity.getComponent(SpriteComponent.class).sprite.getTexture().equals(null);
+            }
         }
-        screenIsChanges = false;
+        DisposeHelper.HelpTexture(goToMenuTexture);
+        DisposeHelper.HelpTexture(goToMenuTexture);
+        DisposeHelper.HelpTexture(pauseScreenTexture);
+        DisposeHelper.HelpTextureRegionDrawable(pauseTexture);
+        DisposeHelper.HelpTextureRegionDrawable(playTexture);
+        DisposeHelper.HelpImage(coin);
+        DisposeHelper.HelpImage(navBar);
     }
 
     private Label makeScore(){

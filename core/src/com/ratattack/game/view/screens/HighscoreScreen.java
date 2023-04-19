@@ -10,6 +10,7 @@ import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Button;
+import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
 import com.ratattack.game.backend.DataHolderClass;
@@ -33,7 +34,6 @@ public class HighscoreScreen implements Screen {
     int height = Gdx.graphics.getHeight();
     DataHolderClass _dataHolderClass;
     HighscoreList highscoreList;
-    String userName;
 
     FirebaseInterface _FBIC;
 
@@ -150,6 +150,11 @@ public class HighscoreScreen implements Screen {
 
     @Override
     public void dispose() {
+        DisposeHelper.HelpFont(fontText);
+        DisposeHelper.HelpFont(PinkFont);
+        DisposeHelper.HelpFont(bigFont);
+        DisposeHelper.HelpTexture(background);
+        DisposeHelper.HelpTexture(gotoMenuTexture);
 
     }
 }

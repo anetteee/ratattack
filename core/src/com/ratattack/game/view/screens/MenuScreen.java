@@ -28,6 +28,7 @@ public class MenuScreen implements Screen {
 
     SpriteBatch batch = GameController.getInstance().getBatch();
 
+    Texture title = new Texture("ratattacklogo.png");
     Texture background = new Texture("greenbackground.png");
     Texture playGameTexture = new Texture("playgamebutton.png");
     Texture watchTutorialTexture = new Texture("watchtutorialbutton.png");
@@ -38,7 +39,6 @@ public class MenuScreen implements Screen {
     int height = Gdx.graphics.getHeight();
 
     private final Stage stage = gameController.getStage();
-    private boolean screenIsChanged = false;
 
     public MenuScreen(FirebaseInterface FBIC, DataHolderClass dataHolderClass) {
         _FBIC = FBIC;
@@ -49,15 +49,15 @@ public class MenuScreen implements Screen {
 
     @Override
     public void show() {
-        final Image title = new Image(new Texture("ratattacklogo.png"));
-        title.setSize(Gdx.graphics.getWidth()/3f,  Gdx.graphics.getHeight()/2f);
-        title.setPosition(Gdx.graphics.getWidth()/2f - title.getWidth()/2f, Gdx.graphics.getHeight()/2f);
+        final Image titleImage = new Image(title);
+        titleImage.setSize(Gdx.graphics.getWidth()/3f,  Gdx.graphics.getHeight()/2f);
+        titleImage.setPosition(Gdx.graphics.getWidth()/2f - title.getWidth()/2f, Gdx.graphics.getHeight()/2f);
 
         Button highscoreButton = makeButton(highscoreTexture,5f, 3f,"HIGHSCORE");
         Button playGameButton = makeButton(playGameTexture,2f, 3f, "NAME");
         Button watchTutorialButton = makeButton(watchTutorialTexture,1.25f, 3f,"GAMERULES");
 
-        stage.addActor(title);
+        stage.addActor(titleImage);
         stage.addActor(highscoreButton);
         stage.addActor(playGameButton);
         stage.addActor(watchTutorialButton);
@@ -79,7 +79,6 @@ public class MenuScreen implements Screen {
             public void clicked(InputEvent inputEvent, float xpos, float ypos) {
                 //screencontext bytter screen vha state
                 gameController.screenContext.changeScreen(nextScreen);
-                screenIsChanged = true;
             }
         });
         return b;
@@ -108,9 +107,11 @@ public class MenuScreen implements Screen {
     @Override
     public void dispose() {
         batch.dispose();
-        if (screenIsChanged = true){
-            stage.dispose();
-        }
-        screenIsChanged = false;
+        DisposeHelper.HelpTexture(title);
+        DisposeHelper.HelpTexture(background);
+        DisposeHelper.HelpTexture(playGameTexture);
+        DisposeHelper.HelpTexture(watchTutorialTexture);
+        DisposeHelper.HelpTexture(highscoreTexture);
+        stage.dispose();
     }
 }
