@@ -23,6 +23,7 @@ public class ScreenFactory {
                 GameController.getInstance().getEngine().getSystem(LevelupSystem.class).setLevel(0);
                 return new GameScreen();
             case "TUTORIAL":
+                GameController.getInstance().getEngine().getSystem(LevelupSystem.class).setLevel(0);
                 return new TutorialScreen();
             case "HIGHSCORE":
                 return new HighscoreScreen(_FBIC, dataHolder);
