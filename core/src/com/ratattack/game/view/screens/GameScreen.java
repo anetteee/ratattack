@@ -16,6 +16,7 @@ import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
 import com.ratattack.game.GameSettings;
 import com.ratattack.game.gamecontroller.GameController;
 import com.ratattack.game.model.Player;
+import com.ratattack.game.gamecontroller.UsernameTextInputListener;
 
 public class GameScreen implements Screen {
 

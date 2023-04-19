@@ -59,6 +59,9 @@ public class RenderSystem extends IteratingSystem {
             bounds = entity.getComponent(RectangleBoundsComponent.class);
         }
 
+
+
+
         batch.begin();
 
         // Show the health of rats and grandchildren

@@ -17,17 +17,20 @@ public class GrandmotherButton {
     Button button;
     ShootingStrategy strategy;
     Stage stage = GameController.getInstance().getStage();
-    Texture grandMotherTexture = new Texture("crazygrandma.png");
+    Texture grandMotherTexture = new Texture("normalbulletgrandma.png");
 
     int id;
     int currentUpgrade = 0;
+
 
     public GrandmotherButton(int laneWidth, int i) {
         id = i;
 
         button = new Button(new TextureRegionDrawable(new TextureRegion(grandMotherTexture)));
-        button.setSize(grandMotherTexture.getWidth(),   grandMotherTexture.getHeight());
-        button.setPosition(laneWidth*i + (float)(laneWidth-grandMotherTexture.getWidth())/2, GameSettings.grandmotherLine);
+
+        //må være slik størrelse og posisjon
+        button.setSize(grandMotherTexture.getWidth(), grandMotherTexture.getHeight());
+        button.setPosition(laneWidth*i + (float)((laneWidth/2) - (grandMotherTexture.getWidth()/2)), GameSettings.grandmotherLine);
 
         strategy = new NormalBulletStrategy();
 
@@ -51,8 +54,8 @@ public class GrandmotherButton {
         if (currentUpgrade != ShootingStrategy.strategies.length - 1) {
             currentUpgrade += 1;
 
-            button.getStyle().down = new TextureRegionDrawable(new TextureRegion(ShootingStrategy.strategyTextures[currentUpgrade]));
-            button.getStyle().up = new TextureRegionDrawable(new TextureRegion(ShootingStrategy.strategyTextures[currentUpgrade]));
+            button.getStyle().down = new TextureRegionDrawable(new TextureRegion(new Texture(ShootingStrategy.strategyTextures[currentUpgrade])));
+            button.getStyle().up = new TextureRegionDrawable(new TextureRegion(new Texture(ShootingStrategy.strategyTextures[currentUpgrade])));
             strategy = ShootingStrategy.strategies[currentUpgrade];
         }
     }
