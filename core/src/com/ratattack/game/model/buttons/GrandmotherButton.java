@@ -22,6 +22,7 @@ public class GrandmotherButton {
     int id;
     int currentUpgrade = 0;
 
+
     public GrandmotherButton(int laneWidth, int i) {
         id = i;
 
@@ -29,14 +30,14 @@ public class GrandmotherButton {
 
         //må være slik størrelse og posisjon
         button.setSize(grandMotherTexture.getWidth(), grandMotherTexture.getHeight());
-        button.setPosition(laneWidth*i + (float)(laneWidth-grandMotherTexture.getWidth())/2, GameSettings.grandmotherLine);
+        button.setPosition(laneWidth*i + (float)((laneWidth/2) - (grandMotherTexture.getWidth()/2)), GameSettings.grandmotherLine);
 
         strategy = new NormalBulletStrategy();
 
         button.addListener(new ClickListener() {
             @Override
             public void clicked(InputEvent inputEvent, float xpos, float ypos) {
-                strategy.shoot((int) button.getX() + grandMotherTexture.getWidth()/3, (int) button.getY());
+                strategy.shoot((int) button.getX() + grandMotherTexture.getWidth()/4, (int) button.getY());
             }
         });
 
