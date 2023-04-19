@@ -43,6 +43,7 @@ public class UpgradeButton extends Observer {
             public void clicked(InputEvent inputEvent, float xpos, float ypos) {
                 if (canAffordUpgrade) {
                     GameController.getInstance().field.grandmaButtons.get(i).upgrade();
+                    Player.setBalance(Player.getBalance() - ShootingStrategy.prices[nextUpgrade]);
                     nextUpgrade = min(nextUpgrade +1 ,4);
 
                     //If the player can not afford the next upgrade
