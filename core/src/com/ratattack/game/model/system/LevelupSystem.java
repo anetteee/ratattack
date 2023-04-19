@@ -52,4 +52,8 @@ public class LevelupSystem extends IteratingSystem {
             batch.end();
         }
     }
+
+    public void setLevel(int i) {
+        level = i;
+    }
 }

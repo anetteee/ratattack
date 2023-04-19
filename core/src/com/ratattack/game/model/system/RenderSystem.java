@@ -101,7 +101,7 @@ public class RenderSystem extends IteratingSystem {
                int balance = entity.getComponent(BalanceComponent.class).getBalance();
                int oldBalance = Player.getBalance();
                int newBalance = oldBalance + balance;
-               gameController.getPlayer().setBalance(newBalance);
+               Player.setBalance(newBalance);
             }
             if(entity.getComponent(HealthComponent.class) != null){
                 Texture possibleRattexture = entity.getComponent(SpriteComponent.class).sprite.getTexture();
@@ -120,6 +120,7 @@ public class RenderSystem extends IteratingSystem {
                     }
                     // TODO: gjøre det synlig for brukeren at spillet er over
                     System.out.println("GAME OVER!!!!!!");
+                    getEngine().getSystem(LevelupSystem.class).setLevel(0);
                     //gameController.screenContext.changeScreen("HIGHSCORE");
                 }
             }
