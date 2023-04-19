@@ -142,6 +142,6 @@ public class TutorialEndScreen implements Screen {
         DisposeHelper.HelpTexture(background);
         DisposeHelper.HelpTexture(playGameTexture);
         DisposeHelper.HelpTexture(watchTutorialTexture);
-        DisposeHelper.HelpTexture(gotoMenuTexture);
+        DisposeHelper.HelpTexture(goToMenuTexture);
     }
 }

@@ -183,6 +183,8 @@ public class HighscoreScreen implements Screen {
         DisposeHelper.HelpFont(PinkFont);
         DisposeHelper.HelpFont(bigFont);
         DisposeHelper.HelpTexture(background);
+        DisposeHelper.HelpTexture(gameOvertexture);
+        DisposeHelper.HelpTexture(highscoretexture);
         DisposeHelper.HelpTexture(gotoMenuTexture);
 
     }

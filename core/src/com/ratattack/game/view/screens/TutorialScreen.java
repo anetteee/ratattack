@@ -4,7 +4,6 @@ import com.badlogic.ashley.core.Entity;
 import com.badlogic.ashley.core.PooledEngine;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
-import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
@@ -13,7 +12,6 @@ import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Button;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
-import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
@@ -38,11 +36,6 @@ public class TutorialScreen implements Screen {/***
     private final Label balance;
     private final Label score;
     SpriteBatch batch = GameController.getInstance().getBatch();
-
-    private BitmapFont font;
-    int width = Gdx.graphics.getWidth();
-    int height = Gdx.graphics.getHeight();
-
 
     public TutorialScreen() {
         gameController.setUpLanes(GameSettings.tutorialLaneNr);
@@ -171,7 +164,11 @@ public class TutorialScreen implements Screen {/***
             }
         }
         DisposeHelper.HelpTexture(gotoMenuTexture);
-        DisposeHelper.HelpFont(font);
+        DisposeHelper.HelpTexture(pauseScreenTexture);
+        DisposeHelper.HelpImage(coin);
+        DisposeHelper.HelpImage(navBar);
+        DisposeHelper.HelpTextureRegionDrawable(pauseTexture);
+        DisposeHelper.HelpTextureRegionDrawable(playTexture);
         stage.dispose();
     }
 

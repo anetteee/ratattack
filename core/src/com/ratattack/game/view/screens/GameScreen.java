@@ -18,7 +18,6 @@ import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
 import com.ratattack.game.GameSettings;
 import com.ratattack.game.gamecontroller.GameController;
 import com.ratattack.game.model.Player;
-import com.ratattack.game.gamecontroller.UsernameTextInputListener;
 import com.ratattack.game.model.components.SpriteComponent;
 
 public class GameScreen implements Screen {
@@ -168,7 +167,6 @@ public class GameScreen implements Screen {
                 entity.getComponent(SpriteComponent.class).sprite.getTexture().equals(null);
             }
         }
-        DisposeHelper.HelpTexture(goToMenuTexture);
         DisposeHelper.HelpTexture(goToMenuTexture);
         DisposeHelper.HelpTexture(pauseScreenTexture);
         DisposeHelper.HelpTextureRegionDrawable(pauseTexture);
