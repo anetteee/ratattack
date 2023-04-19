@@ -11,7 +11,7 @@ public class NameScreen implements Screen {
 
     SpriteBatch batch = GameController.getInstance().getBatch();
 
-    Texture background = new Texture("greenbackground.png");
+    Texture background = new Texture("darkgreenbackground.png");
 
     int width = Gdx.graphics.getWidth();
     int height = Gdx.graphics.getHeight();

@@ -4,10 +4,13 @@ public class GameSettings {
 
     // Constants for spawntime and lane number
     public static long ratSpawnrate = 4000;
+    public static long startRatSpawnRate = 4000;
     public static final long startGrandChildSpawnrate = 12000;
     public static final int gameLaneNr = 4;
     public static final int tutorialLaneNr = 2;
-    public static boolean debug = false; //OBS: ShapeRenderer fører til OutOfMemoryError når programmet har kjørt lenge
+
+    public static final int finishLine = 150; //Pixels from bottom
+    public static boolean debug = false;
 
 
     // Constants for adding difficulty to game

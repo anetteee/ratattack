@@ -50,7 +50,6 @@ public class RenderSystem extends IteratingSystem {
         super.update(deltaTime);
     }
 
-
     @Override
     protected void processEntity(Entity entity, float deltaTime) {
         SpriteComponent spriteComponent = spriteMapper.get(entity);
@@ -59,6 +58,9 @@ public class RenderSystem extends IteratingSystem {
         if (bounds == null) {
             bounds = entity.getComponent(RectangleBoundsComponent.class);
         }
+
+
+
 
         batch.begin();
 
@@ -78,7 +80,7 @@ public class RenderSystem extends IteratingSystem {
         if (bounds == null) return;//If the entity does not have bounds, don´t render the bound or remove entity
 
         //Check if the entity has moved out of the screen
-        Rectangle windowBounds = new Rectangle(0, -300, windowWidth, (windowHeight + (spriteComponent.sprite.getTexture().getHeight())*2));
+        Rectangle windowBounds = new Rectangle(0, GameSettings.finishLine, windowWidth, (windowHeight + (spriteComponent.sprite.getTexture().getHeight())*2));
 
         Circle circle = null;
         Rectangle rectangle = null;
@@ -113,7 +115,7 @@ public class RenderSystem extends IteratingSystem {
                     String state = gameController.screenContext.states.peek().toString();
                     String strippedState = state.substring(36, state.length() - 8);
 
-                    if(strippedState.contains("TutorialState")) {
+                    if(strippedState.contains("TutorialS")) {
                         gameController.screenContext.changeScreen("TUTORIALEND");
                     } else {
                         gameController.screenContext.changeScreen("HIGHSCORE");

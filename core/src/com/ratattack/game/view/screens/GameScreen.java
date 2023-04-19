@@ -18,6 +18,7 @@ import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
 import com.ratattack.game.GameSettings;
 import com.ratattack.game.gamecontroller.GameController;
 import com.ratattack.game.model.Player;
+import com.ratattack.game.gamecontroller.UsernameTextInputListener;
 import com.ratattack.game.model.components.SpriteComponent;
 
 public class GameScreen implements Screen {
@@ -38,6 +39,7 @@ public class GameScreen implements Screen {
     private final Label balance;
     private final Label score;
     SpriteBatch batch = GameController.getInstance().getBatch();
+
 
     public GameScreen() {
         gameController.setUpLanes(GameSettings.gameLaneNr);
@@ -154,7 +156,6 @@ public class GameScreen implements Screen {
         // TODO Auto-generated method stub
         //throw new UnsupportedOperationException("Unimplemented method 'hide'");
     }
-
 
     @Override
     public void dispose() {

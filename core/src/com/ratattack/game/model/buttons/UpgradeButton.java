@@ -22,20 +22,22 @@ public class UpgradeButton extends Observer {
     Stage stage = GameController.getInstance().getStage();
 
     boolean canAffordUpgrade = false;
-    int nextPrice = 0;
+    int nextUpgrade = 0;
 
-    Texture upgradeTexture = new Texture("purplebutton.png");
-    Texture notUpgradeTexture = new Texture("pinkbutton.png");
-    TextureRegionDrawable buttonUpgradeable = new TextureRegionDrawable(new TextureRegion(upgradeTexture));
-    TextureRegionDrawable buttonNotUpgradeable = new TextureRegionDrawable(new TextureRegion(notUpgradeTexture));
+    Texture grandmotherTexture = new Texture("normalbulletgrandma.png");
+
+    String[] upgradeButtonTextures = {"newfastupgrade.png", "newfreezeupgrade.png", "newbigupgrade.png", "newtripleupgrade.png"};
+
+    TextureRegionDrawable buttonUpgradeable = new TextureRegionDrawable(new TextureRegion(new Texture(upgradeButtonTextures[0])));
+    TextureRegionDrawable buttonNotUpgradeable = new TextureRegionDrawable(new TextureRegion(new Texture("newestnoupgrade.png")));
 
 
     public UpgradeButton(int laneWidth, final int i) {
         id = i;
 
         button = new Button(buttonNotUpgradeable);
-        button.setSize(200, 200);
-        button.setPosition(laneWidth * i + (float) (laneWidth - upgradeTexture.getWidth()) / 2, GameSettings.grandmotherLine);
+        button.setSize(90, 110 );
+        button.setPosition(laneWidth * i + (float) (laneWidth/2)+(0.45f*grandmotherTexture.getWidth()), GameSettings.grandmotherLine + 50);
 
 
         button.addListener(new ClickListener() {
@@ -43,13 +45,19 @@ public class UpgradeButton extends Observer {
             public void clicked(InputEvent inputEvent, float xpos, float ypos) {
                 if (canAffordUpgrade) {
                     GameController.getInstance().field.grandmaButtons.get(i).upgrade();
-                    nextPrice = min(nextPrice+1 ,4);
+                    Player.setBalance(Player.getBalance() - ShootingStrategy.prices[nextUpgrade]);
+                    nextUpgrade = min(nextUpgrade +1 ,4);
 
                     //If the player can not afford the next upgrade
-                    if (!(ShootingStrategy.prices[nextPrice] < Player.getBalance())) {
+                    if (!(ShootingStrategy.prices[nextUpgrade] < Player.getBalance())) {
                         button.getStyle().down = buttonNotUpgradeable;
                         button.getStyle().up = buttonNotUpgradeable;
                         canAffordUpgrade = false;
+                    }
+                    else { //Spilleren har råd til neste oppgradering
+                        buttonUpgradeable = new TextureRegionDrawable(new TextureRegion(new Texture(upgradeButtonTextures[nextUpgrade])));
+                        button.getStyle().down = buttonUpgradeable;
+                        button.getStyle().up = buttonUpgradeable;
                     }
                 }
             }
@@ -61,7 +69,7 @@ public class UpgradeButton extends Observer {
 
     @Override
     public void update() {
-        if (!canAffordUpgrade && (ShootingStrategy.prices[nextPrice] < Player.getBalance())) {
+        if (!canAffordUpgrade && (ShootingStrategy.prices[nextUpgrade] < Player.getBalance())) {
             button.getStyle().down = buttonUpgradeable;
             button.getStyle().up = buttonUpgradeable;
             canAffordUpgrade = true;
