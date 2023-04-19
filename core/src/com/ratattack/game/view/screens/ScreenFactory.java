@@ -2,6 +2,7 @@ package com.ratattack.game.view.screens;
 
 import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Screen;
+import com.ratattack.game.GameSettings;
 import com.ratattack.game.backend.DataHolderClass;
 import com.ratattack.game.backend.FirebaseInterface;
 import com.ratattack.game.gamecontroller.GameController;
@@ -21,9 +22,11 @@ public class ScreenFactory {
                 return new NameScreen();
             case "GAME":
                 GameController.getInstance().getEngine().getSystem(LevelupSystem.class).setLevel(0);
+                GameSettings.ratSpawnrate = GameSettings.startRatSpawnRate;
                 return new GameScreen();
             case "TUTORIAL":
                 GameController.getInstance().getEngine().getSystem(LevelupSystem.class).setLevel(0);
+                GameSettings.ratSpawnrate = GameSettings.startRatSpawnRate;
                 return new TutorialScreen();
             case "HIGHSCORE":
                 return new HighscoreScreen(_FBIC, dataHolder);

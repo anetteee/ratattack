@@ -61,7 +61,7 @@ public class Field {
             //opprinnelig
             //batch.draw(lane, i, 0, (float) width/GameSettings.laneNr, height);
             //mitt
-            batch.draw(lane, i, 0, (float) widthOfScreen /laneNr, heightOfScreen);
+            batch.draw(lane, i, 0, (float) widthOfScreen/laneNr, heightOfScreen);
         }
         batch.end();
     }
