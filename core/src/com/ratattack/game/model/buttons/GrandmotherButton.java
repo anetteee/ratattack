@@ -34,7 +34,7 @@ public class GrandmotherButton {
         button.addListener(new ClickListener() {
             @Override
             public void clicked(InputEvent inputEvent, float xpos, float ypos) {
-                strategy.shoot((int) button.getX() + grandMotherTexture.getWidth()/3, (int) button.getY());
+                strategy.shoot((int) button.getX() + grandMotherTexture.getWidth()/3, GameSettings.finishLine);
             }
         });
 
@@ -51,8 +51,8 @@ public class GrandmotherButton {
         if (currentUpgrade != ShootingStrategy.strategies.length - 1) {
             currentUpgrade += 1;
 
-            button.getStyle().down = new TextureRegionDrawable(new TextureRegion(new Texture(ShootingStrategy.strategyTextures[currentUpgrade])));
-            button.getStyle().up = new TextureRegionDrawable(new TextureRegion(new Texture(ShootingStrategy.strategyTextures[currentUpgrade])));
+            button.getStyle().down = new TextureRegionDrawable(new TextureRegion(ShootingStrategy.strategyTextures[currentUpgrade]));
+            button.getStyle().up = new TextureRegionDrawable(new TextureRegion(ShootingStrategy.strategyTextures[currentUpgrade]));
             strategy = ShootingStrategy.strategies[currentUpgrade];
         }
     }

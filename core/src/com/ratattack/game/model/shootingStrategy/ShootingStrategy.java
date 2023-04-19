@@ -7,7 +7,7 @@ import java.util.ArrayList;
 public interface ShootingStrategy {
 
     ShootingStrategy[] strategies = {new NormalBulletStrategy(), new FastBulletStrategy(), new FreezeBulletStrategy(), new BigBulletStrategy(), new TripleBulletStrategy()};
-    String[] strategyTextures = {"bullet.png", "bullet.png", "freezebullet.png", "BIGbullet.png", "bullet.png"};
+    Texture[] strategyTextures = {new Texture("bullet.png"), new Texture("bullet.png"), new Texture("freezebullet.png"), new Texture("BIGbullet.png"), new Texture("bullet.png")};
     //String[] strategyTextures = {"normalGrandma.png", "fastGrandma.png", "freezeGrandma.png", "bigGrandma.png", "tripleGrandma.png"};
     int[] prices = {100, 200, 300, 400, 500};
 

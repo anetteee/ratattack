@@ -78,7 +78,7 @@ public class RenderSystem extends IteratingSystem {
         if (bounds == null) return;//If the entity does not have bounds, don´t render the bound or remove entity
 
         //Check if the entity has moved out of the screen
-        Rectangle windowBounds = new Rectangle(0, -300, windowWidth, (windowHeight + (spriteComponent.sprite.getTexture().getHeight())*2));
+        Rectangle windowBounds = new Rectangle(0, GameSettings.finishLine, windowWidth, (windowHeight + (spriteComponent.sprite.getTexture().getHeight())*2));
 
         Circle circle = null;
         Rectangle rectangle = null;
