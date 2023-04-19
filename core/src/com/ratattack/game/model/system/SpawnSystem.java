@@ -23,28 +23,29 @@ import com.ratattack.game.model.components.RectangleBoundsComponent;
 import com.ratattack.game.model.components.SpriteComponent;
 import com.ratattack.game.model.components.VelocityComponent;
 
+import java.util.Arrays;
+import java.util.List;
 import java.util.Random;
 
 public class SpawnSystem extends IteratingSystem {
     private long lastRatSpawnTime;
     private long lastGrandChildSpawnTime;
-    private final long ratSpawnInterval;
+    private long ratSpawnInterval;
     private final long grandChildSpawnInterval;
-    private final PooledEngine engine;
 
     private final GameController gameController = GameController.getInstance();
 
-    public SpawnSystem(PooledEngine engine, long ratSpawnrate, long grandChildSpawnrate) {
+    public SpawnSystem() {
         super(Family.all(SpriteComponent.class).get());
-        this.ratSpawnInterval = ratSpawnrate;
-        this.grandChildSpawnInterval = grandChildSpawnrate;
+        this.ratSpawnInterval = GameSettings.ratSpawnrate;
+        this.grandChildSpawnInterval = GameSettings.startGrandChildSpawnrate;
         lastRatSpawnTime = TimeUtils.millis();
         lastGrandChildSpawnTime = TimeUtils.millis();
-        this.engine = engine;
     }
 
     @Override
     public void update(float deltaTime) {
+        ratSpawnInterval = GameSettings.ratSpawnrate;
         long currentTime = TimeUtils.millis();
         if (currentTime - lastRatSpawnTime >= ratSpawnInterval) {
             spawnRat();
@@ -61,7 +62,11 @@ public class SpawnSystem extends IteratingSystem {
 
     }
 
+
+
+
     private void spawnRat() {
+
         Entity rat = new Entity();
         rat.add(new SpriteComponent());
         rat.add(new VelocityComponent());
@@ -72,15 +77,30 @@ public class SpawnSystem extends IteratingSystem {
         Texture texture = new Texture("rat.png");
         rat.getComponent(SpriteComponent.class).sprite = new Sprite(texture);
 
-        Random random = new Random();
+        //POSITION:
 
         PositionComponent position = rat.getComponent(PositionComponent.class);
-        int min = 0;
-        int max = 3;
-        int randomNumber = random.nextInt(max - min + 1) + min;
-
-        position.x = gameController.field.laneDividers.get(randomNumber) + texture.getWidth();
         position.y = 1500;
+
+        /*
+        int antallLanes = gameController.field.laneDividers.size();
+        int breddeSkjerm = Gdx.graphics.getWidth();
+        int breddRotte = texture.getWidth();
+
+        System.out.println("antall lanes " + antallLanes);
+        System.out.println("bredde skjerm " + breddeSkjerm);
+        System.out.println("bredde rotte " + breddRotte);
+
+         */
+
+
+        int indexInLaneDividers = (int) (Math.random()*gameController.field.laneDividers.size());
+        System.out.println("random index in lavedividers som brukes: " + indexInLaneDividers);
+        position.x = gameController.field.laneDividers.get(indexInLaneDividers) + gameController.field.getLaneWidth()/2 - texture.getWidth()/2;
+
+
+
+        //VELOCITY:
 
         VelocityComponent velocity = rat.getComponent(VelocityComponent.class);
         velocity.x = 0;
@@ -91,8 +111,9 @@ public class SpawnSystem extends IteratingSystem {
         bounds.setCenter(position.x, position.y);
         rat.getComponent(HealthComponent.class).setHealth(GameSettings.ratStartHealth);
 
-        engine.addEntity(rat);
+        getEngine().addEntity(rat);
     }
+
 
     private void spawnGrandChild() {
         Entity grandChildEntity = new Entity();
@@ -107,16 +128,18 @@ public class SpawnSystem extends IteratingSystem {
         Texture texture = new Texture("grandchild.png");
         grandChildEntity.getComponent(SpriteComponent.class).sprite = new Sprite(texture);
 
-        Random random = new Random();
 
+
+        //POSITION
         PositionComponent position = grandChildEntity.getComponent(PositionComponent.class);
-        int min = 0;
-        int max = 3;
-        int randomNumber = random.nextInt(max - min + 1) + min;
 
-        position.x = gameController.field.laneDividers.get(randomNumber) + (texture.getWidth()*2)/3;
+        int indexInLaneDividers = (int) (Math.random()*gameController.field.laneDividers.size());
+        System.out.println("random index in lavedividers som brukes: " + indexInLaneDividers);
+        position.x = gameController.field.laneDividers.get(indexInLaneDividers) + gameController.field.getLaneWidth()/2 - texture.getWidth()/2;
         position.y = 1500;
 
+
+        //VELOCITY
         VelocityComponent velocity = grandChildEntity.getComponent(VelocityComponent.class);
         velocity.x = 0;
         velocity.y = GameSettings.startSpeedGrandchild;
@@ -130,6 +153,6 @@ public class SpawnSystem extends IteratingSystem {
         HealthComponent health = healthMapper.get(grandChildEntity);
         health.setHealth(GameSettings.grandChildStartHealth);
 
-        engine.addEntity(grandChildEntity);
+        getEngine().addEntity(grandChildEntity);
     }
 }

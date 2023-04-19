@@ -10,68 +10,29 @@ import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Button;
-import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
-import com.badlogic.gdx.utils.viewport.ScreenViewport;
-import com.ratattack.game.GameSettings;
 import com.ratattack.game.gamecontroller.GameController;
 
-public class TutorialScreen implements Screen {/***
- * TODO: LEGG TIL KOMMENTARER
- * */
+public class TutorialEndScreen implements Screen {
 
-    private final GameController gameController = GameController.getInstance();
-
-    private BitmapFont font;
+    GameController gameController = GameController.getInstance();
     SpriteBatch batch = GameController.getInstance().getBatch();
-
-    Texture background = new Texture("mainbackground2.png");
-    Texture gotoGameTexture = new Texture("playgamebutton.png");
+    Texture background = new Texture("greenbackground.png");
+    Texture playGameTexture = new Texture("playgamebutton.png");
+    Texture watchTutorialTexture = new Texture("watchtutorialbutton.png");
     Texture gotoMenuTexture = new Texture("gotomenubutton.png");
-
     int width = Gdx.graphics.getWidth();
     int height = Gdx.graphics.getHeight();
-
     private final Stage stage = gameController.getStage();
-    private boolean screenIsChanged = false;
 
-
-    public TutorialScreen() {
+    public TutorialEndScreen() {
         System.out.println(stage);
-        gameController.setUpLanes(GameSettings.tutorialLaneNr);
-        gameController.play();
-    }
-
-    @Override
-    public void show() {
-        Button goToGameScreenB = makeButton(gotoGameTexture,2f,"NAME");
-        Button goToMenuScreenB = makeButton(gotoMenuTexture,5f,"MENU");
-
-        font = new BitmapFont();
-        font.setColor(Color.RED);
-        font.getData().setScale(3);
-
-        stage.addActor(goToGameScreenB);
-        stage.addActor(goToMenuScreenB);
-    }
-
-    @Override
-    public void render(float delta) {
-        gameController.field.draw(GameSettings.tutorialLaneNr);
-        stage.draw();
-
-        batch.begin();
-        font.draw(gameController.getBatch(), "CLICK GRANDMA TO SHOOT!", 650, 200);
-        font.draw(gameController.getBatch(), "CLICK GRANDMA TO SHOOT!", 1800, 200);
-
-        font.draw(gameController.getBatch(), "UPGRADE BULLET HERE", 100, 400);
-        batch.end();
     }
 
     private Button makeButton(Texture texture, float xPos, final String nextScreen){
         Button b = new Button(new TextureRegionDrawable(new TextureRegion(texture)));
-        b.setSize(Gdx.graphics.getWidth()/10f  ,   Gdx.graphics.getHeight()/7f);
+        b.setSize(Gdx.graphics.getWidth()/4f  ,   Gdx.graphics.getHeight()/2f);
         b.setPosition(Gdx.graphics.getWidth() / xPos - b.getWidth()/2f,Gdx.graphics.getHeight() / 10f*3f - b.getHeight() / 2f);
         b.addListener(new ClickListener() {
             @Override
@@ -84,13 +45,35 @@ public class TutorialScreen implements Screen {/***
     }
 
     @Override
+    public void show() {
+        Button playGameButton = makeButton(playGameTexture,2f,"NAME");
+        Button watchTutorialButton = makeButton(watchTutorialTexture,1.25f,"GAMERULES");
+        Button goToMenuScreenB = makeButton(gotoMenuTexture,5f,"MENU");
+        stage.addActor(goToMenuScreenB);
+        stage.addActor(playGameButton);
+        stage.addActor(watchTutorialButton);
+    }
+
+    @Override
+    public void render(float delta) {
+
+        BitmapFont font = new BitmapFont();
+        font.setColor(Color.BLACK);
+        font.getData().scale(5);
+
+        batch.begin();
+        batch.draw(background, 0, 0, width, height);
+        font.draw(gameController.getBatch(), "GAME OVER! Do you want to run the tutorial again?", 150, Gdx.graphics.getHeight() - 200);
+        batch.end();
+    }
+
+    @Override
     public void resize(int width, int height) {
 
     }
 
     @Override
     public void pause() {
-
 
     }
 
@@ -107,10 +90,6 @@ public class TutorialScreen implements Screen {/***
     @Override
     public void dispose() {
         batch.dispose();
-        if (screenIsChanged = true){
-            stage.dispose();
-        }
-        screenIsChanged = false;
-
+        stage.dispose();
     }
 }

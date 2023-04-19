@@ -11,8 +11,6 @@ public class TutorialState implements State {
     /***
      * TODO: LEGG TIL KOMMENTARER
      * */
-
-
     private ScreenContext screenContext;
     private Screen currentScreen;
 
@@ -21,28 +19,38 @@ public class TutorialState implements State {
         currentScreen = ScreenFactory.getScreen("TUTORIAL");
 
         renderScreen();
-
     }
 
     @Override
     public void changeState(State state) {
         screenContext.changeState(state);
-
     }
 
     @Override
     public boolean shouldChangeState(String type) {
-        return type.equalsIgnoreCase("GAME") ||
-                type.equalsIgnoreCase("MENU") ;
+        return type.equalsIgnoreCase("MENU") ||
+                type.equalsIgnoreCase("TUTORIALEND") ||
+                type.equalsIgnoreCase("GAMERULES")
+                || type.equalsIgnoreCase(("NAME"));
     }
 
     @Override
     public void changeScreen(String type) {
         if(shouldChangeState(type)){
-            State state = type.equalsIgnoreCase("GAME") ? new GameState(screenContext): new MenuState(screenContext);
-            changeState(state);
-        }
-        else {
+            if (type.equalsIgnoreCase("MENU")) {
+                State state = new MenuState(screenContext);
+                changeState(state);
+            } else if (type.equalsIgnoreCase("TUTORIALEND")) {
+                State state = new TutorialEndState(screenContext);
+                changeState(state);
+            } else if (type.equalsIgnoreCase("GAMERULES")) {
+                State state = new GameRulesState(screenContext);
+                changeState(state);
+            } else if (type.equalsIgnoreCase("NAME")) {
+                State state = new NameState(screenContext);
+                changeState(state);
+            }
+        } else {
             currentScreen = ScreenFactory.getScreen(type);
             renderScreen();
         }
@@ -50,12 +58,8 @@ public class TutorialState implements State {
 
     @Override
     public void renderScreen() {
-
-
-        GameController.getInstance().getEngine().getSystem(SpawnSystem.class).setProcessing(false);
+        GameController.getInstance().getEngine().getSystem(SpawnSystem.class).setProcessing(true);
         GameController.getInstance().getGame().setScreen(currentScreen);
-
-
     }
 
 

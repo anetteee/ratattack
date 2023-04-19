@@ -14,6 +14,7 @@ import com.ratattack.game.model.Player;
 import com.ratattack.game.model.system.CollisionSystem;
 import com.ratattack.game.model.Field;
 import com.ratattack.game.model.GameWorld;
+import com.ratattack.game.model.system.LevelupSystem;
 import com.ratattack.game.view.screenState.MenuState;
 import com.ratattack.game.view.screenState.ScreenContext;
 import com.ratattack.game.model.system.BoundsSystem;
@@ -111,10 +112,11 @@ public class GameController {
     public void addSystems(PooledEngine engine) {
         engine.addSystem(new UserSystem());
         engine.addSystem(new MovementSystem());
-        engine.addSystem(new SpawnSystem(engine, GameSettings.startRatSpawnrate, GameSettings.startGrandChildSpawnrate));
+        engine.addSystem(new SpawnSystem());
         engine.addSystem(new CollisionSystem());
         engine.addSystem(new BoundsSystem());
         engine.addSystem(new RenderSystem(batch, shapeRenderer));
+        engine.addSystem(new LevelupSystem());
     }
 
     public void addEntities() {
@@ -130,15 +132,18 @@ public class GameController {
         stage.draw();
     }
 
-    public void setUpGame() {
+    public void setUpLanes(int laneNr) {
         try {
-            field = new Field();
+            field = new Field(laneNr);
         }
         catch (Exception e) {
             System.out.println("Error with field creation");
         }
         gameStartTime = System.currentTimeMillis();
     }
+
+
+
 
     public void play() {
         paused = false;

@@ -17,10 +17,8 @@ public class NameScreen implements Screen {
     int height = Gdx.graphics.getHeight();
 
     public NameScreen() {
-
         UsernameTextInputListener listener = new UsernameTextInputListener();
         Gdx.input.getTextInput(listener, "What is your name?", "", "Username");
-
     }
 
     @Override
