@@ -14,6 +14,7 @@ import com.ratattack.game.model.Player;
 import com.ratattack.game.model.system.CollisionSystem;
 import com.ratattack.game.model.Field;
 import com.ratattack.game.model.GameWorld;
+import com.ratattack.game.model.system.LevelupSystem;
 import com.ratattack.game.view.screenState.MenuState;
 import com.ratattack.game.view.screenState.ScreenContext;
 import com.ratattack.game.model.system.BoundsSystem;
@@ -21,7 +22,6 @@ import com.ratattack.game.model.system.MovementSystem;
 import com.ratattack.game.model.system.RenderSystem;
 import com.ratattack.game.model.system.SpawnSystem;
 import com.ratattack.game.model.system.UserSystem;
-import com.ratattack.game.view.screens.OptionScreen;
 import com.ratattack.game.view.screens.ScreenFactory;
 import com.ratattack.game.view.screens.TutorialScreen;
 
@@ -92,11 +92,6 @@ public class GameController {
         }
     }
 
-    private void setOptionsScreen() {
-        OptionScreen optionScreen = new OptionScreen();
-        game.setScreen(optionScreen);
-    }
-
     private void setTutorialScreen() {
         TutorialScreen tutorialScreen = new TutorialScreen();
         game.setScreen(tutorialScreen);
@@ -117,10 +112,11 @@ public class GameController {
     public void addSystems(PooledEngine engine) {
         engine.addSystem(new UserSystem());
         engine.addSystem(new MovementSystem());
-        engine.addSystem(new SpawnSystem(engine, GameSettings.startRatSpawnrate, GameSettings.startGrandChildSpawnrate));
+        engine.addSystem(new SpawnSystem());
         engine.addSystem(new CollisionSystem());
         engine.addSystem(new BoundsSystem());
         engine.addSystem(new RenderSystem(batch, shapeRenderer));
+        engine.addSystem(new LevelupSystem());
     }
 
     public void addEntities() {
@@ -210,6 +206,14 @@ public class GameController {
 
     public Boolean getIsGameOver() {
         return isGameOver;
+    }
+
+    public Boolean getPaused() {
+        return paused;
+    }
+
+    public void setPaused(Boolean change) {
+        paused = change;
     }
 
 }

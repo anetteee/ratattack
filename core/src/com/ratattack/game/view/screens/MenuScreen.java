@@ -54,8 +54,8 @@ public class MenuScreen implements Screen {
 
         //Button highscoreButton = makeButton(highscoreTexture,5f,"HIGHSCORE");
         Button highscoreButton = makeButton(highscoreTexture,5f, 3.5f, Gdx.graphics.getWidth()/5f, Gdx.graphics.getHeight()/3f,"HIGHSCORE");
-        Button playGameButton = makeButton(playGameTexture,2f,"NAME");
-        Button watchTutorialButton = makeButton(watchTutorialTexture,1.25f,3.5f, Gdx.graphics.getWidth()/5f, Gdx.graphics.getHeight()/3f, "TUTORIAL");
+        Button playGameButton = makeButton(playGameTexture,2f,3f,"NAME");
+        Button watchTutorialButton = makeButton(watchTutorialTexture,1.25f,3.5f, Gdx.graphics.getWidth()/5f, Gdx.graphics.getHeight()/3f, "GAMERULES");
 
         stage.addActor(title);
         stage.addActor(highscoreButton);
@@ -70,10 +70,10 @@ public class MenuScreen implements Screen {
         batch.end();
     }
 
-    private Button makeButton(Texture texture, float xPos, final String nextScreen){
+    private Button makeButton(Texture texture, float xPos, float yPos, final String nextScreen){
         Button b = new Button(new TextureRegionDrawable(new TextureRegion(texture)));
         b.setSize(Gdx.graphics.getWidth()/4f  ,   Gdx.graphics.getHeight()/2f);
-        b.setPosition(Gdx.graphics.getWidth() / xPos - b.getWidth()/2f,Gdx.graphics.getHeight() / 10f*3f - b.getHeight() / 2f);
+        b.setPosition(Gdx.graphics.getWidth() / xPos - b.getWidth()/2f,Gdx.graphics.getHeight() / yPos - b.getHeight() / 2f);
         b.addListener(new ClickListener() {
             @Override
             public void clicked(InputEvent inputEvent, float xpos, float ypos) {
@@ -99,8 +99,6 @@ public class MenuScreen implements Screen {
     }
 
 
-
-
     @Override
     public void resize(int width, int height) {
 
@@ -124,5 +122,6 @@ public class MenuScreen implements Screen {
     @Override
     public void dispose() {
         batch.dispose();
+        stage.dispose();
     }
 }

@@ -30,23 +30,22 @@ import java.util.Random;
 public class SpawnSystem extends IteratingSystem {
     private long lastRatSpawnTime;
     private long lastGrandChildSpawnTime;
-    private final long ratSpawnInterval;
+    private long ratSpawnInterval;
     private final long grandChildSpawnInterval;
-    private final PooledEngine engine;
 
     private final GameController gameController = GameController.getInstance();
 
-    public SpawnSystem(PooledEngine engine, long ratSpawnrate, long grandChildSpawnrate) {
+    public SpawnSystem() {
         super(Family.all(SpriteComponent.class).get());
-        this.ratSpawnInterval = ratSpawnrate;
-        this.grandChildSpawnInterval = grandChildSpawnrate;
+        this.ratSpawnInterval = GameSettings.ratSpawnrate;
+        this.grandChildSpawnInterval = GameSettings.startGrandChildSpawnrate;
         lastRatSpawnTime = TimeUtils.millis();
         lastGrandChildSpawnTime = TimeUtils.millis();
-        this.engine = engine;
     }
 
     @Override
     public void update(float deltaTime) {
+        ratSpawnInterval = GameSettings.ratSpawnrate;
         long currentTime = TimeUtils.millis();
         if (currentTime - lastRatSpawnTime >= ratSpawnInterval) {
             spawnRat();
@@ -112,7 +111,7 @@ public class SpawnSystem extends IteratingSystem {
         bounds.setCenter(position.x, position.y);
         rat.getComponent(HealthComponent.class).setHealth(GameSettings.ratStartHealth);
 
-        engine.addEntity(rat);
+        getEngine().addEntity(rat);
     }
 
 
@@ -154,6 +153,6 @@ public class SpawnSystem extends IteratingSystem {
         HealthComponent health = healthMapper.get(grandChildEntity);
         health.setHealth(GameSettings.grandChildStartHealth);
 
-        engine.addEntity(grandChildEntity);
+        getEngine().addEntity(grandChildEntity);
     }
 }

@@ -6,12 +6,10 @@ import static com.ratattack.game.model.ComponentMappers.spriteMapper;
 import com.badlogic.ashley.core.Entity;
 import com.badlogic.ashley.core.Family;
 import com.badlogic.ashley.systems.IteratingSystem;
-import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
-import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.math.Circle;
@@ -28,12 +26,6 @@ import com.ratattack.game.model.components.PositionComponent;
 import com.ratattack.game.model.components.RectangleBoundsComponent;
 import com.ratattack.game.model.components.SpriteComponent;
 import com.ratattack.game.model.components.VelocityComponent;
-
-import java.awt.Window;
-import java.util.Timer;
-import java.util.TimerTask;
-
-import jdk.internal.net.http.common.Log;
 
 /**
  * Class that renders all entities used in the game.
@@ -58,35 +50,6 @@ public class RenderSystem extends IteratingSystem {
         super.update(deltaTime);
     }
 
-    /**
-     * Method for finding the time where a rats speed should increase.
-     * @param levelChangeTimes list of time period for speed to increase
-     * @param timeElapsed the time elapsed since the game started
-     * @return index of the speed that should be set
-     */
-    public static int getIndexOfRatSpeedArray(int[] levelChangeTimes, int timeElapsed) {
-        int left = 0;
-        int right = levelChangeTimes.length - 1;
-
-        while (left <= right) {
-            int mid = left + (right - left) / 2;
-
-            if (levelChangeTimes[mid] == timeElapsed) {
-                return mid;
-            }
-
-            else if((mid+1) == levelChangeTimes.length ) {
-                return left;
-            }
-            else if (timeElapsed >= levelChangeTimes[mid+1]) {
-                left = mid + 1;
-            }  else {
-                right = mid - 1;
-            }
-        }
-        return left;
-    }
-
 
     @Override
     protected void processEntity(Entity entity, float deltaTime) {
@@ -101,26 +64,6 @@ public class RenderSystem extends IteratingSystem {
 
 
         batch.begin();
-        // Make game more difficult by increasing the speed of all rats
-        if ((entity.getComponent(HealthComponent.class) != null)
-        && (entity.getComponent(BalanceComponent.class) == null)) {
-
-            VelocityComponent velocity = entity.getComponent(VelocityComponent.class);
-
-            long now = System.currentTimeMillis();
-            long timeElapsed = now - gameController.getGameStartTime();
-
-            int index = getIndexOfRatSpeedArray(GameSettings.changeLevelTime, (int) timeElapsed);
-            velocity.y = GameSettings.ratSpeed[index];
-
-            // Show feedback about level up to user
-            Texture texture = new Texture("levelupold.png");
-            for(int i = 0; i < GameSettings.showLevelUpMessageStartTime.length; i++) {
-                    if ((timeElapsed > GameSettings.showLevelUpMessageStartTime[i]) && (timeElapsed < GameSettings.showLevelUpMessageEndTime[i])) {
-                        batch.draw(texture,200, 150, 2000, 2000);
-                    }
-            }
-        }
 
         // Show the health of rats and grandchildren
         Texture texture = spriteComponent.sprite.getTexture();
@@ -161,16 +104,26 @@ public class RenderSystem extends IteratingSystem {
                int balance = entity.getComponent(BalanceComponent.class).getBalance();
                int oldBalance = Player.getBalance();
                int newBalance = oldBalance + balance;
-               gameController.getPlayer().setBalance(newBalance);
+               Player.setBalance(newBalance);
             }
             if(entity.getComponent(HealthComponent.class) != null){
                 Texture possibleRattexture = entity.getComponent(SpriteComponent.class).sprite.getTexture();
                 // Game over
                 if (possibleRattexture.toString().equals("rat.png")){
                     GameController.getInstance().setIsGameOver(true);
+
+                    // Strip string of state to be able to switch to the right screen when game over
+                    String state = gameController.screenContext.states.peek().toString();
+                    String strippedState = state.substring(36, state.length() - 8);
+
+                    if(strippedState.contains("TutorialState")) {
+                        gameController.screenContext.changeScreen("TUTORIALEND");
+                    } else {
+                        gameController.screenContext.changeScreen("HIGHSCORE");
+                    }
                     // TODO: gjøre det synlig for brukeren at spillet er over
                     System.out.println("GAME OVER!!!!!!");
-                    gameController.screenContext.changeScreen("HIGHSCORE");
+                    //gameController.screenContext.changeScreen("HIGHSCORE");
                 }
             }
             getEngine().removeEntity(entity);

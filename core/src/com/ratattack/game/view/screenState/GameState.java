@@ -7,7 +7,6 @@ import com.ratattack.game.view.screens.ScreenFactory;
 
 public class GameState implements State {
 
-
     /***
      * TODO: LEGG TIL KOMMENTARER
      * */
@@ -23,7 +22,6 @@ public class GameState implements State {
 
     @Override
     public void changeState(State state) {
-
         screenContext.changeState(state);
     }
 
@@ -57,7 +55,6 @@ public class GameState implements State {
             renderScreen();
         }
     }
-
     @Override
     public void renderScreen() {
         GameController.getInstance().getEngine().getSystem(SpawnSystem.class).setProcessing(true);
