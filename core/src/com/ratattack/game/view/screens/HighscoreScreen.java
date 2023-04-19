@@ -12,11 +12,13 @@ import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Button;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
+import com.ratattack.game.GameSettings;
 import com.ratattack.game.backend.DataHolderClass;
 import com.ratattack.game.backend.FirebaseInterface;
 import com.ratattack.game.model.HighscoreList;
 import com.ratattack.game.backend.Score;
 import com.ratattack.game.gamecontroller.GameController;
+import com.ratattack.game.model.Player;
 
 import java.util.Map;
 
@@ -122,6 +124,9 @@ public class HighscoreScreen implements Screen {
             @Override
             public void clicked(InputEvent inputEvent, float xpos, float ypos) {
                 //screencontext bytter screen vha state
+                GameSettings.ratSpawnrate = GameSettings.spawnRates[0];
+                Player.setBalance(0);
+                Player.setScore(0);
                 gameController.screenContext.changeScreen(nextScreen);
             }
         });
@@ -150,6 +155,8 @@ public class HighscoreScreen implements Screen {
 
     @Override
     public void dispose() {
+        batch.dispose();
+        stage.dispose();
 
     }
 }

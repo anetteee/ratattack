@@ -50,7 +50,6 @@ public class RenderSystem extends IteratingSystem {
         super.update(deltaTime);
     }
 
-
     @Override
     protected void processEntity(Entity entity, float deltaTime) {
         SpriteComponent spriteComponent = spriteMapper.get(entity);
@@ -113,7 +112,7 @@ public class RenderSystem extends IteratingSystem {
                     String state = gameController.screenContext.states.peek().toString();
                     String strippedState = state.substring(36, state.length() - 8);
 
-                    if(strippedState.contains("TutorialState")) {
+                    if(strippedState.contains("TutorialS")) {
                         gameController.screenContext.changeScreen("TUTORIALEND");
                     } else {
                         gameController.screenContext.changeScreen("HIGHSCORE");

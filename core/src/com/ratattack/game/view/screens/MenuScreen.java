@@ -40,8 +40,8 @@ public class MenuScreen implements Screen {
     private final Stage stage = gameController.getStage();
 
     public MenuScreen(FirebaseInterface FBIC, DataHolderClass dataHolderClass) {
-        _FBIC = FBIC;
-        _dataHolderClass = dataHolderClass;
+       _FBIC = FBIC;
+       _dataHolderClass = dataHolderClass;
 
         System.out.println(stage);
     }

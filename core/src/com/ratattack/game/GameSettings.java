@@ -4,6 +4,7 @@ public class GameSettings {
 
     // Constants for spawntime and lane number
     public static long ratSpawnrate = 4000;
+    public static long startRatSpawnRate = 4000;
     public static final long startGrandChildSpawnrate = 12000;
     public static final int gameLaneNr = 4;
     public static final int tutorialLaneNr = 2;
