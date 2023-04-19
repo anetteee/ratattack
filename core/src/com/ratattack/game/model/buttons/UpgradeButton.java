@@ -23,8 +23,8 @@ public class UpgradeButton extends Observer {
     boolean canAffordUpgrade = false;
     int nextPrice = 0;
 
-    Texture upgradeTexture = new Texture("purplebutton.png");
-    Texture notUpgradeTexture = new Texture("pinkbutton.png");
+    Texture upgradeTexture = new Texture("1upgradearrow.png");
+    Texture notUpgradeTexture = new Texture("2notupgradearrow.png");
     TextureRegionDrawable buttonUpgradeable = new TextureRegionDrawable(new TextureRegion(upgradeTexture));
     TextureRegionDrawable buttonNotUpgradeable = new TextureRegionDrawable(new TextureRegion(notUpgradeTexture));
 
@@ -32,9 +32,11 @@ public class UpgradeButton extends Observer {
     public UpgradeButton(int laneWidth, final int i) {
         id = i;
 
+        System.out.println("lanewidth = " + laneWidth);
+
         button = new Button(buttonNotUpgradeable);
-        button.setSize(20, 20);
-        button.setPosition(laneWidth * i + (float) (laneWidth - upgradeTexture.getWidth()) / 2, GameSettings.grandmotherLine);
+        button.setSize(laneWidth/3, laneWidth/3);
+        button.setPosition(laneWidth * i + (float) (laneWidth - upgradeTexture.getWidth() + upgradeTexture.getWidth()/10 ), GameSettings.grandmotherLine);
 
 
         button.addListener(new ClickListener() {

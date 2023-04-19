@@ -26,8 +26,9 @@ public class GrandmotherButton {
         id = i;
 
         button = new Button(new TextureRegionDrawable(new TextureRegion(grandMotherTexture)));
-        button.setSize(grandMotherTexture.getWidth(),   grandMotherTexture.getHeight());
-        button.setPosition(laneWidth*i + (float)(laneWidth-grandMotherTexture.getWidth())/2, GameSettings.grandmotherLine);
+        //button.setSize(grandMotherTexture.getWidth(),   grandMotherTexture.getHeight());
+        button.setSize((2*laneWidth)/3,   (2*laneWidth)/3);
+        button.setPosition(laneWidth*i + (float)(laneWidth-grandMotherTexture.getWidth())/4, GameSettings.grandmotherLine);
 
         strategy = new NormalBulletStrategy();
 

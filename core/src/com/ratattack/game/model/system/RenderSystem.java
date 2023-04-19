@@ -117,7 +117,7 @@ public class RenderSystem extends IteratingSystem {
             Texture texture = new Texture("levelup.png");
             for(int i = 0; i < GameSettings.showLevelUpMessageStartTime.length; i++) {
                     if ((timeElapsed > GameSettings.showLevelUpMessageStartTime[i]) && (timeElapsed < GameSettings.showLevelUpMessageEndTime[i])) {
-                        batch.draw(texture,200, 150, 2000, 2000);
+                        batch.draw(texture,(Gdx.graphics.getWidth()/2)-500, Gdx.graphics.getHeight()-800, 800, 700);
                     }
             }
         }

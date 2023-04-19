@@ -33,7 +33,7 @@ public class GameSettings {
     //Velocity constants
     public static final int freezeVelocity = -2;
     public static final int startSpeedRat = -3;
-    public static final int startSpeedGrandchild = -1;
+    public static final int startSpeedGrandchild = -10;
 
 
 
