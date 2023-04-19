@@ -114,10 +114,10 @@ public class RenderSystem extends IteratingSystem {
             velocity.y = GameSettings.ratSpeed[index];
 
             // Show feedback about level up to user
-            Texture texture = new Texture("levelup.png");
+            Texture texture = new Texture("levelupold.png");
             for(int i = 0; i < GameSettings.showLevelUpMessageStartTime.length; i++) {
                     if ((timeElapsed > GameSettings.showLevelUpMessageStartTime[i]) && (timeElapsed < GameSettings.showLevelUpMessageEndTime[i])) {
-                        batch.draw(texture,(Gdx.graphics.getWidth()/2)-500, Gdx.graphics.getHeight()-800, 800, 700);
+                        batch.draw(texture,200, 150, 2000, 2000);
                     }
             }
         }
