@@ -36,13 +36,15 @@ public class HighscoreScreen implements Screen {
     HighscoreList highscoreList;
     String userName;
 
-    Texture highscoretexture = new Texture("highscores2.png");
+    Texture highscoretexture = new Texture("blackhighscores.png");
+    Texture gameOvertexture = new Texture("blackgameover.png");
 
     FirebaseInterface _FBIC;
 
     Texture gotoMenuTexture = new Texture("backtomenu.png");
 
     private final Stage stage = gameController.getStage();
+    boolean titleGameOver;
 
     public HighscoreScreen(FirebaseInterface FBIC, DataHolderClass dataHolderClass) {
         fontText = new BitmapFont();
@@ -58,11 +60,13 @@ public class HighscoreScreen implements Screen {
 
         _FBIC = FBIC;
         highscoreList = new HighscoreList(_FBIC);
+        titleGameOver = false;
 
         //Hvis det nettopp har blitt spilt et spill er gameOver variabelen true, og scoren skal pushes til databasen
         if (gameController.getIsGameOver()) {
             highscoreList.submitHighscore(gameController.getPlayer().getName(), gameController.getPlayer().getScore());
             gameController.setIsGameOver(false);
+            titleGameOver =true;
         }
         highscoreList.fetchHighscores();
         //Ellers skal bare scorelisten vises
@@ -79,10 +83,17 @@ public class HighscoreScreen implements Screen {
         _dataHolderClass.PrintKeyValue();
 
         Button goToMenuScreenB = makeButton(gotoMenuTexture,5f,"MENU");
-        final Image title = new Image(highscoretexture);
+        final Image title;
+        System.out.println(gameController.getIsGameOver());
+        if (titleGameOver) {
+            title = new Image(gameOvertexture);
+        }
+        else {
+            title = new Image(highscoretexture);
+        }
         marginFromTopOfScreen = Gdx.graphics.getHeight()-500;
-        title.setSize(Gdx.graphics.getWidth()/3f, Gdx.graphics.getHeight()/3f);
-        title.setPosition(Gdx.graphics.getWidth()/2-(highscoretexture.getWidth()/3), Gdx.graphics.getHeight()-500);
+        title.setSize(Gdx.graphics.getWidth()/2f, Gdx.graphics.getHeight()/2f);
+        title.setPosition(Gdx.graphics.getWidth()/2-(highscoretexture.getWidth()/2), Gdx.graphics.getHeight()-500);
 
         stage.addActor(title);
         stage.addActor(goToMenuScreenB);
