@@ -50,6 +50,9 @@ public class GrandmotherButton {
         // Må inkludere prisen for oppgraderinga
         if (currentUpgrade != ShootingStrategy.strategies.length - 1) {
             currentUpgrade += 1;
+
+            button.getStyle().down = new TextureRegionDrawable(new TextureRegion(new Texture(ShootingStrategy.strategyTextures[currentUpgrade])));
+            button.getStyle().up = new TextureRegionDrawable(new TextureRegion(new Texture(ShootingStrategy.strategyTextures[currentUpgrade])));
             strategy = ShootingStrategy.strategies[currentUpgrade];
         }
     }
