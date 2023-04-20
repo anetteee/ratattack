@@ -60,7 +60,6 @@ public class UpgradeButton extends Observer {
                         canAffordUpgrade = false;
                     }
                     else { //Spilleren har råd til neste oppgradering
-                        System.out.println(upgradeButtonTextures[nextUpgrade]);
                         button.getStyle().down = buttonUpgradeable;
                         button.getStyle().up = buttonUpgradeable;
                     }
