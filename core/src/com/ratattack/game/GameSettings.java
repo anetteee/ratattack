@@ -5,7 +5,7 @@ public class GameSettings {
     // Constants for spawntime and lane number
     public static long ratSpawnrate = 4000;
     public static long startRatSpawnRate = 4000;
-    public static final long startGrandChildSpawnrate = 12000;
+    public static final long startGrandChildSpawnrate = 8000;
     public static final int gameLaneNr = 4;
     public static final int tutorialLaneNr = 2;
 
@@ -14,8 +14,8 @@ public class GameSettings {
 
 
     // Constants for adding difficulty to game
-    public static final int[] ratSpeed = {-3, -7, -10, -15};
-    public static final int[] spawnRates = {4000, 3000, 2500, 2000};
+    public static final int[] ratSpeed = {-3, -7, -11, -15};
+    public static final int[] spawnRates = {10000, 8000, 4000, 2000};
     public static final int[] changeLevelScore = {20, 50, 70, 100};
 
     //Setup for rendering on screen

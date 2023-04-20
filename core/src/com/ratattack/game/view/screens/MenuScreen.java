@@ -30,10 +30,10 @@ public class MenuScreen implements Screen {
 
     Texture title = new Texture("ratattackbestlogo.png");
     Texture background = new Texture("darkgreenbackground.png");
+
     Texture playGameTexture = new Texture("2play.png");
     Texture watchTutorialTexture = new Texture("2tutorial.png");
-    Texture highscoreTexture = new Texture("2highscore.png");
-
+    Texture highscoreTexture = new Texture("2highscores.png");
     int width = Gdx.graphics.getWidth();
     int height = Gdx.graphics.getHeight();
 
@@ -52,6 +52,7 @@ public class MenuScreen implements Screen {
         titleImage.setSize(title.getWidth()*1.6f,  title.getHeight()*1.6f);
         titleImage.setPosition(Gdx.graphics.getWidth()/2 - title.getWidth()/2f, Gdx.graphics.getHeight()/2 - 600);
 
+        //Button highscoreButton = makeButton(highscoreTexture,5f,"HIGHSCORE");
         Button highscoreButton = makeButton(highscoreTexture,5f, 3.5f, Gdx.graphics.getWidth()/5f, Gdx.graphics.getHeight()/3f,"HIGHSCORE");
         Button playGameButton = makeButton(playGameTexture,2f,3f,"NAME");
         Button watchTutorialButton = makeButton(watchTutorialTexture,1.25f,3.5f, Gdx.graphics.getWidth()/5f, Gdx.graphics.getHeight()/3f, "GAMERULES");

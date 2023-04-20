@@ -48,6 +48,11 @@ public class UpgradeButton extends Observer {
                     Player.setBalance(Player.getBalance() - ShootingStrategy.prices[nextUpgrade]);
                     nextUpgrade = min(nextUpgrade +1 ,4);
 
+                    //Endrer tekstur på knappen
+                    if (nextUpgrade < upgradeButtonTextures.length) {
+                        buttonUpgradeable = new TextureRegionDrawable(new TextureRegion(new Texture(upgradeButtonTextures[nextUpgrade])));
+                    }
+
                     //If the player can not afford the next upgrade
                     if (!(ShootingStrategy.prices[nextUpgrade] < Player.getBalance())) {
                         button.getStyle().down = buttonNotUpgradeable;
@@ -55,7 +60,6 @@ public class UpgradeButton extends Observer {
                         canAffordUpgrade = false;
                     }
                     else { //Spilleren har råd til neste oppgradering
-                        buttonUpgradeable = new TextureRegionDrawable(new TextureRegion(new Texture(upgradeButtonTextures[nextUpgrade])));
                         button.getStyle().down = buttonUpgradeable;
                         button.getStyle().up = buttonUpgradeable;
                     }
@@ -69,7 +73,7 @@ public class UpgradeButton extends Observer {
 
     @Override
     public void update() {
-        if (!canAffordUpgrade && (ShootingStrategy.prices[nextUpgrade] < Player.getBalance())) {
+        if (!canAffordUpgrade && (ShootingStrategy.prices[nextUpgrade] < Player.getBalance()) && (nextUpgrade < upgradeButtonTextures.length)) {
             button.getStyle().down = buttonUpgradeable;
             button.getStyle().up = buttonUpgradeable;
             canAffordUpgrade = true;
