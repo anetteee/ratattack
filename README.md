@@ -17,15 +17,11 @@ Check if the device has an Android version with API higher than or equal to 31.
 - README.md
 
 .
-
-├── build                 
-├── docs                    
+├── android                 
+├── core                    
 ├── src                     
-├── test                    
-├── tools                  
-├── LICENSE
+├── desktop                    
+├── gradle Scripts
 └── README.md
-android
-|
-- android folder
-- core folder
+
+
