@@ -32,7 +32,7 @@ public class MenuScreen implements Screen {
 
     Texture playGameTexture = new Texture("2play.png");
     Texture watchTutorialTexture = new Texture("2tutorial.png");
-    Texture highscoreTexture = new Texture("2highscore.png");
+    Texture highscoreTexture = new Texture("2highscores.png");
     int width = Gdx.graphics.getWidth();
     int height = Gdx.graphics.getHeight();
 
