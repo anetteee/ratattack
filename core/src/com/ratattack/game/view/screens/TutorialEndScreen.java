@@ -20,11 +20,10 @@ public class TutorialEndScreen implements Screen {
 
     GameController gameController = GameController.getInstance();
     SpriteBatch batch = GameController.getInstance().getBatch();
-    Texture background = new Texture("greenbackground.png");
-    Texture playGameTexture = new Texture("playgamebutton.png");
-    Texture watchTutorialTexture = new Texture("watchtutorialbutton.png");
-    Texture goToMenuTexture = new Texture("gotomenubutton.png");
-
+    Texture background = new Texture("darkgreenbackground.png");
+    Texture playGameTexture = new Texture("2play.png");
+    Texture watchTutorialTexture = new Texture("2tutorial.png");
+    Texture goToHighscoreTexture = new Texture("2highscores.png");
     Button goToTutorialB;
     Button goToMenuScreenB;
     Button goToPlayGameB;
@@ -33,21 +32,9 @@ public class TutorialEndScreen implements Screen {
     private final Stage stage = gameController.getStage();
 
     public TutorialEndScreen() {
+        //This is to
+        gameController.setIsGameOver(false);
         System.out.println(stage);
-    }
-
-    private Button makeButton(Texture texture, float xPos, final String nextScreen){
-        Button b = new Button(new TextureRegionDrawable(new TextureRegion(texture)));
-        b.setSize(Gdx.graphics.getWidth()/4f  ,   Gdx.graphics.getHeight()/2f);
-        b.setPosition(Gdx.graphics.getWidth() / xPos - b.getWidth()/2f,Gdx.graphics.getHeight() / 10f*3f - b.getHeight() / 2f);
-        b.addListener(new ClickListener() {
-            @Override
-            public void clicked(InputEvent inputEvent, float xpos, float ypos) {
-                //screencontext bytter screen vha state
-                gameController.screenContext.changeScreen(nextScreen);
-            }
-        });
-        return b;
     }
 
     @Override
@@ -66,7 +53,7 @@ public class TutorialEndScreen implements Screen {
             }
         });
 
-        goToMenuScreenB = new Button(new TextureRegionDrawable(new TextureRegion(goToMenuTexture)));
+        goToMenuScreenB = new Button(new TextureRegionDrawable(new TextureRegion(goToHighscoreTexture)));
         goToMenuScreenB.setSize(Gdx.graphics.getWidth()/4f  ,   Gdx.graphics.getHeight()/2f);
         goToMenuScreenB.setPosition(Gdx.graphics.getWidth() / 5f - goToMenuScreenB.getWidth()/2f,Gdx.graphics.getHeight() / 10f*3f - goToMenuScreenB.getHeight() / 2f);
         goToMenuScreenB.addListener(new ClickListener() {
@@ -76,7 +63,7 @@ public class TutorialEndScreen implements Screen {
                 GameSettings.ratSpawnrate = GameSettings.spawnRates[0];
                 Player.setBalance(0);
                 Player.setScore(0);
-                gameController.screenContext.changeScreen("MENU");
+                gameController.screenContext.changeScreen("HIGHSCORE");
             }
         });
 
