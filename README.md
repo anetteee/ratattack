@@ -17,6 +17,7 @@ Check if the device has an Android version with API higher than or equal to 31.
 - README.md
 
 .
+
 ├── build                 
 ├── docs                    
 ├── src                     
