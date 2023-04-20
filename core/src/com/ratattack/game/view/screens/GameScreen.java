@@ -24,12 +24,12 @@ public class GameScreen implements Screen {
      * TODO: LEGG TIL KOMMENTARER
      * */
     private final GameController gameController = GameController.getInstance();
-    Texture goToMenuTexture = new Texture("goToMenu.png");
-    Texture pauseScreenTexture = new Texture("purplebutton.png");
+    Texture goToMenuTexture = new Texture("smallmenubutton.png");
+    Texture pauseScreenTexture = new Texture("paused.png");
     Image coin = new Image(new TextureRegion(new Texture("coins.png")));
-    Image navBar = new Image(new TextureRegion(new Texture("informationBox.png")));
-    TextureRegionDrawable pauseTexture = new TextureRegionDrawable(new TextureRegion(new Texture("watchtutorialbutton.png")));
-    TextureRegionDrawable playTexture = new TextureRegionDrawable(new TextureRegion(new Texture("pinkbutton.png")));
+    Image navBar = new Image(new TextureRegion(new Texture("scarygreeninformationbox.png")));
+    TextureRegionDrawable pauseTexture = new TextureRegionDrawable(new TextureRegion(new Texture("smallpausebutton.png")));
+    TextureRegionDrawable playTexture = new TextureRegionDrawable(new TextureRegion(new Texture("smallplaybutton.png")));
     Button playPauseButton;
     Button goToMenuScreenB;
     private final Stage stage = gameController.getStage();
@@ -43,8 +43,13 @@ public class GameScreen implements Screen {
         gameController.play();
 
         goToMenuScreenB = new Button(new TextureRegionDrawable(new TextureRegion(goToMenuTexture)));
-        goToMenuScreenB.setSize(Gdx.graphics.getWidth()/10f  ,   Gdx.graphics.getHeight()/7f);
-        goToMenuScreenB.setPosition(Gdx.graphics.getWidth() / 2f - goToMenuScreenB.getWidth()/2f,Gdx.graphics.getHeight() / 10f*3f - goToMenuScreenB.getHeight() / 2f);
+        //goToMenuScreenB.setSize(Gdx.graphics.getWidth()/10f  ,   Gdx.graphics.getHeight()/7f);
+        goToMenuScreenB.setSize(goToMenuTexture.getWidth()-30 , goToMenuTexture.getHeight()-30);
+        //goToMenuScreenB.setPosition(Gdx.graphics.getWidth() / 2f - goToMenuScreenB.getWidth()/2f,Gdx.graphics.getHeight() / 10f*3f - goToMenuScreenB.getHeight() / 2f);
+
+
+
+        goToMenuScreenB.setPosition( 350,Gdx.graphics.getHeight() - 140);
         goToMenuScreenB.addListener(new ClickListener() {
             @Override
             public void clicked(InputEvent inputEvent, float xpos, float ypos) {
@@ -57,8 +62,12 @@ public class GameScreen implements Screen {
         });
 
         playPauseButton = new Button(pauseTexture);
+
+
         playPauseButton.setSize(Gdx.graphics.getWidth()/20f  ,   Gdx.graphics.getHeight()/10f);
-        playPauseButton.setPosition(Gdx.graphics.getWidth() / 30f - playPauseButton.getWidth()/2f,Gdx.graphics.getHeight() / 1.05f - playPauseButton.getHeight() / 2f);
+        //e det en grunn til at det skrives slik:?
+        //playPauseButton.setPosition(Gdx.graphics.getWidth() / 30f - playPauseButton.getWidth()/2f,Gdx.graphics.getHeight() / 1.05f - playPauseButton.getHeight() / 2f);
+        playPauseButton.setPosition(Gdx.graphics.getWidth() / 30f - playPauseButton.getWidth()/2f,Gdx.graphics.getHeight() - playPauseButton.getHeight()-10);
         playPauseButton.addListener(new ClickListener() {
             @Override
             public void clicked(InputEvent inputEvent, float xpos, float ypos) {

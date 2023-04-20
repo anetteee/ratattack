@@ -4,6 +4,7 @@ import com.badlogic.ashley.core.Entity;
 import com.badlogic.ashley.core.Family;
 import com.badlogic.ashley.systems.IteratingSystem;
 
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.ratattack.game.GameSettings;
@@ -18,7 +19,7 @@ public class LevelupSystem extends IteratingSystem {
     int level = 0;
 
     double timeSinceLevelup = Double.POSITIVE_INFINITY;
-    Texture texture = new Texture("levelup.png");
+    Texture texture = new Texture("r.png");
 
     SpriteBatch batch = GameController.getInstance().getBatch();
 
@@ -48,7 +49,7 @@ public class LevelupSystem extends IteratingSystem {
         //Show feedback to the user
         if(timeSinceLevelup < 2) {
             batch.begin();
-            batch.draw(texture,200, 150, 2000, 2000);
+            batch.draw(texture, (Gdx.graphics.getWidth()/2)-texture.getWidth()/2, (Gdx.graphics.getHeight()/2)-texture.getHeight()/2, texture.getWidth(),texture.getHeight());
             batch.end();
         }
     }
