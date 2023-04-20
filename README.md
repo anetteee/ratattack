@@ -17,11 +17,11 @@ Check if the device has an Android version with API higher than or equal to 31.
 - README.md
 
 .
-├── build                   # Compiled files (alternatively `dist`)
-├── docs                    # Documentation files (alternatively `doc`)
-├── src                     # Source files (alternatively `lib` or `app`)
-├── test                    # Automated tests (alternatively `spec` or `tests`)
-├── tools                   # Tools and utilities
+├── build                 
+├── docs                    
+├── src                     
+├── test                    
+├── tools                  
 ├── LICENSE
 └── README.md
 android
