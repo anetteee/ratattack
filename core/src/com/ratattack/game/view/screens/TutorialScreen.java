@@ -19,16 +19,18 @@ import com.ratattack.game.GameSettings;
 import com.ratattack.game.gamecontroller.GameController;
 import com.ratattack.game.model.Player;
 
-public class TutorialScreen implements Screen {/***
+public class TutorialScreen implements Screen {
+
+ /***
  * TODO: LEGG TIL KOMMENTARER
  * */
 private final GameController gameController = GameController.getInstance();
-    Texture goToMenuTexture = new Texture("goToMenu.png");
-    Texture pauseScreenTexture = new Texture("purplebutton.png");
+    Texture goToMenuTexture = new Texture("quit.png");
+    Texture pauseScreenTexture = new Texture("paused.png");
     Image coin = new Image(new TextureRegion(new Texture("coins.png")));
-    Image navBar = new Image(new TextureRegion(new Texture("informationBox.png")));
-    TextureRegionDrawable pauseTexture = new TextureRegionDrawable(new TextureRegion(new Texture("watchtutorialbutton.png")));
-    TextureRegionDrawable playTexture = new TextureRegionDrawable(new TextureRegion(new Texture("pinkbutton.png")));
+    Image navBar = new Image(new TextureRegion(new Texture("scarygreeninformationbox.png")));
+    TextureRegionDrawable pauseTexture = new TextureRegionDrawable(new TextureRegion(new Texture("smallpausebutton.png")));
+    TextureRegionDrawable playTexture = new TextureRegionDrawable(new TextureRegion(new Texture("smallplaybutton.png")));
     Button playPauseButton;
     Button goToMenuScreenB;
     private final Stage stage = gameController.getStage();
@@ -42,9 +44,13 @@ private final GameController gameController = GameController.getInstance();
         gameController.play();
 
         goToMenuScreenB = new Button(new TextureRegionDrawable(new TextureRegion(goToMenuTexture)));
-        goToMenuScreenB.setSize(Gdx.graphics.getWidth()/10f  ,   Gdx.graphics.getHeight()/7f);
-        goToMenuScreenB.setPosition(Gdx.graphics.getWidth() / 2f - goToMenuScreenB.getWidth()/2f,Gdx.graphics.getHeight() / 10f*3f - goToMenuScreenB.getHeight() / 2f);
-        goToMenuScreenB.addListener(new ClickListener() {
+        goToMenuScreenB.setSize(goToMenuTexture.getWidth(), goToMenuTexture.getHeight()-30);
+        //goToMenuScreenB.setPosition(Gdx.graphics.getWidth() / 2f - goToMenuScreenB.getWidth()/2f,Gdx.graphics.getHeight() / 10f*3f - goToMenuScreenB.getHeight() / 2f);
+
+
+        goToMenuScreenB.setPosition( Gdx.graphics.getWidth()-goToMenuTexture.getWidth()-25,Gdx.graphics.getHeight() - 140);
+        goToMenuScreenB.addListener(
+                new ClickListener() {
             @Override
             public void clicked(InputEvent inputEvent, float xpos, float ypos) {
                 //screencontext bytter screen vha state
@@ -56,8 +62,12 @@ private final GameController gameController = GameController.getInstance();
         });
 
         playPauseButton = new Button(pauseTexture);
+
+
         playPauseButton.setSize(Gdx.graphics.getWidth()/20f  ,   Gdx.graphics.getHeight()/10f);
-        playPauseButton.setPosition(Gdx.graphics.getWidth() / 30f - playPauseButton.getWidth()/2f,Gdx.graphics.getHeight() / 1.05f - playPauseButton.getHeight() / 2f);
+        //e det en grunn til at det skrives slik:?
+        //playPauseButton.setPosition(Gdx.graphics.getWidth() / 30f - playPauseButton.getWidth()/2f,Gdx.graphics.getHeight() / 1.05f - playPauseButton.getHeight() / 2f);
+        playPauseButton.setPosition(Gdx.graphics.getWidth() / 30f - playPauseButton.getWidth()/2f,Gdx.graphics.getHeight() - playPauseButton.getHeight()-10);
         playPauseButton.addListener(new ClickListener() {
             @Override
             public void clicked(InputEvent inputEvent, float xpos, float ypos) {
@@ -88,7 +98,7 @@ private final GameController gameController = GameController.getInstance();
             }
         });
 
-        coin.setPosition(Gdx.graphics.getWidth() / 1.2f, Gdx.graphics.getHeight() / 1.0455f - (Gdx.graphics.getHeight()/15f)/ 2.2f);
+        coin.setPosition(Gdx.graphics.getWidth()-400, Gdx.graphics.getHeight() - 130);
         coin.setSize(Gdx.graphics.getWidth()/20f, Gdx.graphics.getHeight()/15f);
         navBar.setPosition(Gdx.graphics.getWidth() / 1.1f - Gdx.graphics.getWidth(), Gdx.graphics.getHeight() / 1.045f - (Gdx.graphics.getHeight()/7f) / 2f);
         navBar.setSize(Gdx.graphics.getWidth() * 1.2f, Gdx.graphics.getHeight()/7f);
@@ -160,8 +170,8 @@ private final GameController gameController = GameController.getInstance();
     }
 
     private Label makeScore(){
-        float xPositionScore = Gdx.graphics.getWidth()/10f;
-        float yPositionScore = Gdx.graphics.getHeight()/1.08f;
+        float xPositionScore = 200;
+        float yPositionScore = Gdx.graphics.getHeight() - 130;
         BitmapFont fontScore = new BitmapFont();
         fontScore.getData().setScale(5);
         Label.LabelStyle labelStyleScore = new Label.LabelStyle();
@@ -176,8 +186,8 @@ private final GameController gameController = GameController.getInstance();
     }
 
     private Label makeBalance(){
-        float xPositionBalance = Gdx.graphics.getWidth()/1.1f;
-        float yPositionBalance = Gdx.graphics.getHeight()/1.08f;
+        float xPositionBalance = Gdx.graphics.getWidth() - 600;
+        float yPositionBalance = Gdx.graphics.getHeight() - 130;
         BitmapFont fontBalance = new BitmapFont();
         fontBalance.getData().setScale(5);
         Label.LabelStyle labelStyleBalance = new Label.LabelStyle();
