@@ -17,8 +17,9 @@ public class GameRulesScreen implements Screen {
     private final GameController gameController = GameController.getInstance();
 
     SpriteBatch batch = GameController.getInstance().getBatch();
-    Texture background = new Texture("mainbackground2.png");
-    Texture watchTutorialTexture = new Texture("watchtutorialbutton.png");
+    Texture background = new Texture("gamerules.png");
+    Texture watchTutorialTexture = new Texture("playtutorial.png");
+    Texture goBackToMenuTexture = new Texture("6menu.png");
 
     int width = Gdx.graphics.getWidth();
     int height = Gdx.graphics.getHeight();
@@ -30,25 +31,37 @@ public class GameRulesScreen implements Screen {
 
     @Override
     public void show() {
-        final Image title = new Image(new Texture("newgamerules.png"));
-        title.setSize(Gdx.graphics.getWidth()/2f,  Gdx.graphics.getHeight()/2f);
-        title.setPosition(Gdx.graphics.getWidth()/2f - title.getWidth()/2f, Gdx.graphics.getHeight()/4);
 
         final Image textBackground = new Image(background);
         textBackground.setSize(width, height);
         textBackground.setPosition(0, 0);
 
-        Button goToTutorialScreenB = makeButton(watchTutorialTexture,5f,"TUTORIAL");
+        Button goToTutorialScreenB = makeButton(watchTutorialTexture,Gdx.graphics.getWidth()-(watchTutorialTexture.getWidth()*1.5f)-50, 150,"TUTORIAL");
+        Button goBackToMenuScreenB = makeButton(goBackToMenuTexture,50, 150,"MENU");
 
         stage.addActor(textBackground);
-        stage.addActor(title);
         stage.addActor(goToTutorialScreenB);
+        stage.addActor(goBackToMenuScreenB);
 
     }
     private Button makeButton(Texture texture, float xPos, final String nextScreen){
         Button b = new Button(new TextureRegionDrawable(new TextureRegion(texture)));
-        b.setSize(Gdx.graphics.getWidth()/10f  ,   Gdx.graphics.getHeight()/7f);
+        b.setSize(Gdx.graphics.getWidth()/10  ,   Gdx.graphics.getHeight()/7f);
         b.setPosition(Gdx.graphics.getWidth() / xPos - b.getWidth()/2f,Gdx.graphics.getHeight() / 10f*3f - b.getHeight() / 2f);
+        b.addListener(new ClickListener() {
+            @Override
+            public void clicked(InputEvent inputEvent, float xpos, float ypos) {
+                //screencontext bytter screen vha state
+                gameController.screenContext.changeScreen(nextScreen);
+            }
+        });
+        return b;
+    }
+
+    private Button makeButton(Texture texture, float xPos, float yPos, final String nextScreen){
+        Button b = new Button(new TextureRegionDrawable(new TextureRegion(texture)));
+        b.setSize(texture.getWidth()*1.5f,texture.getHeight()*1.5f);
+        b.setPosition(xPos,Gdx.graphics.getHeight() - yPos);
         b.addListener(new ClickListener() {
             @Override
             public void clicked(InputEvent inputEvent, float xpos, float ypos) {

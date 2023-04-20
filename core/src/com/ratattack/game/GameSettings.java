@@ -14,7 +14,7 @@ public class GameSettings {
 
 
     // Constants for adding difficulty to game
-    public static final int[] ratSpeed = {-1, -2, -3, -4};
+    public static final int[] ratSpeed = {-10, -2, -3, -4};
     public static final int[] spawnRates = {10000, 10000, 10000, 10000};
     public static final int[] changeLevelScore = {20, 50, 70, 100};
 
