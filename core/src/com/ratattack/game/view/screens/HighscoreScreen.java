@@ -65,7 +65,7 @@ public class HighscoreScreen implements Screen {
 
         //Hvis det nettopp har blitt spilt et spill er gameOver variabelen true, og scoren skal pushes til databasen
         if (gameController.getIsGameOver()) {
-            highscoreList.submitHighscore(gameController.getPlayer().getName(), gameController.getPlayer().getScore());
+            //highscoreList.submitHighscore(gameController.getPlayer().getName(), gameController.getPlayer().getScore());
             gameController.setIsGameOver(false);
             titleGameOver =true;
         }
