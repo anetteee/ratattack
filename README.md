@@ -6,21 +6,17 @@ Project in TDT4240 Software Architecture
 To run the application you will need Android Studio(or a similar IDE). 
 
 ### Cloning the project
-
-`git clone https://gitlab.stud.idi.ntnu.no/ingval/ratattack.git`
-
-[![Git Clone](https://img.shields.io/badge/Git-Clone-blue?style=flat-square&logo=git)](git clone https://gitlab.stud.idi.ntnu.no/ingval/ratattack.git)
-
-[![Git Clone](https://img.shields.io/badge/Git-Clone-blue?style=flat-square&logo=git)](git clone https://gitlab.stud.idi.ntnu.no/ingval/ratattack.git)
+clone the project to a folder of your chosing:
 
 <pre><code id="git-clone-command">git clone https://gitlab.stud.idi.ntnu.no/ingval/ratattack.git</code></pre>
-<button class="btn" data-clipboard-target="#git-clone-command">Copy</button>
+<button class="btn" data-clipboard-target="#git-clone-command"></button>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.8/clipboard.min.js"></script>
 <script>
     var clipboard = new ClipboardJS('.btn');
 </script>
 
+Open Android studios and choose Open an existing Android Studio project. Navigate and choose the cloned projectc.
 
 ## Compiling and running
 
@@ -40,6 +36,8 @@ To run the application you can either connect an android device or use an androi
 
 ### Running with emulator
 
+- Open the AVD manager in the top drop down menu.
+- Choose +Create Virtual Device
 
 
 ## Structure
@@ -81,3 +79,11 @@ The files are structured according to the Model-View-Controller pattern. The mod
             ├── system
             └── ...
 </pre>
+
+## Developed by:
+- Ingebjørg Tørresen
+- Ingvild Almåsbakk
+- Eva Anette Johansen
+- Tuva Djupvik
+- Marthe Thorbjørnsen
+- Rebecca Ljøen Strandkleiv
