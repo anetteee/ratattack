@@ -67,7 +67,12 @@ public class RenderSystem extends IteratingSystem {
         Texture texture = spriteComponent.sprite.getTexture();
         if (entity.getComponent(HealthComponent.class) != null) {
             BitmapFont font = new BitmapFont();
-            font.setColor(Color.RED);
+            if(entity.getComponent(BalanceComponent.class) != null){
+                font.setColor(Color.GREEN);
+            }
+            else {
+                font.setColor(Color.RED);
+            }
             font.getData().setScale(5);
             String s = Integer.toString(entity.getComponent(HealthComponent.class).getHealth());
             font.draw(gameController.getBatch(),s, positionComponent.x+215, positionComponent.y+200);
