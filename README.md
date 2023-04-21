@@ -18,7 +18,7 @@ The project are structure as shown in the tree below.
 </pre>
 
 ### Android folder
-The android folder contains the files AndroidinterfaceClass and androidLauncher wich contains logic for connecting to the realtime firebase database. The same folder also contains the assets folder, with images used in the design of the application. 
+The android folder contains the files *AndroidinterfaceClass* and *androidLauncher* wich contains logic for connecting to the realtime firebase database. The same folder also contains the *assets* folder, with images used in the design of the application. 
 
 ### Core folder
 <pre> 
@@ -31,12 +31,11 @@ The android folder contains the files AndroidinterfaceClass and androidLauncher 
 │           ├── model            
             ├── view
             ├── GameSettings
-            ├── Highscore
             └── RatAttack
 </pre>
-The core folder contains the folders backend, gamecontroller, model and view in addition to the files GameSettings and RatAttack. The backend folder contains logic for fetching and submitting scores to the database.
+The *core* folder contains the folders *backend*, *gamecontroller*, *model* and view in addition to the files *GameSettings* and *RatAttack*. The *backend* folder contains logic for fetching and submitting scores to the database.
 
-The files are structured according to the Model-View-Controller pattern. The model folder is structured as shown in the tree below. The logic for the buttons used to play the game is placed in the buttons folder. The components is also placed in a seperate folder. The strategy pattern logic is placed in the which is used to control the different types of bullets is placed in the ShootingStrategy folder. The different systems such as the collision- and the rendersystem is placed in the system folder.
+The files are structured according to the Model-View-Controller pattern. The model folder is structured as shown in the tree below. The logic for the buttons used to play the game is placed in the buttons folder. The components are also placed in a seperate folder. The strategy pattern logic, which is used to control the different types of bullets, is placed in the *ShootingStrategy* folder. The different systems such as the collision- and the rendersystem is placed in the *system* folder.
 <pre> 
 .      ...
 └── ... ├──model 
