@@ -10,6 +10,7 @@ import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.utils.TimeUtils;
 import com.ratattack.game.GameSettings;
 import com.ratattack.game.gamecontroller.GameController;
+import com.ratattack.game.model.ecs.GameWorld;
 import com.ratattack.game.model.ecs.components.BalanceComponent;
 import com.ratattack.game.model.ecs.components.BoundsComponent;
 import com.ratattack.game.model.ecs.components.HealthComponent;
@@ -55,13 +56,7 @@ public class SpawnSystem extends IteratingSystem {
 
     private void spawnRat() {
 
-        Entity rat = new Entity();
-        rat.add(new SpriteComponent());
-        rat.add(new VelocityComponent());
-        rat.add(new PositionComponent());
-        rat.add(new HealthComponent());
-        rat.add(new RectangleBoundsComponent());
-        rat.add(new BulletEffectComponent());
+        Entity rat = GameController.getInstance().getAshleyWorld().createRat();
 
         Texture texture = new Texture("rat.png");
         rat.getComponent(SpriteComponent.class).sprite = new Sprite(texture);
@@ -86,19 +81,11 @@ public class SpawnSystem extends IteratingSystem {
         bounds.setSize(2*(texture.getWidth()/3), (texture.getHeight()));
         bounds.setCenter(position.x, position.y);
         rat.getComponent(HealthComponent.class).setHealth(GameSettings.ratStartHealth);
-
-        getEngine().addEntity(rat);
     }
 
 
     private void spawnGrandChild() {
-        Entity grandChildEntity = new Entity();
-        grandChildEntity.add(new SpriteComponent());
-        grandChildEntity.add((new VelocityComponent()));
-        grandChildEntity.add(new PositionComponent());
-        grandChildEntity.add(new HealthComponent());
-        grandChildEntity.add(new BalanceComponent());
-        grandChildEntity.add(new RectangleBoundsComponent());
+        Entity grandChildEntity = GameController.getInstance().getAshleyWorld().createGrandChild();
 
         //Add position, velocity, health, balance and sprite
         Texture texture = new Texture("grandchild.png");
@@ -126,7 +113,5 @@ public class SpawnSystem extends IteratingSystem {
 
         HealthComponent health = healthMapper.get(grandChildEntity);
         health.setHealth(GameSettings.grandChildStartHealth);
-
-        getEngine().addEntity(grandChildEntity);
     }
 }
