@@ -2,6 +2,8 @@
 
 Project in TDT4240 Software Architecture
 
+![Logo](assets/ratattackbestlogo.png)
+
 ## Installation 
 To run the application you will need Android Studio(or a similar IDE). 
 
