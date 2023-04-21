@@ -68,7 +68,6 @@ public class CollisionSystem extends IteratingSystem {
                 //Legg inn sjekk av om kula har en powerup, og apply effekten til entiteten
 
                 if (bulletEffect.getEffect().equals("FREEZE")) {
-
                     VelocityComponent velocity = velocityMapper.get(hittableEntity);
                     velocity.y = GameSettings.freezeVelocity;
                 }
