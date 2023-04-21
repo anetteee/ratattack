@@ -13,7 +13,6 @@ To run the application you will need Android Studio(or a similar IDE).
 
 [![Git Clone](https://img.shields.io/badge/Git-Clone-blue?style=flat-square&logo=git)](git clone https://gitlab.stud.idi.ntnu.no/ingval/ratattack.git)
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.8/clipboard.min.js"></script>
 <pre><code id="git-clone-command">git clone https://gitlab.stud.idi.ntnu.no/ingval/ratattack.git</code></pre>
 <button class="btn" data-clipboard-target="#git-clone-command">Copy</button>
 
@@ -21,6 +20,7 @@ To run the application you will need Android Studio(or a similar IDE).
 <script>
     var clipboard = new ClipboardJS('.btn');
 </script>
+
 
 ## Compiling and running
 
