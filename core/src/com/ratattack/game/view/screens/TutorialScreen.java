@@ -85,6 +85,9 @@ private final GameController gameController = GameController.getInstance();
                     stage.addActor(score);
                     stage.addActor(goToMenuScreenB);
                     stage.addActor(playPauseButton);
+                    stage.addActor(scoreInfoImage);
+                    stage.addActor(balanceInfoImage);
+                    stage.addActor(clickGrandmaImage);
                     for (int i = 0; i < GameController.getInstance().field.grandmaButtons.size(); i++) {
                         stage.addActor(GameController.getInstance().field.grandmaButtons.get(i).getButton());
                         stage.addActor(GameController.getInstance().field.upgradeButtons.get(i).getButton());
