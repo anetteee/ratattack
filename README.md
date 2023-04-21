@@ -3,7 +3,7 @@ krav:
 Also, include a readme file that explains the structure and how to compile/run the project.
 
 ## Compiling and running the application
-Check if the device has an Android version with API higher than or equal to 31.
+Make sure that the device or emulator has an Android version with API higher than or equal to 31.
 
 
 ## Structure
