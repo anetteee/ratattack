@@ -3,9 +3,9 @@ package com.ratattack.game;
 public class GameSettings {
 
     // Constants for spawntime and lane number
-    public static long ratSpawnrate = 4000;
-    public static long startRatSpawnRate = 4000;
-    public static final long startGrandChildSpawnrate = 8000;
+    public static long ratSpawnrate = 8000;
+    public static long startRatSpawnRate = 8000;
+    public static final long startGrandChildSpawnrate = 10000;
     public static final int gameLaneNr = 4;
     public static final int tutorialLaneNr = 2;
 
@@ -15,8 +15,8 @@ public class GameSettings {
 
     // Constants for adding difficulty to game
     public static final int[] ratSpeed = {-3, -7, -11, -15};
-    public static final int[] spawnRates = {10000, 8000, 4000, 2000};
-    public static final int[] changeLevelScore = {20, 50, 70, 100};
+    public static final int[] spawnRates = {8000, 6000, 4000, 2000};
+    public static final int[] changeLevelScore = {100, 200, 300, 400};
 
     //Setup for rendering on screen
     public static int grandmotherLine = 20;

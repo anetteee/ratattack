@@ -15,6 +15,8 @@ import com.ratattack.game.gamecontroller.Observer;
 import com.ratattack.game.model.Player;
 import com.ratattack.game.model.shootingStrategy.ShootingStrategy;
 
+import java.util.zip.ZipEntry;
+
 public class UpgradeButton extends Observer {
 
     Button button;
@@ -73,10 +75,15 @@ public class UpgradeButton extends Observer {
 
     @Override
     public void update() {
-        if (!canAffordUpgrade && (ShootingStrategy.prices[nextUpgrade] < Player.getBalance()) && (nextUpgrade < upgradeButtonTextures.length)) {
+        if (!canAffordUpgrade && (ShootingStrategy.prices[nextUpgrade] <= Player.getBalance()) && (nextUpgrade < upgradeButtonTextures.length)) {
             button.getStyle().down = buttonUpgradeable;
             button.getStyle().up = buttonUpgradeable;
             canAffordUpgrade = true;
+        }
+        if(ShootingStrategy.prices[nextUpgrade] > Player.getBalance()) {
+            button.getStyle().down = buttonNotUpgradeable;
+            button.getStyle().up = buttonNotUpgradeable;
+            canAffordUpgrade = false;
         }
     }
 
