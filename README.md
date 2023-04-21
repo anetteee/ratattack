@@ -1,9 +1,25 @@
 # RATATTACK
+
+Project in TDT4240 Software Architecture
 krav:
 Also, include a readme file that explains the structure and how to compile/run the project.
 
-## Compiling and running the application
-Make sure that the device or emulator has an Android version with API higher than or equal to 31.
+## Compiling and running
+To run the application you can either connect an android device or use an android emulator. Make sure that the device or emulator has an Android version with API higher than or equal to 31.
+
+### Running on android device
+
+-  Connect your Android device to your computer via USB cable. Make sure that your device has developer mode enabled and USB debugging enabled.
+
+- Open the project in Android Studio. Sync the project with gradle, build and run the project.
+
+- Select your device in the "Select Deployment Target" dialog box and click "OK".
+
+- Install the application and click "OK" to proceed.
+
+- Once the application has been installed, it will automatically launch on your device. You can now use your application on your Android device.
+
+### Running with emulator
 
 
 ## Structure
