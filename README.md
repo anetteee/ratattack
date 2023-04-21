@@ -16,7 +16,7 @@ clone the project to a folder of your chosing:
     var clipboard = new ClipboardJS('.btn');
 </script>
 
-Open Android studios and choose Open an existing Android Studio project. Navigate and choose the cloned projectc.
+Open Android studios and choose Open an existing Android Studio project. Navigate and choose the cloned project.
 
 ## Compiling and running
 
