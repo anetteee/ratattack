@@ -1,6 +1,4 @@
-# RATATTACK
-
-Project in TDT4240 Software Architecture
+# RATATTACK - Project in TDT4240 Software Architecture
 
 ![Logo](assets/readme/readmelogo.png){:height="10px"}
 
