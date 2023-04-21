@@ -17,6 +17,7 @@ import com.ratattack.game.GameSettings;
 import com.ratattack.game.gamecontroller.GameController;
 import com.ratattack.game.model.components.BalanceComponent;
 import com.ratattack.game.model.components.BoundsComponent;
+import com.ratattack.game.model.components.BulletEffectComponent;
 import com.ratattack.game.model.components.HealthComponent;
 import com.ratattack.game.model.components.PositionComponent;
 import com.ratattack.game.model.components.RectangleBoundsComponent;
@@ -73,9 +74,12 @@ public class SpawnSystem extends IteratingSystem {
         rat.add(new PositionComponent());
         rat.add(new HealthComponent());
         rat.add(new RectangleBoundsComponent());
+        rat.add(new BulletEffectComponent());
 
         Texture texture = new Texture("rat.png");
         rat.getComponent(SpriteComponent.class).sprite = new Sprite(texture);
+
+        rat.getComponent(BulletEffectComponent.class).setEffect("");
 
         //POSITION:
 
@@ -148,7 +152,7 @@ public class SpawnSystem extends IteratingSystem {
         bounds.setSize(2*(texture.getWidth()/3), (texture.getHeight()));
         bounds.setCenter(position.x, position.y);
 
-        grandChildEntity.getComponent(BalanceComponent.class).setBalance(500);
+        grandChildEntity.getComponent(BalanceComponent.class).setBalance(50);
 
         HealthComponent health = healthMapper.get(grandChildEntity);
         health.setHealth(GameSettings.grandChildStartHealth);
