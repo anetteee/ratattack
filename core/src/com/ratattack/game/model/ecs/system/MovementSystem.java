@@ -1,13 +1,13 @@
-package com.ratattack.game.model.system;
+package com.ratattack.game.model.ecs.system;
 
-import static com.ratattack.game.model.ComponentMappers.positionMapper;
-import static com.ratattack.game.model.ComponentMappers.velocityMapper;
+import static com.ratattack.game.model.ecs.ComponentMappers.positionMapper;
+import static com.ratattack.game.model.ecs.ComponentMappers.velocityMapper;
 
 import com.badlogic.ashley.core.Entity;
 import com.badlogic.ashley.core.Family;
 import com.badlogic.ashley.systems.IteratingSystem;
-import com.ratattack.game.model.components.PositionComponent;
-import com.ratattack.game.model.components.VelocityComponent;
+import com.ratattack.game.model.ecs.components.PositionComponent;
+import com.ratattack.game.model.ecs.components.VelocityComponent;
 
 public class MovementSystem extends IteratingSystem {
 

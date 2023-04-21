@@ -2,7 +2,7 @@ package com.ratattack.game.view.screenState;
 
 import com.badlogic.gdx.Screen;
 import com.ratattack.game.gamecontroller.GameController;
-import com.ratattack.game.model.system.SpawnSystem;
+import com.ratattack.game.model.ecs.system.SpawnSystem;
 import com.ratattack.game.view.screens.ScreenFactory;
 
 public class TutorialEndState implements State {

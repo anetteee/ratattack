@@ -28,6 +28,9 @@ private final GameController gameController = GameController.getInstance();
     Texture goToMenuTexture = new Texture("quit.png");
     Texture pauseScreenTexture = new Texture("paused.png");
     Image coin = new Image(new TextureRegion(new Texture("coins.png")));
+    Image clickGrandmaImage = new Image(new TextureRegion(new Texture("arrow_click.png")));
+    Image balanceInfoImage = new Image(new TextureRegion(new Texture("arrow_balance.png")));
+    Image scoreInfoImage = new Image(new TextureRegion(new Texture("arrow_score.png")));
     Image navBar = new Image(new TextureRegion(new Texture("scarygreeninformationbox.png")));
     TextureRegionDrawable pauseTexture = new TextureRegionDrawable(new TextureRegion(new Texture("smallpausebutton.png")));
     TextureRegionDrawable playTexture = new TextureRegionDrawable(new TextureRegion(new Texture("smallplaybutton.png")));
@@ -102,6 +105,13 @@ private final GameController gameController = GameController.getInstance();
         coin.setSize(Gdx.graphics.getWidth()/20f, Gdx.graphics.getHeight()/15f);
         navBar.setPosition(Gdx.graphics.getWidth() / 1.1f - Gdx.graphics.getWidth(), Gdx.graphics.getHeight() / 1.045f - (Gdx.graphics.getHeight()/7f) / 2f);
         navBar.setSize(Gdx.graphics.getWidth() * 1.2f, Gdx.graphics.getHeight()/7f);
+        scoreInfoImage.setPosition(230, Gdx.graphics.getHeight() - 510);
+        //scoreInfoImage.setSize();
+        balanceInfoImage.setPosition(Gdx.graphics.getWidth()-balanceInfoImage.getWidth()-250, Gdx.graphics.getHeight() - 500);
+        //balanceInfoImage.setSize();
+        clickGrandmaImage.setPosition(350, 200);
+        //clickGrandmaImage.setSize();
+
 
         balance = makeBalance();
         score = makeScore();
@@ -118,6 +128,10 @@ private final GameController gameController = GameController.getInstance();
         stage.addActor(playPauseButton);
         stage.addActor(score);
         stage.addActor(balance);
+        stage.addActor(scoreInfoImage);
+        stage.addActor(balanceInfoImage);
+        stage.addActor(clickGrandmaImage);
+
     }
 
     @Override

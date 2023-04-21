@@ -1,10 +1,10 @@
-package com.ratattack.game.model.system;
+package com.ratattack.game.model.ecs.system;
 
 import com.badlogic.ashley.core.ComponentMapper;
 import com.badlogic.ashley.core.Entity;
 import com.badlogic.ashley.core.Family;
 import com.badlogic.ashley.systems.IteratingSystem;
-import com.ratattack.game.model.components.UserComponent;
+import com.ratattack.game.model.ecs.components.UserComponent;
 
 public class UserSystem extends IteratingSystem {
 

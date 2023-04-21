@@ -1,4 +1,4 @@
-package com.ratattack.game.model.system;
+package com.ratattack.game.model.ecs.system;
 
 import com.badlogic.ashley.core.Entity;
 import com.badlogic.ashley.core.Family;
@@ -10,9 +10,9 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.ratattack.game.GameSettings;
 import com.ratattack.game.gamecontroller.GameController;
 import com.ratattack.game.model.Player;
-import com.ratattack.game.model.components.BalanceComponent;
-import com.ratattack.game.model.components.HealthComponent;
-import com.ratattack.game.model.components.VelocityComponent;
+import com.ratattack.game.model.ecs.components.BalanceComponent;
+import com.ratattack.game.model.ecs.components.HealthComponent;
+import com.ratattack.game.model.ecs.components.VelocityComponent;
 
 public class LevelupSystem extends IteratingSystem {
 

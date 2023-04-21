@@ -1,31 +1,22 @@
-package com.ratattack.game.model.system;
+package com.ratattack.game.model.ecs.system;
 
-import static com.ratattack.game.model.ComponentMappers.healthMapper;
+import static com.ratattack.game.model.ecs.ComponentMappers.healthMapper;
 
 import com.badlogic.ashley.core.Entity;
 import com.badlogic.ashley.core.Family;
-import com.badlogic.ashley.core.PooledEngine;
 import com.badlogic.ashley.systems.IteratingSystem;
-import com.badlogic.gdx.Game;
-import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Texture;
-import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.utils.TimeUtils;
 import com.ratattack.game.GameSettings;
 import com.ratattack.game.gamecontroller.GameController;
-import com.ratattack.game.model.components.BalanceComponent;
-import com.ratattack.game.model.components.BoundsComponent;
-import com.ratattack.game.model.components.HealthComponent;
-import com.ratattack.game.model.components.PositionComponent;
-import com.ratattack.game.model.components.RectangleBoundsComponent;
-import com.ratattack.game.model.components.SpriteComponent;
-import com.ratattack.game.model.components.VelocityComponent;
-
-import java.util.Arrays;
-import java.util.List;
-import java.util.Random;
+import com.ratattack.game.model.ecs.components.BalanceComponent;
+import com.ratattack.game.model.ecs.components.BoundsComponent;
+import com.ratattack.game.model.ecs.components.HealthComponent;
+import com.ratattack.game.model.ecs.components.PositionComponent;
+import com.ratattack.game.model.ecs.components.RectangleBoundsComponent;
+import com.ratattack.game.model.ecs.components.SpriteComponent;
+import com.ratattack.game.model.ecs.components.VelocityComponent;
 
 public class SpawnSystem extends IteratingSystem {
     private long lastRatSpawnTime;

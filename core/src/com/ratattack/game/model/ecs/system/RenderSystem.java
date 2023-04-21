@@ -1,7 +1,7 @@
-package com.ratattack.game.model.system;
+package com.ratattack.game.model.ecs.system;
 
-import static com.ratattack.game.model.ComponentMappers.positionMapper;
-import static com.ratattack.game.model.ComponentMappers.spriteMapper;
+import static com.ratattack.game.model.ecs.ComponentMappers.positionMapper;
+import static com.ratattack.game.model.ecs.ComponentMappers.spriteMapper;
 
 import com.badlogic.ashley.core.Entity;
 import com.badlogic.ashley.core.Family;
@@ -18,14 +18,13 @@ import com.badlogic.gdx.math.Shape2D;
 import com.ratattack.game.GameSettings;
 import com.ratattack.game.gamecontroller.GameController;
 import com.ratattack.game.model.Player;
-import com.ratattack.game.model.components.BalanceComponent;
-import com.ratattack.game.model.components.BoundsComponent;
-import com.ratattack.game.model.components.CircleBoundsComponent;
-import com.ratattack.game.model.components.HealthComponent;
-import com.ratattack.game.model.components.PositionComponent;
-import com.ratattack.game.model.components.RectangleBoundsComponent;
-import com.ratattack.game.model.components.SpriteComponent;
-import com.ratattack.game.model.components.VelocityComponent;
+import com.ratattack.game.model.ecs.components.BalanceComponent;
+import com.ratattack.game.model.ecs.components.BoundsComponent;
+import com.ratattack.game.model.ecs.components.CircleBoundsComponent;
+import com.ratattack.game.model.ecs.components.HealthComponent;
+import com.ratattack.game.model.ecs.components.PositionComponent;
+import com.ratattack.game.model.ecs.components.RectangleBoundsComponent;
+import com.ratattack.game.model.ecs.components.SpriteComponent;
 
 /**
  * Class that renders all entities used in the game.

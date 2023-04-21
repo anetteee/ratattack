@@ -1,4 +1,4 @@
-package com.ratattack.game.model.components;
+package com.ratattack.game.model.ecs.components;
 
 import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.Shape2D;

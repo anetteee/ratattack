@@ -1,14 +1,14 @@
-package com.ratattack.game.model;
+package com.ratattack.game.model.ecs;
 
 import com.badlogic.ashley.core.Entity;
 import com.badlogic.ashley.core.PooledEngine;
-import com.ratattack.game.model.components.BulletEffectComponent;
-import com.ratattack.game.model.components.CircleBoundsComponent;
-import com.ratattack.game.model.components.PositionComponent;
-import com.ratattack.game.model.components.SpriteComponent;
-import com.ratattack.game.model.components.StrengthComponent;
-import com.ratattack.game.model.components.UserComponent;
-import com.ratattack.game.model.components.VelocityComponent;
+import com.ratattack.game.model.ecs.components.BulletEffectComponent;
+import com.ratattack.game.model.ecs.components.CircleBoundsComponent;
+import com.ratattack.game.model.ecs.components.PositionComponent;
+import com.ratattack.game.model.ecs.components.SpriteComponent;
+import com.ratattack.game.model.ecs.components.StrengthComponent;
+import com.ratattack.game.model.ecs.components.UserComponent;
+import com.ratattack.game.model.ecs.components.VelocityComponent;
 
 public class GameWorld {
     // add listeners
