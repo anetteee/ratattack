@@ -20,7 +20,7 @@ import com.ratattack.game.model.ecs.components.VelocityComponent;
 
 public class NormalBulletStrategy implements ShootingStrategy{
 
-    Texture bulletTexture = new Texture("bullet.png");
+    Texture bulletTexture = new Texture("bullet_normal.png");
 
     @Override
     public void shoot(int x, int y) {

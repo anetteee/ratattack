@@ -19,12 +19,12 @@ public class TutorialEndScreen implements Screen {
 
     GameController gameController = GameController.getInstance();
     SpriteBatch batch = GameController.getInstance().getBatch();
-    Texture background = new Texture("darkgreenbackground.png");
-    Texture playTexture = new Texture("2play.png");
-    Texture tutorialTexture = new Texture("2tutorial.png");
-    Texture highscoreTexture = new Texture("2highscores.png");
+    Texture background = new Texture("background_dark.png");
+    Texture playTexture = new Texture("btn_play.png");
+    Texture tutorialTexture = new Texture("btn_tutorial.png");
+    Texture highscoreTexture = new Texture("btn_highscores.png");
     Texture gameOverTexture = new Texture("title_tutorial_end_screen.png");
-    Texture arrowTexture = new Texture("pil.png");
+    Texture arrowTexture = new Texture("arrow.png");
     int width = Gdx.graphics.getWidth();
     int height = Gdx.graphics.getHeight();
     private final Stage stage = gameController.getStage();

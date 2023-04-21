@@ -21,7 +21,7 @@ import java.util.ArrayList;
 
 public class TripleBulletStrategy implements ShootingStrategy {
 
-    Texture bulletTexture = new Texture("bullet.png");
+    Texture bulletTexture = new Texture("bullet_normal.png");
 
     @Override
     public void shoot(int x, int y) {
