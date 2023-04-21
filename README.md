@@ -1,10 +1,21 @@
 # RATATTACK
 
 Project in TDT4240 Software Architecture
-krav:
-Also, include a readme file that explains the structure and how to compile/run the project.
+
+## Installation 
+To run the application you will need Android Studio(or a similar IDE). 
+
+### Cloning the project
+
+`git clone https://gitlab.stud.idi.ntnu.no/ingval/ratattack.git`
+
+[![Git Clone](https://img.shields.io/badge/Git-Clone-blue?style=flat-square&logo=git)](git clone https://gitlab.stud.idi.ntnu.no/ingval/ratattack.git)
+
+[![Git Clone](https://img.shields.io/badge/Git-Clone-blue?style=flat-square&logo=git)](git clone https://gitlab.stud.idi.ntnu.no/ingval/ratattack.git)
+
 
 ## Compiling and running
+
 To run the application you can either connect an android device or use an android emulator. Make sure that the device or emulator has an Android version with API higher than or equal to 31.
 
 ### Running on android device
@@ -20,6 +31,7 @@ To run the application you can either connect an android device or use an androi
 - Once the application has been installed, it will automatically launch on your device. You can now use your application on your Android device.
 
 ### Running with emulator
+
 
 
 ## Structure
