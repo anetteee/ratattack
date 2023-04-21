@@ -18,7 +18,7 @@ The project are structure as shown in the tree below.
 </pre>
 
 ### Android folder
-In the android folder we find the files AndroidinterfaceClass and androidLauncher wich contains logic for connecting to the realtime firebase database. The androif folder also contains the assets folder, which contains images used in the design of the application. 
+The android folder contains the files AndroidinterfaceClass and androidLauncher wich contains logic for connecting to the realtime firebase database. The android folder also contains the assets folder, which contains images used in the design of the application. 
 
 ### Core folder
 <pre> 
