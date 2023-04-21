@@ -87,18 +87,6 @@ public class CollisionSystem extends IteratingSystem {
                         System.out.println(gameController.getPlayer().getScore());
                     }
 
-                    // Decrease score if grandchild is shot
-                    if (hittableEntity.getComponent(BalanceComponent.class) != null) {
-
-                        // Update highscore on grandchild arriving
-                        int scoreFromGrandchild = -10;
-                        int playerScore = gameController.getPlayer().getScore();
-                        int updateScore = scoreFromGrandchild + playerScore;
-                        gameController.getPlayer().setScore(updateScore);
-                        System.out.println(gameController.getPlayer().getScore());
-                    }
-
-
                     getEngine().removeEntity(hittableEntity);
                 }
 
