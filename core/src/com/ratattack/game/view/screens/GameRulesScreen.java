@@ -19,7 +19,6 @@ public class GameRulesScreen implements Screen {
     //KOMMENTERTE UT DENNESpriteBatch batch = GameController.getInstance().getBatch();
     Texture background = new Texture("gamerules.png");
     Texture watchTutorialTexture = new Texture("playtutorial.png");
-    Texture goBackToMenuTexture = new Texture("6menu.png");
 
     int width = Gdx.graphics.getWidth();
     int height = Gdx.graphics.getHeight();
@@ -37,11 +36,9 @@ public class GameRulesScreen implements Screen {
         textBackground.setPosition(0, 0);
 
         Button goToTutorialScreenB = makeButton(watchTutorialTexture,Gdx.graphics.getWidth()-(watchTutorialTexture.getWidth()*1.5f)-50, 150,"TUTORIAL");
-        Button goBackToMenuScreenB = makeButton(goBackToMenuTexture,50, 150,"MENU");
 
         stage.addActor(textBackground);
         stage.addActor(goToTutorialScreenB);
-        stage.addActor(goBackToMenuScreenB);
 
     }
     /*KOMMENTERTE UT DENNE
