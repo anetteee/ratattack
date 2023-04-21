@@ -37,8 +37,4 @@ public class GameSettings {
     public static final int startSpeedRat = -3;
     public static final int startSpeedGrandchild = -1;
 
-
-
-
-
 }
