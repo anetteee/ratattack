@@ -2,7 +2,7 @@
 
 Project in TDT4240 Software Architecture
 
-![Logo](assets/readmelogo.png){:height="10px"}
+![Logo](assets/readme/readmelogo.png){:height="10px"}
 
 
 
