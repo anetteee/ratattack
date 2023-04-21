@@ -2,7 +2,7 @@
 
 Project in TDT4240 Software Architecture
 
-![Logo](assets/ratattackbestlogo.png){:width="300px"}
+![Logo](assets/ratattackbestlogo.png){:height="300px"}
 
 
 ## Installation 
