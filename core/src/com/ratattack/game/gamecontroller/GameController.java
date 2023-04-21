@@ -20,7 +20,6 @@ import com.ratattack.game.model.ecs.system.BoundsSystem;
 import com.ratattack.game.model.ecs.system.MovementSystem;
 import com.ratattack.game.model.ecs.system.RenderSystem;
 import com.ratattack.game.model.ecs.system.SpawnSystem;
-import com.ratattack.game.model.ecs.system.UserSystem;
 import com.ratattack.game.view.screens.ScreenFactory;
 import com.ratattack.game.view.screens.TutorialScreen;
 
@@ -75,6 +74,7 @@ public class GameController {
         screenContext.push(new MenuState(screenContext));
     }
 
+    /* FJERNET DISSE
     private void setGameScreen() {
         try {
             game.setScreen(ScreenFactory.getScreen("GAME"));
@@ -96,6 +96,8 @@ public class GameController {
         game.setScreen(tutorialScreen);
     }
 
+     */
+
     public void setUpAshley() {
         engine = new PooledEngine();
         ashleyWorld = new GameWorld(engine);
@@ -104,12 +106,11 @@ public class GameController {
         addSystems(engine);
 
         //Add entities
-        addEntities();
+        //FJERNET DENNE addEntities();
 
     }
 
     public void addSystems(PooledEngine engine) {
-        engine.addSystem(new UserSystem());
         engine.addSystem(new MovementSystem());
         engine.addSystem(new SpawnSystem());
         engine.addSystem(new CollisionSystem());
@@ -118,11 +119,14 @@ public class GameController {
         engine.addSystem(new LevelupSystem());
     }
 
+    /* FJERNET DENNE
     public void addEntities() {
         //Create Rat
         //ashleyWorld.createRat();
 
     }
+
+     */
 
     public void update() {
         if (!paused) {
@@ -187,17 +191,24 @@ public class GameController {
     public DataHolderClass getDataHolderClass(){
         return dataHolder;
     }
+
+    /* FJERNET DENNE
     public void setPlayer(Player player) {
         this.player = player;
     }
+
+     */
 
     public Player getPlayer() {
         return player;
     }
 
+    /* FJERNET DENNE
     public long getGameStartTime() {
         return gameStartTime;
     }
+
+     */
 
     public void setIsGameOver(Boolean gameOver) {
         isGameOver = gameOver;

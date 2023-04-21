@@ -15,7 +15,7 @@ public class Field {
     SpriteBatch batch = GameController.getInstance().getBatch();
 
     Texture lane = new Texture("lane.png");
-    Texture backgroundBox; // For bakgrunnen til highScore og balanse
+    //KOMMENTERTE UT DENNETexture backgroundBox; // For bakgrunnen til highScore og balanse
 
     public ArrayList<Integer> laneDividers = new ArrayList<>();
     public ArrayList<GrandmotherButton> grandmaButtons = new ArrayList<>();

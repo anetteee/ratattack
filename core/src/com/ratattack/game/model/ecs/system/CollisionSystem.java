@@ -25,7 +25,7 @@ import com.ratattack.game.model.ecs.components.VelocityComponent;
 
 public class CollisionSystem extends IteratingSystem {
 
-    PooledEngine engine;
+    //KOMMENTERTE UT DENNEPooledEngine engine;
 
     private static final Family hittableEntitiesFamily = Family.all(HealthComponent.class).get();
     private static final Family bulletEntitiesFamily = Family.all(CircleBoundsComponent.class).get();
@@ -82,7 +82,7 @@ public class CollisionSystem extends IteratingSystem {
                         int playerScore = gameController.getPlayer().getScore();
                         int updateScore = scoreFromGrandchild + playerScore;
                         gameController.getPlayer().setScore(updateScore);
-                        System.out.println(gameController.getPlayer().getScore());
+                        //KOMMENTERTE UT DENNESystem.out.println(gameController.getPlayer().getScore());
                     }
 
                     // Decrease score if grandchild is shot
@@ -93,7 +93,7 @@ public class CollisionSystem extends IteratingSystem {
                         int playerScore = gameController.getPlayer().getScore();
                         int updateScore = scoreFromGrandchild + playerScore;
                         gameController.getPlayer().setScore(updateScore);
-                        System.out.println(gameController.getPlayer().getScore());
+                        //KOMMENTERTE UT DENNESystem.out.println(gameController.getPlayer().getScore());
                     }
 
 

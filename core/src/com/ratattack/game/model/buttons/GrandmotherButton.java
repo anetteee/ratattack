@@ -54,10 +54,10 @@ public class GrandmotherButton {
         if (currentUpgrade != ShootingStrategy.strategies.length - 1) {
             currentUpgrade += 1;
 
-            System.out.println(ShootingStrategy.strategyTextures[currentUpgrade]);
+            //KOMMENTERTE UT DENNESystem.out.println(ShootingStrategy.strategyTextures[currentUpgrade]);
             button.getStyle().down = new TextureRegionDrawable(new TextureRegion(new Texture(ShootingStrategy.strategyTextures[currentUpgrade])));
             button.getStyle().up = new TextureRegionDrawable(new TextureRegion(new Texture(ShootingStrategy.strategyTextures[currentUpgrade])));
-            System.out.println(button.getStyle().up);
+            //KOMMENTERTE UT DENNESystem.out.println(button.getStyle().up);
             strategy = ShootingStrategy.strategies[currentUpgrade];
         }
     }

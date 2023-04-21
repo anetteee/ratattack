@@ -50,9 +50,12 @@ public class Player {
         balanceObservers.add(observer);
     }
 
+    /*KOMMENTERTE UT DENNE
     public void attachScoreObserver(Observer observer){
         scoreObservers.add(observer);
     }
+
+     */
 
     public static void notifyBalanceObservers(){
         for (Observer observer: balanceObservers) {

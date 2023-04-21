@@ -36,7 +36,7 @@ public class HighscoreScreen implements Screen {
     int height = Gdx.graphics.getHeight();
     DataHolderClass _dataHolderClass;
     HighscoreList highscoreList;
-    String userName;
+    //KOMMENTERTE UT DENNEString userName;
 
     Texture highscoretexture = new Texture("blackhighscores.png");
     Texture gameOvertexture = new Texture("blackgameover.png");
@@ -82,7 +82,7 @@ public class HighscoreScreen implements Screen {
     public void show() {
         //dataHolder = gameController.getDataHolderClass();
         //new ScoreManager();
-        _dataHolderClass.PrintKeyValue();
+        //KOMMENTERTE UT DENNE _dataHolderClass.PrintKeyValue();
 
         Button goToMenuScreenB = makeButton(gotoMenuTexture,5f,"MENU");
         final Image title;

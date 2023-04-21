@@ -16,7 +16,7 @@ import com.ratattack.game.gamecontroller.GameController;
 public class GameRulesScreen implements Screen {
     private final GameController gameController = GameController.getInstance();
 
-    SpriteBatch batch = GameController.getInstance().getBatch();
+    //KOMMENTERTE UT DENNESpriteBatch batch = GameController.getInstance().getBatch();
     Texture background = new Texture("gamerules.png");
     Texture watchTutorialTexture = new Texture("playtutorial.png");
     Texture goBackToMenuTexture = new Texture("6menu.png");
@@ -44,6 +44,7 @@ public class GameRulesScreen implements Screen {
         stage.addActor(goBackToMenuScreenB);
 
     }
+    /*KOMMENTERTE UT DENNE
     private Button makeButton(Texture texture, float xPos, final String nextScreen){
         Button b = new Button(new TextureRegionDrawable(new TextureRegion(texture)));
         b.setSize(Gdx.graphics.getWidth()/10  ,   Gdx.graphics.getHeight()/7f);
@@ -57,6 +58,8 @@ public class GameRulesScreen implements Screen {
         });
         return b;
     }
+
+     */
 
     private Button makeButton(Texture texture, float xPos, float yPos, final String nextScreen){
         Button b = new Button(new TextureRegionDrawable(new TextureRegion(texture)));

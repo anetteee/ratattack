@@ -6,8 +6,11 @@ public class StrengthComponent implements Component {
 
     public int strength;
 
+    /*KOMMENTERTE UT DENNE
     public int getStrength(){
 
         return strength;
     }
+
+     */
 }

@@ -7,7 +7,6 @@ import com.ratattack.game.model.ecs.components.CircleBoundsComponent;
 import com.ratattack.game.model.ecs.components.PositionComponent;
 import com.ratattack.game.model.ecs.components.SpriteComponent;
 import com.ratattack.game.model.ecs.components.StrengthComponent;
-import com.ratattack.game.model.ecs.components.UserComponent;
 import com.ratattack.game.model.ecs.components.VelocityComponent;
 
 public class GameWorld {
@@ -19,12 +18,14 @@ public class GameWorld {
         this.engine = engine;
     }
 
+    /* FJERNET DENNE
     public Entity createUser() {
         Entity userEntity = new Entity();
-        userEntity.add(new UserComponent());
         engine.addEntity(userEntity);
         return userEntity;
     }
+
+     */
 
     public Entity createBullet() {
         Entity bulletEntity = new Entity();

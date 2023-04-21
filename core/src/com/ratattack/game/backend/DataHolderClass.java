@@ -5,7 +5,7 @@ import com.ratattack.game.gamecontroller.GameController;
 public class DataHolderClass {
     static FirebaseInterface _FBIC =  GameController.getInstance().getFirebaseInterface();
     String currentKey;
-    Score lastScore;
+    //FJERNET DENNE Score lastScore;
 
     public DataHolderClass() {
 
@@ -19,8 +19,11 @@ public class DataHolderClass {
         return currentKey;
     }
 
+    /*KOMMENTERTE UT DENNE
     public void PrintKeyValue()
     {
-        System.out.println("from printSomeValue i DataHolderClass: "+ currentKey);
+        //System.out.println("from printSomeValue i DataHolderClass: "+ currentKey);
     }
+
+     */
 }
