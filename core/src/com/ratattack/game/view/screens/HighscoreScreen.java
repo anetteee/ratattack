@@ -108,25 +108,25 @@ public class HighscoreScreen implements Screen {
         //int yPosition = Gdx.graphics.getHeight() - 50;
         int xPos = Gdx.graphics.getWidth() / 2 - 200;
         //int xPos = Gdx.graphics.getWidth() / 2 ;
-        boolean isTopTen = false;
+        boolean isTopFive = false;
         int j = 0;
         int i = 1;
         for (Map.Entry<String, Score> entry : highscoreList.getScoreList().entrySet()) {
-            if (i < 11){
+            if (i < 6){
                 int yPos = Gdx.graphics.getHeight() - 200 - (i * 100);
                 String text = String.valueOf(i) + ". " + entry.getValue().toString();
                 if (entry.getKey().equals(gameController.getDataHolderClass().getKeyValue())) {
                     PinkFont.draw(batch, text, xPos, yPos);
-                    isTopTen = true;
+                    isTopFive = true;
                 } else {
                     fontText.draw(batch, text, xPos, yPos);
                 }
                 i++;
                 j=i-1;
             }
-            int currYPos = Gdx.graphics.getHeight() - 100 - (12 * 100);
-            int strek = Gdx.graphics.getHeight() - 100 - (11 * 100);
-            if (!isTopTen && entry.getKey().equals(gameController.getDataHolderClass().getKeyValue())) {
+            int currYPos = Gdx.graphics.getHeight() - 100 - (7 * 100);
+            int strek = Gdx.graphics.getHeight() - 100 - (6 * 100);
+            if (!isTopFive && entry.getKey().equals(gameController.getDataHolderClass().getKeyValue())) {
                 String currText = String.valueOf(j) + ". " + entry.getValue().toString();
                 fontText.draw(batch, "__________________", xPos, strek);
                 PinkFont.draw(batch, currText, xPos, currYPos);
