@@ -3,9 +3,6 @@
 Project in TDT4240 Software Architecture
 
 ![Logo](assets/readme/readmelogo.png){:height="10px"}
-![Logo](assets/readme/hardware.png){:height="10px"}
-
-
 
 ## Installation 
 To run the application you will need Android Studio(or a similar IDE). 
@@ -43,6 +40,12 @@ To run the application you can either connect an android device or use an androi
 
 - Open the AVD manager in the top drop down menu.
 - Choose +Create Virtual Device
+- Select a hardware, for exampel Nexus 6 and press next.
+![Logo](assets/readme/hardware.png){:height="10px"}
+- Select a system image with API level 31 or higher and press next.
+![Logo](assets/readme/systemimage.png){:height="10px"}
+- Choose landscape and press finish
+![Logo](assets/readme/androidvirtualdevice.png){:height="10px"}
 
 
 ## Structure
