@@ -86,7 +86,7 @@ public class HighscoreScreen implements Screen {
 
         Button goToMenuScreenB = makeButton(gotoMenuTexture,5f,"MENU");
         final Image title;
-        System.out.println(gameController.getIsGameOver());
+        //KOMMENTERTE UT DENNESystem.out.println(gameController.getIsGameOver());
         if (titleGameOver) {
             title = new Image(gameOvertexture);
         }

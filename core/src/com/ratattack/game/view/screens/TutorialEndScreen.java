@@ -34,7 +34,7 @@ public class TutorialEndScreen implements Screen {
     public TutorialEndScreen() {
         //This is to
         gameController.setIsGameOver(false);
-        System.out.println(stage);
+        //KOMMENTERTE UT DENNESystem.out.println(stage);
     }
 
     @Override

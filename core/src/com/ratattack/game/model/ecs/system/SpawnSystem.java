@@ -86,7 +86,7 @@ public class SpawnSystem extends IteratingSystem {
 
 
         int indexInLaneDividers = (int) (Math.random()*gameController.field.laneDividers.size());
-        System.out.println("random index in lavedividers som brukes: " + indexInLaneDividers);
+        //KOMMENTERTE UT DENNESystem.out.println("random index in lavedividers som brukes: " + indexInLaneDividers);
         position.x = gameController.field.laneDividers.get(indexInLaneDividers) + gameController.field.getLaneWidth()/2 - texture.getWidth()/2;
 
 
@@ -125,7 +125,7 @@ public class SpawnSystem extends IteratingSystem {
         PositionComponent position = grandChildEntity.getComponent(PositionComponent.class);
 
         int indexInLaneDividers = (int) (Math.random()*gameController.field.laneDividers.size());
-        System.out.println("random index in lavedividers som brukes: " + indexInLaneDividers);
+        //KOMMENTERTE UT DENNESystem.out.println("random index in lavedividers som brukes: " + indexInLaneDividers);
         position.x = gameController.field.laneDividers.get(indexInLaneDividers) + gameController.field.getLaneWidth()/2 - texture.getWidth()/2;
         position.y = 1500;
 

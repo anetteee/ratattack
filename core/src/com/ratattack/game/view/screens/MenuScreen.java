@@ -42,7 +42,7 @@ public class MenuScreen implements Screen {
        _FBIC = FBIC;
        _dataHolderClass = dataHolderClass;
 
-        System.out.println(stage);
+        //KOMMENTERTE UT DENNESystem.out.println(stage);
     }
 
     @Override

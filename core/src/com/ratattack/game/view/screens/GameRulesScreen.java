@@ -25,7 +25,8 @@ public class GameRulesScreen implements Screen {
     private final Stage stage = gameController.getStage();
 
     public GameRulesScreen() {
-        System.out.println(stage);
+
+        //KOMMENTERTE UT DENNESystem.out.println(stage);
     }
 
     @Override
