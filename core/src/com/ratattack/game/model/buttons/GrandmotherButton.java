@@ -17,7 +17,7 @@ public class GrandmotherButton {
     Button button;
     ShootingStrategy strategy;
     Stage stage = GameController.getInstance().getStage();
-    Texture grandMotherTexture = new Texture("normalbulletgrandma.png");
+    Texture grandMotherTexture = new Texture("grandma_normal_bullet.png");
 
     int id;
     int currentUpgrade = 0;

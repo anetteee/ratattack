@@ -33,17 +33,17 @@ public class HighscoreScreen implements Screen {
     private final BitmapFont fontText;
     private final BitmapFont PinkFont;
     private final BitmapFont bigFont;
-    Texture background = new Texture("mainbackground2.png");
+    Texture background = new Texture("background_light.png");
     int width = Gdx.graphics.getWidth();
     int height = Gdx.graphics.getHeight();
     DataHolderClass _dataHolderClass;
     HighscoreList highscoreList;
-    Texture highscoretexture = new Texture("blackhighscores.png");
-    Texture gameOvertexture = new Texture("blackgameover.png");
+    Texture highscoretexture = new Texture("title_highscores.png");
+    Texture gameOvertexture = new Texture("title_gameover.png");
 
     FirebaseInterface _FBIC;
 
-    Texture gotoMenuTexture = new Texture("backtomenu.png");
+    Texture gotoMenuTexture = new Texture("btn_back_to_menu.png");
 
     private final Stage stage = gameController.getStage();
     boolean titleGameOver;

@@ -14,8 +14,8 @@ import com.ratattack.game.gamecontroller.GameController;
 
 public class GameRulesScreen implements Screen {
     private final GameController gameController = GameController.getInstance();
-    Texture background = new Texture("gamerules.png");
-    Texture watchTutorialTexture = new Texture("playtutorial.png");
+    Texture background = new Texture("screen_gamerules.png");
+    Texture watchTutorialTexture = new Texture("btn_play_tutorial.png");
 
     int width = Gdx.graphics.getWidth();
     int height = Gdx.graphics.getHeight();

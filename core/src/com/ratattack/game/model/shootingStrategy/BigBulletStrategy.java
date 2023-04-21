@@ -19,7 +19,7 @@ import com.ratattack.game.model.ecs.components.VelocityComponent;
 
 public class BigBulletStrategy implements ShootingStrategy{
 
-    Texture bulletTexture = new Texture("BIGbullet.png");
+    Texture bulletTexture = new Texture("bullet_big.png");
     @Override
     public void shoot(int x, int y) {
         Entity bullet = GameController.getInstance().getAshleyWorld().createBullet();

@@ -23,15 +23,15 @@ public class TutorialScreen implements Screen {
  * TODO: LEGG TIL KOMMENTARER
  * */
 private final GameController gameController = GameController.getInstance();
-    Texture goToMenuTexture = new Texture("quit.png");
-    Texture pauseScreenTexture = new Texture("paused.png");
+    Texture goToMenuTexture = new Texture("btn_quit.png");
+    Texture pauseScreenTexture = new Texture("screen_paused.png");
     Image coin = new Image(new TextureRegion(new Texture("coins.png")));
-    Image clickGrandmaImage = new Image(new TextureRegion(new Texture("arrow_click.png")));
-    Image balanceInfoImage = new Image(new TextureRegion(new Texture("arrow_balance.png")));
-    Image scoreInfoImage = new Image(new TextureRegion(new Texture("arrow_score.png")));
-    Image navBar = new Image(new TextureRegion(new Texture("scarygreeninformationbox.png")));
-    TextureRegionDrawable pauseTexture = new TextureRegionDrawable(new TextureRegion(new Texture("smallpausebutton.png")));
-    TextureRegionDrawable playTexture = new TextureRegionDrawable(new TextureRegion(new Texture("smallplaybutton.png")));
+    Image clickGrandmaImage = new Image(new TextureRegion(new Texture("text_click_grandma.png")));
+    Image balanceInfoImage = new Image(new TextureRegion(new Texture("text_see_balance.png")));
+    Image scoreInfoImage = new Image(new TextureRegion(new Texture("text_see_score.png")));
+    Image navBar = new Image(new TextureRegion(new Texture("navbar.png")));
+    TextureRegionDrawable pauseTexture = new TextureRegionDrawable(new TextureRegion(new Texture("btn_small_pause.png")));
+    TextureRegionDrawable playTexture = new TextureRegionDrawable(new TextureRegion(new Texture("btn_small_play.png")));
     Button playPauseButton;
     Button goToMenuScreenB;
     private final Stage stage = gameController.getStage();

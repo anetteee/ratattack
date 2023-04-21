@@ -26,11 +26,11 @@ public class MenuScreen implements Screen {
 
     SpriteBatch batch = GameController.getInstance().getBatch();
 
-    Texture background = new Texture("darkgreenbackground.png");
+    Texture background = new Texture("background_dark.png");
 
-    Texture playGameTexture = new Texture("2play.png");
-    Texture watchTutorialTexture = new Texture("2tutorial.png");
-    Texture highscoreTexture = new Texture("2highscores.png");
+    Texture playGameTexture = new Texture("btn_play.png");
+    Texture watchTutorialTexture = new Texture("btn_tutorial.png");
+    Texture highscoreTexture = new Texture("btn_highscores.png");
     int width = Gdx.graphics.getWidth();
     int height = Gdx.graphics.getHeight();
 
@@ -43,7 +43,7 @@ public class MenuScreen implements Screen {
 
     @Override
     public void show() {
-        final Image title = new Image(new Texture("ratattackbestlogo.png"));
+        final Image title = new Image(new Texture("title_ratattack.png"));
         title.setSize(title.getWidth()*1.6f,  title.getHeight()*1.6f);
         title.setPosition(Gdx.graphics.getWidth()/2 - title.getWidth()/2f, Gdx.graphics.getHeight()/2 - 600 );
 
