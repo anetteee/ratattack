@@ -80,6 +80,7 @@ public class UpgradeButton extends Observer {
             button.getStyle().up = buttonUpgradeable;
             canAffordUpgrade = true;
         }
+
         if(ShootingStrategy.prices[nextUpgrade] > Player.getBalance()) {
             button.getStyle().down = buttonNotUpgradeable;
             button.getStyle().up = buttonNotUpgradeable;
