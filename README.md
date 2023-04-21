@@ -3,6 +3,7 @@
 Project in TDT4240 Software Architecture
 
 ![Logo](assets/readme/readmelogo.png){:height="10px"}
+![Logo](assets/readme/img.png){:height="10px"}
 
 
 
