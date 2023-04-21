@@ -46,7 +46,7 @@ To run the application you can either connect an android device or use an androi
 
 ![Logo](assets/readme/systemimage.png){:height="10px"}
 
-- Choose landscape and press finish
+- Choose landscape and press finish.
 
 ![Logo](assets/readme/androidvirtualdevice.png){:height="10px"}
 
