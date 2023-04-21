@@ -1,6 +1,5 @@
 package com.ratattack.game.gamecontroller;
 
-import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Input;
 import com.ratattack.game.model.Player;
 

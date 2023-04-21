@@ -6,6 +6,10 @@ import java.util.LinkedHashMap;
 // Med "de andre" mener jeg AndroidInterfaceClass, CoreInterfaceClass og DesktopInterfaceClass
 public interface FirebaseInterface {
 
+    /***
+     * TODO: LEGG TIL KOMMENTARER
+     * */
+
 
     void getHighscores(LinkedHashMap<String, Score> scoreMap);
 

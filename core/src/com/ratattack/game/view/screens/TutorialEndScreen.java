@@ -2,9 +2,7 @@ package com.ratattack.game.view.screens;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
-import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Texture;
-import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
@@ -13,9 +11,9 @@ import com.badlogic.gdx.scenes.scene2d.ui.Button;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
-import com.ratattack.game.GameSettings;
 import com.ratattack.game.gamecontroller.GameController;
 import com.ratattack.game.model.Player;
+import com.ratattack.game.GameSettings;
 
 public class TutorialEndScreen implements Screen {
 
@@ -32,9 +30,7 @@ public class TutorialEndScreen implements Screen {
     private final Stage stage = gameController.getStage();
 
     public TutorialEndScreen() {
-        //This is to
         gameController.setIsGameOver(false);
-        System.out.println(stage);
     }
 
     @Override
@@ -60,6 +56,7 @@ public class TutorialEndScreen implements Screen {
         stage.addActor(highscoreButton);
         stage.addActor(playGameButton);
         stage.addActor(watchTutorialButton);
+
     }
 
     private Button makeButton(Texture texture, float xPos, float yPos, float xSize, float ySize, final String nextScreen){
@@ -98,8 +95,6 @@ public class TutorialEndScreen implements Screen {
 
     @Override
     public void render(float delta) {
-
-
 
         batch.begin();
         batch.draw(background, 0, 0, width, height);
