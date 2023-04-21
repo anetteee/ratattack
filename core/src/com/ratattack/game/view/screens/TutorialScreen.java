@@ -23,17 +23,17 @@ public class TutorialScreen implements Screen {
  * TODO: LEGG TIL KOMMENTARER
  * */
 private final GameController gameController = GameController.getInstance();
-    Texture goToMenuTexture = new Texture("btn_quit.png");
-    Texture pauseScreenTexture = new Texture("screen_paused.png");
-    Image coin = new Image(new TextureRegion(new Texture("coins.png")));
-    Image clickGrandmaImage = new Image(new TextureRegion(new Texture("text_click_grandma.png")));
-    Image balanceInfoImage = new Image(new TextureRegion(new Texture("text_see_balance.png")));
-    Image scoreInfoImage = new Image(new TextureRegion(new Texture("text_see_score.png")));
+    Texture quitTexture = new Texture("btn_quit.png");
+    Texture pausedScreenTexture = new Texture("screen_paused.png");
+    Image coins = new Image(new TextureRegion(new Texture("coins.png")));
+    Image clickGrandmaText = new Image(new TextureRegion(new Texture("text_click_grandma.png")));
+    Image seeBalanceText = new Image(new TextureRegion(new Texture("text_see_balance.png")));
+    Image seeScoreText = new Image(new TextureRegion(new Texture("text_see_score.png")));
     Image navBar = new Image(new TextureRegion(new Texture("navbar.png")));
     TextureRegionDrawable pauseTexture = new TextureRegionDrawable(new TextureRegion(new Texture("btn_small_pause.png")));
     TextureRegionDrawable playTexture = new TextureRegionDrawable(new TextureRegion(new Texture("btn_small_play.png")));
-    Button playPauseButton;
-    Button goToMenuScreenB;
+    Button playPauseBtn;
+    Button quitBtn;
     private final Stage stage = gameController.getStage();
     private final Label balance;
     private final Label score;
@@ -44,10 +44,10 @@ private final GameController gameController = GameController.getInstance();
         gameController.setUpLanes(GameSettings.tutorialLaneNr);
         gameController.play();
 
-        goToMenuScreenB = new Button(new TextureRegionDrawable(new TextureRegion(goToMenuTexture)));
-        goToMenuScreenB.setSize(goToMenuTexture.getWidth(), goToMenuTexture.getHeight()-30);
-        goToMenuScreenB.setPosition( Gdx.graphics.getWidth()-goToMenuTexture.getWidth()-25,Gdx.graphics.getHeight() - 140);
-        goToMenuScreenB.addListener(
+        quitBtn = new Button(new TextureRegionDrawable(new TextureRegion(quitTexture)));
+        quitBtn.setSize(quitTexture.getWidth(), quitTexture.getHeight()-30);
+        quitBtn.setPosition( Gdx.graphics.getWidth()- quitTexture.getWidth()-25,Gdx.graphics.getHeight() - 140);
+        quitBtn.addListener(
                 new ClickListener() {
             @Override
             public void clicked(InputEvent inputEvent, float xpos, float ypos) {
@@ -59,28 +59,28 @@ private final GameController gameController = GameController.getInstance();
             }
         });
 
-        playPauseButton = new Button(pauseTexture);
+        playPauseBtn = new Button(pauseTexture);
 
 
-        playPauseButton.setSize(Gdx.graphics.getWidth()/20f  ,   Gdx.graphics.getHeight()/10f);
-        playPauseButton.setPosition(Gdx.graphics.getWidth() / 30f - playPauseButton.getWidth()/2f,Gdx.graphics.getHeight() - playPauseButton.getHeight()-10);
-        playPauseButton.addListener(new ClickListener() {
+        playPauseBtn.setSize(Gdx.graphics.getWidth()/20f  ,   Gdx.graphics.getHeight()/10f);
+        playPauseBtn.setPosition(Gdx.graphics.getWidth() / 30f - playPauseBtn.getWidth()/2f,Gdx.graphics.getHeight() - playPauseBtn.getHeight()-10);
+        playPauseBtn.addListener(new ClickListener() {
             @Override
             public void clicked(InputEvent inputEvent, float xpos, float ypos) {
                 if (GameController.getInstance().getPaused()) {
                     GameController.getInstance().setPaused(false);
-                    playPauseButton.getStyle().up = pauseTexture;
-                    playPauseButton.getStyle().down = pauseTexture;
+                    playPauseBtn.getStyle().up = pauseTexture;
+                    playPauseBtn.getStyle().down = pauseTexture;
                     stage.clear();
                     stage.addActor(navBar);
-                    stage.addActor(coin);
+                    stage.addActor(coins);
                     stage.addActor(balance);
                     stage.addActor(score);
-                    stage.addActor(goToMenuScreenB);
-                    stage.addActor(playPauseButton);
-                    stage.addActor(scoreInfoImage);
-                    stage.addActor(balanceInfoImage);
-                    stage.addActor(clickGrandmaImage);
+                    stage.addActor(quitBtn);
+                    stage.addActor(playPauseBtn);
+                    stage.addActor(seeScoreText);
+                    stage.addActor(seeBalanceText);
+                    stage.addActor(clickGrandmaText);
                     for (int i = 0; i < GameController.getInstance().field.grandmaButtons.size(); i++) {
                         stage.addActor(GameController.getInstance().field.grandmaButtons.get(i).getButton());
                         stage.addActor(GameController.getInstance().field.upgradeButtons.get(i).getButton());
@@ -89,21 +89,21 @@ private final GameController gameController = GameController.getInstance();
                 }
                 else {
                     GameController.getInstance().setPaused(true);
-                    playPauseButton.getStyle().up = playTexture;
-                    playPauseButton.getStyle().down = playTexture;
+                    playPauseBtn.getStyle().up = playTexture;
+                    playPauseBtn.getStyle().down = playTexture;
                     stage.clear();
-                    stage.addActor(playPauseButton);
+                    stage.addActor(playPauseBtn);
                 }
             }
         });
 
-        coin.setPosition(Gdx.graphics.getWidth()-400, Gdx.graphics.getHeight() - 130);
-        coin.setSize(Gdx.graphics.getWidth()/20f, Gdx.graphics.getHeight()/15f);
+        coins.setPosition(Gdx.graphics.getWidth()-400, Gdx.graphics.getHeight() - 130);
+        coins.setSize(Gdx.graphics.getWidth()/20f, Gdx.graphics.getHeight()/15f);
         navBar.setPosition(Gdx.graphics.getWidth() / 1.1f - Gdx.graphics.getWidth(), Gdx.graphics.getHeight() / 1.045f - (Gdx.graphics.getHeight()/7f) / 2f);
         navBar.setSize(Gdx.graphics.getWidth() * 1.2f, Gdx.graphics.getHeight()/7f);
-        scoreInfoImage.setPosition(230, Gdx.graphics.getHeight() - 510);
-        balanceInfoImage.setPosition(Gdx.graphics.getWidth()-balanceInfoImage.getWidth()-250, Gdx.graphics.getHeight() - 500);
-        clickGrandmaImage.setPosition(350, 200);
+        seeScoreText.setPosition(230, Gdx.graphics.getHeight() - 510);
+        seeBalanceText.setPosition(Gdx.graphics.getWidth()- seeBalanceText.getWidth()-250, Gdx.graphics.getHeight() - 500);
+        clickGrandmaText.setPosition(350, 200);
 
         balance = makeBalance();
         score = makeScore();
@@ -115,14 +115,14 @@ private final GameController gameController = GameController.getInstance();
         setScore();
 
         stage.addActor(navBar);
-        stage.addActor(coin);
-        stage.addActor(goToMenuScreenB);
-        stage.addActor(playPauseButton);
+        stage.addActor(coins);
+        stage.addActor(quitBtn);
+        stage.addActor(playPauseBtn);
         stage.addActor(score);
         stage.addActor(balance);
-        stage.addActor(scoreInfoImage);
-        stage.addActor(balanceInfoImage);
-        stage.addActor(clickGrandmaImage);
+        stage.addActor(seeScoreText);
+        stage.addActor(seeBalanceText);
+        stage.addActor(clickGrandmaText);
 
     }
 
@@ -137,7 +137,7 @@ private final GameController gameController = GameController.getInstance();
         //If screen is paused, draw pauseTexture
         if (GameController.getInstance().getPaused().equals(true)) {
             batch.begin();
-            batch.draw(pauseScreenTexture,0,0, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
+            batch.draw(pausedScreenTexture,0,0, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
             batch.end();
         }
     }

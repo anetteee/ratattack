@@ -31,19 +31,17 @@ public class HighscoreScreen implements Screen {
     SpriteBatch batch = GameController.getInstance().getBatch();
 
     private final BitmapFont fontText;
-    private final BitmapFont PinkFont;
+    private final BitmapFont pinkFont;
     private final BitmapFont bigFont;
     Texture background = new Texture("background_light.png");
-    int width = Gdx.graphics.getWidth();
-    int height = Gdx.graphics.getHeight();
+    int screenWidth = Gdx.graphics.getWidth();
+    int screenHeight = Gdx.graphics.getHeight();
     DataHolderClass _dataHolderClass;
     HighscoreList highscoreList;
-    Texture highscoretexture = new Texture("title_highscores.png");
-    Texture gameOvertexture = new Texture("title_gameover.png");
-
+    Texture highscoreTexture = new Texture("title_highscores.png");
+    Texture gameOverTexture = new Texture("title_gameover.png");
     FirebaseInterface _FBIC;
-
-    Texture gotoMenuTexture = new Texture("btn_back_to_menu.png");
+    Texture backToMenuBtnTexture = new Texture("btn_back_to_menu.png");
 
     private final Stage stage = gameController.getStage();
     boolean titleGameOver;
@@ -54,10 +52,10 @@ public class HighscoreScreen implements Screen {
         fontText.setColor(Color.DARK_GRAY);
         bigFont.setColor(Color.DARK_GRAY);
         bigFont.getData().setScale(7f, 7f);
-        PinkFont = new BitmapFont();
-        PinkFont.setColor(Color.PINK);
+        pinkFont = new BitmapFont();
+        pinkFont.setColor(Color.PINK);
         fontText.getData().setScale(4f, 4f);
-        PinkFont.getData().setScale(4f, 4f);
+        pinkFont.getData().setScale(4f, 4f);
 
 
         _FBIC = FBIC;
@@ -73,46 +71,43 @@ public class HighscoreScreen implements Screen {
         highscoreList.fetchHighscores();
 
         //Ellers skal bare scorelisten vises
-        //TODO: betyr det her at det burde være en else under if-en?
+        //TODO: betyr det her at det burde være en else under if-en? hilsen Rebecca
 
         _dataHolderClass = dataHolderClass;
     }
 
-    int marginFromTopOfScreen;
-
     @Override
     public void show() {
 
-        Button goToMenuScreenB = makeButton(gotoMenuTexture,5f,"MENU");
+        Button backToMenuBtn = makeButton(backToMenuBtnTexture,5f,"MENU");
         final Image title;
         if (titleGameOver) {
-            title = new Image(gameOvertexture);
+            title = new Image(gameOverTexture);
         }
         else {
-            title = new Image(highscoretexture);
+            title = new Image(highscoreTexture);
         }
-        marginFromTopOfScreen = Gdx.graphics.getHeight()-500;
-        title.setSize(Gdx.graphics.getWidth()/2f, Gdx.graphics.getHeight()/2f);
-        title.setPosition(Gdx.graphics.getWidth()/2-(highscoretexture.getWidth()/2), Gdx.graphics.getHeight()-500);
+        title.setSize(screenWidth/2f, screenHeight/2f);
+        title.setPosition(screenWidth/2-(highscoreTexture.getWidth()/2), screenHeight-500);
 
         stage.addActor(title);
-        stage.addActor(goToMenuScreenB);
+        stage.addActor(backToMenuBtn);
     }
 
     @Override
     public void render(float delta) {
         batch.begin();
-        batch.draw(background, 0, 0, width, height);
-        int xPos = Gdx.graphics.getWidth() / 2 - 200;
+        batch.draw(background, 0, 0, screenWidth, screenHeight);
+        int xPos = screenWidth / 2 - 200;
         boolean isTopFive = false;
         int j = 0;
         int i = 1;
         for (Map.Entry<String, Score> entry : highscoreList.getScoreList().entrySet()) {
             if (i < 6){
-                int yPos = Gdx.graphics.getHeight() - 200 - (i * 100);
+                int yPos = screenHeight - 200 - (i * 100);
                 String text = String.valueOf(i) + ". " + entry.getValue().toString();
                 if (entry.getKey().equals(gameController.getDataHolderClass().getKeyValue())) {
-                    PinkFont.draw(batch, text, xPos, yPos);
+                    pinkFont.draw(batch, text, xPos, yPos);
                     isTopFive = true;
                 } else {
                     fontText.draw(batch, text, xPos, yPos);
@@ -120,12 +115,12 @@ public class HighscoreScreen implements Screen {
                 i++;
                 j=i-1;
             }
-            int currYPos = Gdx.graphics.getHeight() - 100 - (7 * 100);
-            int strek = Gdx.graphics.getHeight() - 100 - (6 * 100);
+            int currYPos = screenHeight - 100 - (7 * 100);
+            int strek = screenHeight - 100 - (6 * 100);
             if (!isTopFive && entry.getKey().equals(gameController.getDataHolderClass().getKeyValue())) {
                 String currText = String.valueOf(j) + ". " + entry.getValue().toString();
                 fontText.draw(batch, "__________________", xPos, strek);
-                PinkFont.draw(batch, currText, xPos, currYPos);
+                pinkFont.draw(batch, currText, xPos, currYPos);
             }
             j++;
         }
@@ -134,8 +129,8 @@ public class HighscoreScreen implements Screen {
 
     private Button makeButton(Texture texture, float xPos, final String nextScreen){
         Button b = new Button(new TextureRegionDrawable(new TextureRegion(texture)));
-        b.setSize(Gdx.graphics.getWidth()/8f  ,   Gdx.graphics.getHeight()/4f);
-        b.setPosition(Gdx.graphics.getWidth() / xPos - b.getWidth()/2f,Gdx.graphics.getHeight()-370);
+        b.setSize(screenWidth/8f  ,   screenHeight/4f);
+        b.setPosition(screenWidth / xPos - b.getWidth()/2f,screenHeight-370);
         b.addListener(new ClickListener() {
             @Override
             public void clicked(InputEvent inputEvent, float xpos, float ypos) {
@@ -153,28 +148,23 @@ public class HighscoreScreen implements Screen {
 
     @Override
     public void resize(int width, int height) {
-
     }
 
     @Override
     public void pause() {
-
     }
 
     @Override
     public void resume() {
-
     }
 
     @Override
     public void hide() {
-
     }
 
     @Override
     public void dispose() {
         batch.dispose();
         stage.dispose();
-
     }
 }
