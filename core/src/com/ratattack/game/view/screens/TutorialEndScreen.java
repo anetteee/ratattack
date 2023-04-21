@@ -23,7 +23,7 @@ public class TutorialEndScreen implements Screen {
     Texture playTexture = new Texture("2play.png");
     Texture tutorialTexture = new Texture("2tutorial.png");
     Texture highscoreTexture = new Texture("2highscores.png");
-    Texture gameOverTexture = new Texture("f.png");
+    Texture gameOverTexture = new Texture("title_tutorial_end_screen.png");
     Texture arrowTexture = new Texture("pil.png");
     int width = Gdx.graphics.getWidth();
     int height = Gdx.graphics.getHeight();

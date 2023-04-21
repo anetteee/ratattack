@@ -26,7 +26,7 @@ public class LevelupSystem extends IteratingSystem {
     int level = 0;
 
     double timeSinceLevelup = Double.POSITIVE_INFINITY;
-    Texture texture = new Texture("r.png");
+    Texture texture = new Texture("level_up.png");
 
     SpriteBatch batch = GameController.getInstance().getBatch();
 

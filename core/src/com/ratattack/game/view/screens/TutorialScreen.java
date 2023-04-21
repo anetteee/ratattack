@@ -29,7 +29,7 @@ private final GameController gameController = GameController.getInstance();
     Image clickGrandmaImage = new Image(new TextureRegion(new Texture("arrow_click.png")));
     Image balanceInfoImage = new Image(new TextureRegion(new Texture("arrow_balance.png")));
     Image scoreInfoImage = new Image(new TextureRegion(new Texture("arrow_score.png")));
-    Image navBar = new Image(new TextureRegion(new Texture("scarygreeninformationbox.png")));
+    Image navBar = new Image(new TextureRegion(new Texture("navbar.png")));
     TextureRegionDrawable pauseTexture = new TextureRegionDrawable(new TextureRegion(new Texture("smallpausebutton.png")));
     TextureRegionDrawable playTexture = new TextureRegionDrawable(new TextureRegion(new Texture("smallplaybutton.png")));
     Button playPauseButton;

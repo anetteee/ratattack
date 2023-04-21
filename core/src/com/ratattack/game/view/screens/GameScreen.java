@@ -26,7 +26,7 @@ public class GameScreen implements Screen {
     Texture goToMenuTexture = new Texture("quit.png");
     Texture pauseScreenTexture = new Texture("paused.png");
     Image coin = new Image(new TextureRegion(new Texture("coins.png")));
-    Image navBar = new Image(new TextureRegion(new Texture("scarygreeninformationbox.png")));
+    Image navBar = new Image(new TextureRegion(new Texture("navbar.png")));
     TextureRegionDrawable pauseTexture = new TextureRegionDrawable(new TextureRegion(new Texture("smallpausebutton.png")));
     TextureRegionDrawable playTexture = new TextureRegionDrawable(new TextureRegion(new Texture("smallplaybutton.png")));
     Button playPauseButton;
