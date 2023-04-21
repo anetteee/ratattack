@@ -22,7 +22,6 @@ public class GrandmotherButton {
     int id;
     int currentUpgrade = 0;
 
-
     public GrandmotherButton(int laneWidth, int i) {
         id = i;
 
@@ -53,11 +52,8 @@ public class GrandmotherButton {
         // Må inkludere prisen for oppgraderinga
         if (currentUpgrade != ShootingStrategy.strategies.length - 1) {
             currentUpgrade += 1;
-
-            //KOMMENTERTE UT DENNESystem.out.println(ShootingStrategy.strategyTextures[currentUpgrade]);
             button.getStyle().down = new TextureRegionDrawable(new TextureRegion(new Texture(ShootingStrategy.strategyTextures[currentUpgrade])));
             button.getStyle().up = new TextureRegionDrawable(new TextureRegion(new Texture(ShootingStrategy.strategyTextures[currentUpgrade])));
-            //KOMMENTERTE UT DENNESystem.out.println(button.getStyle().up);
             strategy = ShootingStrategy.strategies[currentUpgrade];
         }
     }

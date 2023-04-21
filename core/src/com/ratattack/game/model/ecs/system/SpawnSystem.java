@@ -50,11 +50,7 @@ public class SpawnSystem extends IteratingSystem {
 
     @Override
     protected void processEntity(Entity entity, float deltaTime) {
-
     }
-
-
-
 
     private void spawnRat() {
 
@@ -73,23 +69,8 @@ public class SpawnSystem extends IteratingSystem {
         PositionComponent position = rat.getComponent(PositionComponent.class);
         position.y = 1500;
 
-        /*
-        int antallLanes = gameController.field.laneDividers.size();
-        int breddeSkjerm = Gdx.graphics.getWidth();
-        int breddRotte = texture.getWidth();
-
-        System.out.println("antall lanes " + antallLanes);
-        System.out.println("bredde skjerm " + breddeSkjerm);
-        System.out.println("bredde rotte " + breddRotte);
-
-         */
-
-
         int indexInLaneDividers = (int) (Math.random()*gameController.field.laneDividers.size());
-        //KOMMENTERTE UT DENNESystem.out.println("random index in lavedividers som brukes: " + indexInLaneDividers);
         position.x = gameController.field.laneDividers.get(indexInLaneDividers) + gameController.field.getLaneWidth()/2 - texture.getWidth()/2;
-
-
 
         //VELOCITY:
 
@@ -120,12 +101,10 @@ public class SpawnSystem extends IteratingSystem {
         grandChildEntity.getComponent(SpriteComponent.class).sprite = new Sprite(texture);
 
 
-
         //POSITION
         PositionComponent position = grandChildEntity.getComponent(PositionComponent.class);
 
         int indexInLaneDividers = (int) (Math.random()*gameController.field.laneDividers.size());
-        //KOMMENTERTE UT DENNESystem.out.println("random index in lavedividers som brukes: " + indexInLaneDividers);
         position.x = gameController.field.laneDividers.get(indexInLaneDividers) + gameController.field.getLaneWidth()/2 - texture.getWidth()/2;
         position.y = 1500;
 

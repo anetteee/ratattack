@@ -14,6 +14,9 @@ import com.ratattack.game.model.ecs.components.SpriteComponent;
 
 public class BoundsSystem extends IteratingSystem {
 
+    /***
+     * TODO: LEGG TIL KOMMENTARER
+     * */
     private static final Family boundsFamily = Family.one(RectangleBoundsComponent.class, CircleBoundsComponent.class).get();
 
     public BoundsSystem() {

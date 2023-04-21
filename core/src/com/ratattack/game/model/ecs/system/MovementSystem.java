@@ -11,6 +11,10 @@ import com.ratattack.game.model.ecs.components.VelocityComponent;
 
 public class MovementSystem extends IteratingSystem {
 
+    /***
+     * TODO: LEGG TIL KOMMENTARER
+     * */
+
     private static final Family movementFamily = Family.all(VelocityComponent.class, PositionComponent.class).get();
 
     public MovementSystem() {

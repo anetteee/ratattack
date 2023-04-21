@@ -19,6 +19,5 @@ public abstract class ComponentMappers {
     public static final ComponentMapper<CircleBoundsComponent> circleBoundsMapper = ComponentMapper.getFor(CircleBoundsComponent.class);
     public static final ComponentMapper<StrengthComponent> strengthMapper = ComponentMapper.getFor(StrengthComponent.class);
     public static final ComponentMapper<HealthComponent> healthMapper = ComponentMapper.getFor(HealthComponent.class);
-
     public static final ComponentMapper<BulletEffectComponent> bulletEffectMapper = ComponentMapper.getFor(BulletEffectComponent.class);
 }

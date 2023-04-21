@@ -25,8 +25,6 @@ public class FreezeBulletStrategy implements ShootingStrategy{
     public void shoot(int x, int y) {
         Entity bullet = GameController.getInstance().getAshleyWorld().createBullet();
 
-
-
         PositionComponent position = positionMapper.get(bullet);
         VelocityComponent velocity = velocityMapper.get(bullet);
         SpriteComponent sprite = spriteMapper.get(bullet);

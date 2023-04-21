@@ -16,7 +16,6 @@ import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
 import com.ratattack.game.GameSettings;
 import com.ratattack.game.gamecontroller.GameController;
 import com.ratattack.game.model.Player;
-import com.ratattack.game.gamecontroller.UsernameTextInputListener;
 
 public class GameScreen implements Screen {
 
@@ -44,10 +43,6 @@ public class GameScreen implements Screen {
 
         goToMenuScreenB = new Button(new TextureRegionDrawable(new TextureRegion(goToMenuTexture)));
         goToMenuScreenB.setSize(goToMenuTexture.getWidth(), goToMenuTexture.getHeight()-30);
-        //goToMenuScreenB.setPosition(Gdx.graphics.getWidth() / 2f - goToMenuScreenB.getWidth()/2f,Gdx.graphics.getHeight() / 10f*3f - goToMenuScreenB.getHeight() / 2f);
-
-
-
         goToMenuScreenB.setPosition( Gdx.graphics.getWidth()-goToMenuTexture.getWidth()-25,Gdx.graphics.getHeight() - 140);
         goToMenuScreenB.addListener(new ClickListener() {
             @Override
@@ -61,11 +56,7 @@ public class GameScreen implements Screen {
         });
 
         playPauseButton = new Button(pauseTexture);
-
-
         playPauseButton.setSize(Gdx.graphics.getWidth()/20f  ,   Gdx.graphics.getHeight()/10f);
-        //e det en grunn til at det skrives slik:?
-        //playPauseButton.setPosition(Gdx.graphics.getWidth() / 30f - playPauseButton.getWidth()/2f,Gdx.graphics.getHeight() / 1.05f - playPauseButton.getHeight() / 2f);
         playPauseButton.setPosition(Gdx.graphics.getWidth() / 30f - playPauseButton.getWidth()/2f,Gdx.graphics.getHeight() - playPauseButton.getHeight()-10);
         playPauseButton.addListener(new ClickListener() {
             @Override
@@ -138,28 +129,22 @@ public class GameScreen implements Screen {
 
     @Override
     public void resize(int width, int height) {
-        // TODO Auto-generated method stub
-        //throw new UnsupportedOperationException("Unimplemented method 'resize'");
     }
 
     @Override
     public void pause() {
-        // TODO Auto-generated method stub
         gameController.pause();
-        //throw new UnsupportedOperationException("Unimplemented method 'pause'");
     }
 
     @Override
     public void resume() {
-        // TODO Auto-generated method stub
-        gameController.play(); // Vet ikke om vi trenger dette. Vet ikke helt hva alle disse funksjonene gjøre enda, så sjekk det ut når man finner det ut
-        //throw new UnsupportedOperationException("Unimplemented method 'resume'");
+        gameController.play();
+        //TODO: sjekk ut det her:
+        //Vet ikke om vi trenger dette. Vet ikke helt hva alle disse funksjonene gjøre enda, så sjekk det ut når man finner det ut
     }
 
     @Override
     public void hide() {
-        // TODO Auto-generated method stub
-        //throw new UnsupportedOperationException("Unimplemented method 'hide'");
     }
 
     @Override

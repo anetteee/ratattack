@@ -16,13 +16,11 @@ import com.ratattack.game.backend.FirebaseInterface;
 import com.ratattack.game.gamecontroller.GameController;
 
 public class MenuScreen implements Screen {
-    //HighscoreList highscoreList;
-    FirebaseInterface _FBIC;
-    DataHolderClass _dataHolderClass;
-
     /***
      * TODO: LEGG TIL KOMMENTARER
      * */
+    FirebaseInterface _FBIC;
+    DataHolderClass _dataHolderClass;
 
     private final GameController gameController = GameController.getInstance();
 
@@ -41,18 +39,14 @@ public class MenuScreen implements Screen {
     public MenuScreen(FirebaseInterface FBIC, DataHolderClass dataHolderClass) {
        _FBIC = FBIC;
        _dataHolderClass = dataHolderClass;
-
-        //KOMMENTERTE UT DENNESystem.out.println(stage);
     }
 
     @Override
     public void show() {
         final Image title = new Image(new Texture("ratattackbestlogo.png"));
         title.setSize(title.getWidth()*1.6f,  title.getHeight()*1.6f);
-        //title.setPosition(Gdx.graphics.getWidth()/2f - title.getWidth()/2f, Gdx.graphics.getHeight()/2);
         title.setPosition(Gdx.graphics.getWidth()/2 - title.getWidth()/2f, Gdx.graphics.getHeight()/2 - 600 );
 
-        //Button highscoreButton = makeButton(highscoreTexture,5f,"HIGHSCORE");
         Button highscoreButton = makeButton(highscoreTexture,5f, 3.5f, Gdx.graphics.getWidth()/5f, Gdx.graphics.getHeight()/3f,"HIGHSCORE");
         Button playGameButton = makeButton(playGameTexture,2f,3f,"NAME");
         Button watchTutorialButton = makeButton(watchTutorialTexture,1.25f,3.5f, Gdx.graphics.getWidth()/5f, Gdx.graphics.getHeight()/3f, "GAMERULES");

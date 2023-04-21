@@ -24,7 +24,9 @@ import com.ratattack.game.model.Player;
 import java.util.Map;
 
 public class HighscoreScreen implements Screen {
-
+    /***
+     * TODO: LEGG TIL KOMMENTARER
+     * */
     GameController gameController = GameController.getInstance();
     SpriteBatch batch = GameController.getInstance().getBatch();
 
@@ -36,8 +38,6 @@ public class HighscoreScreen implements Screen {
     int height = Gdx.graphics.getHeight();
     DataHolderClass _dataHolderClass;
     HighscoreList highscoreList;
-    //KOMMENTERTE UT DENNEString userName;
-
     Texture highscoretexture = new Texture("blackhighscores.png");
     Texture gameOvertexture = new Texture("blackgameover.png");
 
@@ -71,7 +71,9 @@ public class HighscoreScreen implements Screen {
             titleGameOver =true;
         }
         highscoreList.fetchHighscores();
+
         //Ellers skal bare scorelisten vises
+        //TODO: betyr det her at det burde være en else under if-en?
 
         _dataHolderClass = dataHolderClass;
     }
@@ -80,13 +82,9 @@ public class HighscoreScreen implements Screen {
 
     @Override
     public void show() {
-        //dataHolder = gameController.getDataHolderClass();
-        //new ScoreManager();
-        //KOMMENTERTE UT DENNE _dataHolderClass.PrintKeyValue();
 
         Button goToMenuScreenB = makeButton(gotoMenuTexture,5f,"MENU");
         final Image title;
-        //KOMMENTERTE UT DENNESystem.out.println(gameController.getIsGameOver());
         if (titleGameOver) {
             title = new Image(gameOvertexture);
         }
@@ -105,9 +103,7 @@ public class HighscoreScreen implements Screen {
     public void render(float delta) {
         batch.begin();
         batch.draw(background, 0, 0, width, height);
-        //int yPosition = Gdx.graphics.getHeight() - 50;
         int xPos = Gdx.graphics.getWidth() / 2 - 200;
-        //int xPos = Gdx.graphics.getWidth() / 2 ;
         boolean isTopTen = false;
         int j = 0;
         int i = 1;
@@ -133,15 +129,12 @@ public class HighscoreScreen implements Screen {
             }
             j++;
         }
-        //gameController.update();
         batch.end();
-        //stage.draw();
     }
 
     private Button makeButton(Texture texture, float xPos, final String nextScreen){
         Button b = new Button(new TextureRegionDrawable(new TextureRegion(texture)));
         b.setSize(Gdx.graphics.getWidth()/8f  ,   Gdx.graphics.getHeight()/4f);
-        //b.setPosition(Gdx.graphics.getWidth() / xPos - b.getWidth()/2f,Gdx.graphics.getHeight() / 10f*3f - b.getHeight() / 2f);
         b.setPosition(Gdx.graphics.getWidth() / xPos - b.getWidth()/2f,Gdx.graphics.getHeight()-370);
         b.addListener(new ClickListener() {
             @Override

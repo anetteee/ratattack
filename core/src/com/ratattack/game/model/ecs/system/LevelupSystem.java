@@ -16,6 +16,10 @@ import com.ratattack.game.model.ecs.components.VelocityComponent;
 
 public class LevelupSystem extends IteratingSystem {
 
+    /***
+     * TODO: LEGG TIL KOMMENTARER
+     * */
+
     int level = 0;
 
     double timeSinceLevelup = Double.POSITIVE_INFINITY;

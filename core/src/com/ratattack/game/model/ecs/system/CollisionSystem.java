@@ -9,7 +9,6 @@ import static com.ratattack.game.model.ecs.ComponentMappers.velocityMapper;
 
 import com.badlogic.ashley.core.Entity;
 import com.badlogic.ashley.core.Family;
-import com.badlogic.ashley.core.PooledEngine;
 import com.badlogic.ashley.systems.IteratingSystem;
 import com.badlogic.ashley.utils.ImmutableArray;
 import com.ratattack.game.GameSettings;
@@ -24,8 +23,6 @@ import com.ratattack.game.model.ecs.components.VelocityComponent;
 
 
 public class CollisionSystem extends IteratingSystem {
-
-    //KOMMENTERTE UT DENNEPooledEngine engine;
 
     private static final Family hittableEntitiesFamily = Family.all(HealthComponent.class).get();
     private static final Family bulletEntitiesFamily = Family.all(CircleBoundsComponent.class).get();
@@ -63,8 +60,7 @@ public class CollisionSystem extends IteratingSystem {
 
                 entityHealth.setHealth((entityHealth.getHealth()-hitStrength.strength));
 
-                //Legg inn sjekk av om kula har en powerup, og apply effekten til entiteten
-
+                //Sjekk om kula har en powerup, og apply effekten til entiteten
                 if (bulletEffect.getEffect().equals("FREEZE")) {
 
                     VelocityComponent velocity = velocityMapper.get(hittableEntity);
@@ -82,7 +78,6 @@ public class CollisionSystem extends IteratingSystem {
                         int playerScore = gameController.getPlayer().getScore();
                         int updateScore = scoreFromGrandchild + playerScore;
                         gameController.getPlayer().setScore(updateScore);
-                        //KOMMENTERTE UT DENNESystem.out.println(gameController.getPlayer().getScore());
                     }
 
                     // Decrease score if grandchild is shot
@@ -93,7 +88,6 @@ public class CollisionSystem extends IteratingSystem {
                         int playerScore = gameController.getPlayer().getScore();
                         int updateScore = scoreFromGrandchild + playerScore;
                         gameController.getPlayer().setScore(updateScore);
-                        //KOMMENTERTE UT DENNESystem.out.println(gameController.getPlayer().getScore());
                     }
 
 

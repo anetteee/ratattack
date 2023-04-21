@@ -29,7 +29,6 @@ public class BigBulletStrategy implements ShootingStrategy{
         SpriteComponent sprite = spriteMapper.get(bullet);
         StrengthComponent strength = strengthMapper.get(bullet);
         CircleBoundsComponent bounds = circleBoundsMapper.get(bullet);
-        //PowerUpComponent powerUp = powerUpMapper.get(bullet);
 
         position.x = x;
         position.y = y;

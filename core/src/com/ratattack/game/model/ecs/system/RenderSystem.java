@@ -119,9 +119,6 @@ public class RenderSystem extends IteratingSystem {
                     } else {
                         gameController.screenContext.changeScreen("HIGHSCORE");
                     }
-                    // TODO: gjøre det synlig for brukeren at spillet er over
-                    //System.out.println("GAME OVER!!!!!!");
-                    //gameController.screenContext.changeScreen("HIGHSCORE");
                 }
             }
             getEngine().removeEntity(entity);

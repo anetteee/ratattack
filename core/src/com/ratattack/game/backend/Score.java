@@ -1,6 +1,9 @@
 package com.ratattack.game.backend;
 
 public class Score implements Comparable<Score> {
+    /***
+     * TODO: LEGG TIL KOMMENTARER
+     * */
 
     public int score;
     public String name;

@@ -2,9 +2,7 @@ package com.ratattack.game.view.screens;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
-import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Texture;
-import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
@@ -13,9 +11,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.Button;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
-import com.ratattack.game.GameSettings;
 import com.ratattack.game.gamecontroller.GameController;
-import com.ratattack.game.model.Player;
 
 public class TutorialEndScreen implements Screen {
 
@@ -32,9 +28,7 @@ public class TutorialEndScreen implements Screen {
     private final Stage stage = gameController.getStage();
 
     public TutorialEndScreen() {
-        //This is to
         gameController.setIsGameOver(false);
-        //KOMMENTERTE UT DENNESystem.out.println(stage);
     }
 
     @Override
@@ -62,60 +56,6 @@ public class TutorialEndScreen implements Screen {
         stage.addActor(playGameButton);
         stage.addActor(watchTutorialButton);
 
-
-
-/*
-
-        goToTutorialB = new Button(new TextureRegionDrawable(new TextureRegion(tutorialTexture)));
-        goToTutorialB.setSize(Gdx.graphics.getWidth()/4f  ,   Gdx.graphics.getHeight()/2f);
-        goToTutorialB.setPosition(Gdx.graphics.getWidth() / 1.25f - goToTutorialB.getWidth()/2f,Gdx.graphics.getHeight() / 10f*3f - goToTutorialB.getHeight() / 2f);
-        goToTutorialB.addListener(new ClickListener() {
-            @Override
-            public void clicked(InputEvent inputEvent, float xpos, float ypos) {
-                //screencontext bytter screen vha state
-                GameSettings.ratSpawnrate = GameSettings.spawnRates[0];
-                Player.setBalance(0);
-                Player.setScore(0);
-                gameController.screenContext.changeScreen("GAMERULES");
-            }
-        });
-
-        goToMenuScreenB = new Button(new TextureRegionDrawable(new TextureRegion(highscoreTexture)));
-        goToMenuScreenB.setSize(Gdx.graphics.getWidth()/4f  ,   Gdx.graphics.getHeight()/2f);
-        goToMenuScreenB.setPosition(Gdx.graphics.getWidth() / 5f - goToMenuScreenB.getWidth()/2f,Gdx.graphics.getHeight() / 10f*3f - goToMenuScreenB.getHeight() / 2f);
-        goToMenuScreenB.addListener(new ClickListener() {
-            @Override
-            public void clicked(InputEvent inputEvent, float xpos, float ypos) {
-                //screencontext bytter screen vha state
-                GameSettings.ratSpawnrate = GameSettings.spawnRates[0];
-                Player.setBalance(0);
-                Player.setScore(0);
-                gameController.screenContext.changeScreen("HIGHSCORE");
-            }
-        });
-
-        goToPlayGameB = new Button(new TextureRegionDrawable(new TextureRegion(playTexture)));
-        goToPlayGameB.setSize(Gdx.graphics.getWidth()/4f  ,   Gdx.graphics.getHeight()/2f);
-        goToPlayGameB.setPosition(Gdx.graphics.getWidth() / 2f - goToPlayGameB.getWidth()/2f,Gdx.graphics.getHeight() / 10f*3f - goToPlayGameB.getHeight() / 2f);
-        goToPlayGameB.addListener(new ClickListener() {
-            @Override
-            public void clicked(InputEvent inputEvent, float xpos, float ypos) {
-                //screencontext bytter screen vha state
-                GameSettings.ratSpawnrate = GameSettings.spawnRates[0];
-                Player.setBalance(0);
-                Player.setScore(0);
-                gameController.screenContext.changeScreen("NAME");
-            }
-        });
-        
-        //Button playGameButton = makeButton(playGameTexture,2f,"NAME");
-        //Button watchTutorialButton = makeButton(watchTutorialTexture,1.25f,"GAMERULES");
-        //Button goToMenuScreenB = makeButton(gotoMenuTexture,5f,"MENU");
-        stage.addActor(goToPlayGameB);
-        stage.addActor(goToMenuScreenB);
-        stage.addActor(goToTutorialB);
-
- */
     }
 
     private Button makeButton(Texture texture, float xPos, float yPos, float xSize, float ySize, final String nextScreen){
@@ -148,8 +88,6 @@ public class TutorialEndScreen implements Screen {
 
     @Override
     public void render(float delta) {
-
-
 
         batch.begin();
         batch.draw(background, 0, 0, width, height);
