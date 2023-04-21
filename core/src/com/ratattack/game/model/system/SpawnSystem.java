@@ -152,7 +152,7 @@ public class SpawnSystem extends IteratingSystem {
         bounds.setSize(2*(texture.getWidth()/3), (texture.getHeight()));
         bounds.setCenter(position.x, position.y);
 
-        grandChildEntity.getComponent(BalanceComponent.class).setBalance(500);
+        grandChildEntity.getComponent(BalanceComponent.class).setBalance(50);
 
         HealthComponent health = healthMapper.get(grandChildEntity);
         health.setHealth(GameSettings.grandChildStartHealth);
