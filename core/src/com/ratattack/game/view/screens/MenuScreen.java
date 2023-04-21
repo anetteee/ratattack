@@ -49,8 +49,8 @@ public class MenuScreen implements Screen {
     @Override
     public void show() {
         final Image titleImage = new Image(title);
-        titleImage.setSize(title.getWidth()*1.6f,  title.getHeight()*1.6f);
-        titleImage.setPosition(Gdx.graphics.getWidth()/2 - title.getWidth()/2f, Gdx.graphics.getHeight()/2 - 600);
+        titleImage.setSize(titleImage.getWidth()*1.6f,  titleImage.getHeight()*1.6f);
+        titleImage.setPosition(Gdx.graphics.getWidth()/2 - titleImage.getWidth()/2f, Gdx.graphics.getHeight()/2 - 600);
 
         //Button highscoreButton = makeButton(highscoreTexture,5f,"HIGHSCORE");
         Button highscoreButton = makeButton(highscoreTexture,5f, 3.5f, Gdx.graphics.getWidth()/5f, Gdx.graphics.getHeight()/3f,"HIGHSCORE");
