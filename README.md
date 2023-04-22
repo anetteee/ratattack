@@ -26,21 +26,32 @@ To run the application you can either connect an Android device or use an Androi
 #### Conneting trough USB-cable
 -  Connect your Android device to your computer via USB cable. Make sure that your device has developer mode enabled and USB debugging enabled.
 
-- Open the project in Android Studio. Sync the project with gradle, build and run the project.
+- Open the project in Android Studio. Sync the project with gradle and build the project.
 
 - After clicking allowing USB debugging, your device will automaticallly pop up in "Running devices".
 
-- Once the application has been installed, it will automatically launch on your device. You can now use your application on your Android device.
+- Run the project. Once the application has been installed, it will automatically launch on your device. You can now use your application on your Android device.
 
-#### Connecting trough Wi-files
+
+#### Connecting trough Wi-Fi
 - Make sure that your computer and device are connected to the same Wi-Fi.
+
 - Open the project in Android Studio. Sync the project with gradle, build and run the project. 
+
+- Click on "Pair Devices Using Wi-Fi" in the drop-down menu for running configurations. The "Pair Devices Using Wi-Fi" dialog will then pop up.
+
+- On your device, go to Developer options and the Debugging section. Turn on "Wireless debugging". An "Allow wireless debugging on this network?" popup will then appear. Click "Allow".
+
+- You can either connect your device using a QR-code or a paring code. To connect using QR-code, simply scan the code on your computer. To connect using a pairing code, enter the 6-digit code on you computer. The code is visable on your device. Your device will automatically pop up in "Running devices".
+
+- Run the project. Once the application has been installed, it will automatically launch on your device. You can now use your application on your Android device.
+
 
 
 ### Running with emulator
 
 - Open the AVD manager in the top drop down menu.
-- Choose +Create Virtual Device
+- Choose Device Manager, then click on "Create device".
 - Select a hardware, for exampel Nexus 6 and press next.
 
 ![Logo](assets/readme/hardware.png){:height="10px"}
@@ -83,7 +94,10 @@ The Android folder contains the files *AndroidinterfaceClass* and *AndroidLaunch
 </pre>
 The *core* folder contains the folders *backend*, *gamecontroller*, *model* and view in addition to the files *GameSettings* and *RatAttack*. The *backend* folder contains logic for fetching and submitting scores to the database.
 
-The files are structured according to the Model-View-Controller pattern. The model folder is structured as shown in the tree below. The logic for the buttons used to play the game is placed in the buttons folder. The components are also placed in a seperate folder. The strategy pattern logic, which is used to control the different types of bullets, is placed in the *ShootingStrategy* folder. The different systems such as the collision- and the rendersystem is placed in the *system* folder.
+The files are structured according to the Model-View-Controller pattern. The model and view folders are structured as shown in the tree below. The logic for the buttons used to play the game is placed in the buttons folder. The components are also placed in a seperate folder. The strategy pattern logic, which is used to control the different types of bullets, is placed in the *ShootingStrategy* folder. The different systems such as the collision- and the rendersystem is placed in the *system* folder. 
+
+VIEW Rebecca
+
 <pre> 
 .      ...
 └── ... ├──model 
@@ -92,7 +106,9 @@ The files are structured according to the Model-View-Controller pattern. The mod
             ├── shootingStrategy            
             ├── system
             └── ...
+        
 </pre>
+
 
 ## Developed by:
 - Ingebjørg Semb Tørresen
