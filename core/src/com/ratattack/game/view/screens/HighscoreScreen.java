@@ -21,6 +21,7 @@ import com.ratattack.game.backend.Score;
 import com.ratattack.game.gamecontroller.GameController;
 import com.ratattack.game.model.Player;
 
+import java.util.LinkedHashMap;
 import java.util.Map;
 
 public class HighscoreScreen implements Screen {
@@ -100,7 +101,7 @@ public class HighscoreScreen implements Screen {
         boolean isTopFive = false;
         int j = 0;
         int i = 1;
-        for (Map.Entry<String, Score> entry : highscoreList.getScoreList().entrySet()) {
+        for (Map.Entry<String, Score> entry : new LinkedHashMap<>(highscoreList.getScoreList()).entrySet()) {
             if (i < 6){
                 int yPos = screenHeight - 200 - (i * 100);
                 String text = String.valueOf(i) + ". " + entry.getValue().toString();
