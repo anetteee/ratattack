@@ -20,7 +20,7 @@ Open Android Studio and choose Open an existing Android Studio project. Navigate
 
 ## Compiling and running
 
-To run the application you can either connect an Android device or use an Android emulator. Make sure that the device or emulator has an Android version with API lower than or equal to 31. 
+To run the application you can either connect an Android device or use an Android emulator. Make sure that the device or emulator has an Android version with API lower than or equal to 33. 
 
 ### Running on Android device
 #### Conneting trough USB-cable
