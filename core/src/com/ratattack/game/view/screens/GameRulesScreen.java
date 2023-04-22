@@ -14,11 +14,11 @@ import com.ratattack.game.gamecontroller.GameController;
 
 public class GameRulesScreen implements Screen {
     private final GameController gameController = GameController.getInstance();
-    Texture background = new Texture("screen_gamerules.png");
-    Texture watchTutorialTexture = new Texture("btn_play_tutorial.png");
+    Texture gameRulesTexture = new Texture("screen_gamerules.png");
+    Texture playTutorialTexture = new Texture("btn_play_tutorial.png");
 
-    int width = Gdx.graphics.getWidth();
-    int height = Gdx.graphics.getHeight();
+    int screenWidth = Gdx.graphics.getWidth();
+    int screenHeight = Gdx.graphics.getHeight();
     private final Stage stage = gameController.getStage();
 
     public GameRulesScreen() {
@@ -27,21 +27,21 @@ public class GameRulesScreen implements Screen {
     @Override
     public void show() {
 
-        final Image textBackground = new Image(background);
-        textBackground.setSize(width, height);
-        textBackground.setPosition(0, 0);
+        final Image gameRules = new Image(gameRulesTexture);
+        gameRules.setSize(screenWidth, screenHeight);
+        gameRules.setPosition(0, 0);
 
-        Button goToTutorialScreenB = makeButton(watchTutorialTexture,Gdx.graphics.getWidth()-(watchTutorialTexture.getWidth()*1.5f)-50, 150,"TUTORIAL");
+        Button playTutorialBtn = makeButton(playTutorialTexture,screenWidth-(playTutorialTexture.getWidth()*1.5f)-50, 150,"TUTORIAL");
 
-        stage.addActor(textBackground);
-        stage.addActor(goToTutorialScreenB);
+        stage.addActor(gameRules);
+        stage.addActor(playTutorialBtn);
 
     }
 
     private Button makeButton(Texture texture, float xPos, float yPos, final String nextScreen){
         Button b = new Button(new TextureRegionDrawable(new TextureRegion(texture)));
         b.setSize(texture.getWidth()*1.5f,texture.getHeight()*1.5f);
-        b.setPosition(xPos,Gdx.graphics.getHeight() - yPos);
+        b.setPosition(xPos,screenHeight - yPos);
         b.addListener(new ClickListener() {
             @Override
             public void clicked(InputEvent inputEvent, float xpos, float ypos) {
@@ -76,5 +76,7 @@ public class GameRulesScreen implements Screen {
     @Override
     public void dispose() {
         stage.dispose();
+        DisposeHelper.HelpTexture(gameRulesTexture);
+        DisposeHelper.HelpTexture(playTutorialTexture);
     }
 }

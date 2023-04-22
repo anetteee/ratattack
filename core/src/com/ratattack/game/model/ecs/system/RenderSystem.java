@@ -129,6 +129,10 @@ public class RenderSystem extends IteratingSystem {
             getEngine().removeEntity(entity);
         }
 
+        renderBounds(bounds, rectangle, circle);
+    }
+
+    private void renderBounds(BoundsComponent bounds, Rectangle rectangle, Circle circle) {
         //If debug is true, the bounds should be rendered
         if (GameSettings.debug) {
             renderer.begin(ShapeRenderer.ShapeType.Filled); // specify the shape type (Filled, Line, or Point)

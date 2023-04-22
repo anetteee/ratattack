@@ -110,6 +110,9 @@ VIEW Rebecca
 </pre>
 
 
+## Known errors
+During testing we discovered that a ConccurrentModificationException occurs once in a while when going from Gamescreen to Highscorescreen. The error is most likeley caused by the fact that the highscorelist can be modified while iterating over it in the render method in highscorescreen. Due to the time limit and that the error occurs rarely it has not been fixed, but we believe that the problem can be fixed by creating a copy of the linked list. 
+
 ## Developed by:
 - Ingebjørg Semb Tørresen
 - Ingvild Almåsbakk
