@@ -16,9 +16,7 @@ import com.ratattack.game.backend.FirebaseInterface;
 import com.ratattack.game.gamecontroller.GameController;
 
 public class MenuScreen implements Screen {
-    /***
-     * TODO: LEGG TIL KOMMENTARER
-     * */
+
     FirebaseInterface _FBIC;
     DataHolderClass _dataHolderClass;
     private final GameController gameController = GameController.getInstance();

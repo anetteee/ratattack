@@ -118,9 +118,9 @@ public class TutorialEndScreen implements Screen {
         batch.dispose();
         stage.dispose();
         DisposeHelper.HelpTexture(background);
-        DisposeHelper.HelpTexture(playTexture);
-        DisposeHelper.HelpTexture(tutorialTexture);
-        DisposeHelper.HelpTexture(highscoreTexture);
+        DisposeHelper.HelpTexture(playBtnTexture);
+        DisposeHelper.HelpTexture(tutorialBtnTexture);
+        DisposeHelper.HelpTexture(highscoreBtnTexture);
         DisposeHelper.HelpTexture(gameOverTexture);
         DisposeHelper.HelpTexture(arrowTexture);
     }

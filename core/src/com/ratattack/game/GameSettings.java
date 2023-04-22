@@ -1,12 +1,6 @@
 package com.ratattack.game;
 
 public class GameSettings {
-    /***
-     * TODO: LEGG TIL KOMMENTARER
-     * */
-    /***
-     * TODO: SØRGE FOR KORREKTE VERDIER
-     * */
 
     // Constants for spawntime and lane number
     public static long ratSpawnrate = 8000;
@@ -41,6 +35,6 @@ public class GameSettings {
     //Velocity constants
     public static final int freezeVelocity = -2;
     public static final int startSpeedRat = -3;
-    public static final int startSpeedGrandchild = -5;
+    public static final int startSpeedGrandchild = -1;
 
 }

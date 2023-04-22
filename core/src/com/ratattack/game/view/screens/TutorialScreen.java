@@ -22,9 +22,6 @@ import com.ratattack.game.model.ecs.components.SpriteComponent;
 
 public class TutorialScreen implements Screen {
 
- /***
- * TODO: LEGG TIL KOMMENTARER
- * */
 private final GameController gameController = GameController.getInstance();
     Texture quitTexture = new Texture("btn_quit.png");
     Texture pausedScreenTexture = new Texture("screen_paused.png");

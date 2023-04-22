@@ -9,9 +9,6 @@ import com.ratattack.game.gamecontroller.*;
 
 public class RatAttack extends Game {
 
-	/***
-	 * TODO: LEGG TIL KOMMENTARER
-	 * */
 
 	//FIREBASE
 	FirebaseInterface _FBIC;
