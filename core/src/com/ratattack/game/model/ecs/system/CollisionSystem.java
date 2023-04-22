@@ -18,6 +18,7 @@ import com.ratattack.game.model.ecs.components.BoundsComponent;
 import com.ratattack.game.model.ecs.components.BulletEffectComponent;
 import com.ratattack.game.model.ecs.components.CircleBoundsComponent;
 import com.ratattack.game.model.ecs.components.HealthComponent;
+import com.ratattack.game.model.ecs.components.SpriteComponent;
 import com.ratattack.game.model.ecs.components.StrengthComponent;
 import com.ratattack.game.model.ecs.components.VelocityComponent;
 
@@ -80,6 +81,7 @@ public class CollisionSystem extends IteratingSystem {
                     }
 
                     getEngine().removeEntity(hittableEntity);
+                    hittableEntity.getComponent(SpriteComponent.class).sprite.getTexture().dispose();
                 }
 
                 //Remove bullet
