@@ -3,13 +3,15 @@ package com.ratattack.game;
 import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.GL20;
-import com.badlogic.gdx.graphics.Texture;
 import com.ratattack.game.backend.DataHolderClass;
 import com.ratattack.game.backend.FirebaseInterface;
 import com.ratattack.game.gamecontroller.*;
-import com.ratattack.game.model.HighscoreList;
 
 public class RatAttack extends Game {
+
+	/***
+	 * TODO: LEGG TIL KOMMENTARER
+	 * */
 
 	//FIREBASE
 	FirebaseInterface _FBIC;
@@ -35,7 +37,6 @@ public class RatAttack extends Game {
 
 	@Override
 	public void render () {
-		//ScreenUtils.clear(1, 0, 0, 1);
 		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 		super.render();
 		gameController.update();

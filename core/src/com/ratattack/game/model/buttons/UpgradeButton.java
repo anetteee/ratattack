@@ -15,6 +15,8 @@ import com.ratattack.game.gamecontroller.Observer;
 import com.ratattack.game.model.Player;
 import com.ratattack.game.model.shootingStrategy.ShootingStrategy;
 
+import java.util.zip.ZipEntry;
+
 public class UpgradeButton extends Observer {
 
     Button button;
@@ -24,12 +26,16 @@ public class UpgradeButton extends Observer {
     boolean canAffordUpgrade = false;
     int nextUpgrade = 0;
 
-    Texture grandmotherTexture = new Texture("normalbulletgrandma.png");
+    Texture grandmotherTexture = new Texture("grandma_normal_bullet.png");
 
-    String[] upgradeButtonTextures = {"newfastupgrade.png", "newfreezeupgrade.png", "newbigupgrade.png", "newtripleupgrade.png"};
+    String[] upgradeButtonTextures = {
+            "btn_upgrade_fast_bullet.png",
+            "btn_upgrade_freeze_bullet.png",
+            "btn_upgrade_big_bullet.png",
+            "btn_upgrade_triple_bullet.png"};
 
     TextureRegionDrawable buttonUpgradeable = new TextureRegionDrawable(new TextureRegion(new Texture(upgradeButtonTextures[0])));
-    TextureRegionDrawable buttonNotUpgradeable = new TextureRegionDrawable(new TextureRegion(new Texture("newestnoupgrade.png")));
+    TextureRegionDrawable buttonNotUpgradeable = new TextureRegionDrawable(new TextureRegion(new Texture("btn_no_upgrade.png")));
 
 
     public UpgradeButton(int laneWidth, final int i) {
@@ -73,10 +79,16 @@ public class UpgradeButton extends Observer {
 
     @Override
     public void update() {
-        if (!canAffordUpgrade && (ShootingStrategy.prices[nextUpgrade] < Player.getBalance()) && (nextUpgrade < upgradeButtonTextures.length)) {
+        if (!canAffordUpgrade && (ShootingStrategy.prices[nextUpgrade] <= Player.getBalance()) && (nextUpgrade < upgradeButtonTextures.length)) {
             button.getStyle().down = buttonUpgradeable;
             button.getStyle().up = buttonUpgradeable;
             canAffordUpgrade = true;
+        }
+
+        if(ShootingStrategy.prices[nextUpgrade] > Player.getBalance()) {
+            button.getStyle().down = buttonNotUpgradeable;
+            button.getStyle().up = buttonNotUpgradeable;
+            canAffordUpgrade = false;
         }
     }
 

@@ -1,7 +1,7 @@
-package com.ratattack.game.model.system;
+package com.ratattack.game.model.ecs.system;
 
-import static com.ratattack.game.model.ComponentMappers.positionMapper;
-import static com.ratattack.game.model.ComponentMappers.spriteMapper;
+import static com.ratattack.game.model.ecs.ComponentMappers.positionMapper;
+import static com.ratattack.game.model.ecs.ComponentMappers.spriteMapper;
 
 import com.badlogic.ashley.core.Entity;
 import com.badlogic.ashley.core.Family;
@@ -18,14 +18,13 @@ import com.badlogic.gdx.math.Shape2D;
 import com.ratattack.game.GameSettings;
 import com.ratattack.game.gamecontroller.GameController;
 import com.ratattack.game.model.Player;
-import com.ratattack.game.model.components.BalanceComponent;
-import com.ratattack.game.model.components.BoundsComponent;
-import com.ratattack.game.model.components.CircleBoundsComponent;
-import com.ratattack.game.model.components.HealthComponent;
-import com.ratattack.game.model.components.PositionComponent;
-import com.ratattack.game.model.components.RectangleBoundsComponent;
-import com.ratattack.game.model.components.SpriteComponent;
-import com.ratattack.game.model.components.VelocityComponent;
+import com.ratattack.game.model.ecs.components.BalanceComponent;
+import com.ratattack.game.model.ecs.components.BoundsComponent;
+import com.ratattack.game.model.ecs.components.CircleBoundsComponent;
+import com.ratattack.game.model.ecs.components.HealthComponent;
+import com.ratattack.game.model.ecs.components.PositionComponent;
+import com.ratattack.game.model.ecs.components.RectangleBoundsComponent;
+import com.ratattack.game.model.ecs.components.SpriteComponent;
 
 /**
  * Class that renders all entities used in the game.
@@ -68,7 +67,12 @@ public class RenderSystem extends IteratingSystem {
         Texture texture = spriteComponent.sprite.getTexture();
         if (entity.getComponent(HealthComponent.class) != null) {
             BitmapFont font = new BitmapFont();
-            font.setColor(Color.RED);
+            if(entity.getComponent(BalanceComponent.class) != null){
+                font.setColor(Color.GREEN);
+            }
+            else {
+                font.setColor(Color.RED);
+            }
             font.getData().setScale(5);
             String s = Integer.toString(entity.getComponent(HealthComponent.class).getHealth());
             font.draw(gameController.getBatch(),s, positionComponent.x+215, positionComponent.y+200);
@@ -120,9 +124,6 @@ public class RenderSystem extends IteratingSystem {
                     } else {
                         gameController.screenContext.changeScreen("HIGHSCORE");
                     }
-                    // TODO: gjøre det synlig for brukeren at spillet er over
-                    System.out.println("GAME OVER!!!!!!");
-                    //gameController.screenContext.changeScreen("HIGHSCORE");
                 }
             }
             getEngine().removeEntity(entity);

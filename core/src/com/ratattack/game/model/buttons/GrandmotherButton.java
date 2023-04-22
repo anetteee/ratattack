@@ -17,11 +17,10 @@ public class GrandmotherButton {
     Button button;
     ShootingStrategy strategy;
     Stage stage = GameController.getInstance().getStage();
-    Texture grandMotherTexture = new Texture("normalbulletgrandma.png");
+    Texture grandMotherTexture = new Texture("grandma_normal_bullet.png");
 
     int id;
     int currentUpgrade = 0;
-
 
     public GrandmotherButton(int laneWidth, int i) {
         id = i;
@@ -51,14 +50,11 @@ public class GrandmotherButton {
     public void upgrade() {
         //Må sjekke om balansen er høy nok for å betale for oppgraderinga
         // Må inkludere prisen for oppgraderinga
-        if (currentUpgrade != ShootingStrategy.strategies.length - 1) {
+        if (currentUpgrade != ShootingStrategy.shootingStrategies.length - 1) {
             currentUpgrade += 1;
-
-            System.out.println(ShootingStrategy.strategyTextures[currentUpgrade]);
-            button.getStyle().down = new TextureRegionDrawable(new TextureRegion(new Texture(ShootingStrategy.strategyTextures[currentUpgrade])));
-            button.getStyle().up = new TextureRegionDrawable(new TextureRegion(new Texture(ShootingStrategy.strategyTextures[currentUpgrade])));
-            System.out.println(button.getStyle().up);
-            strategy = ShootingStrategy.strategies[currentUpgrade];
+            button.getStyle().down = new TextureRegionDrawable(new TextureRegion(new Texture(ShootingStrategy.grandmaTextures[currentUpgrade])));
+            button.getStyle().up = new TextureRegionDrawable(new TextureRegion(new Texture(ShootingStrategy.grandmaTextures[currentUpgrade])));
+            strategy = ShootingStrategy.shootingStrategies[currentUpgrade];
         }
     }
 }

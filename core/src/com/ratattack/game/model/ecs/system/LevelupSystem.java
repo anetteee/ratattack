@@ -1,4 +1,6 @@
-package com.ratattack.game.model.system;
+package com.ratattack.game.model.ecs.system;
+
+import static com.ratattack.game.model.ecs.ComponentMappers.velocityMapper;
 
 import com.badlogic.ashley.core.Entity;
 import com.badlogic.ashley.core.Family;
@@ -10,16 +12,21 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.ratattack.game.GameSettings;
 import com.ratattack.game.gamecontroller.GameController;
 import com.ratattack.game.model.Player;
-import com.ratattack.game.model.components.BalanceComponent;
-import com.ratattack.game.model.components.HealthComponent;
-import com.ratattack.game.model.components.VelocityComponent;
+import com.ratattack.game.model.ecs.components.BalanceComponent;
+import com.ratattack.game.model.ecs.components.HealthComponent;
+import com.ratattack.game.model.ecs.components.BulletEffectComponent;
+import com.ratattack.game.model.ecs.components.VelocityComponent;
 
 public class LevelupSystem extends IteratingSystem {
+
+    /***
+     * TODO: LEGG TIL KOMMENTARER
+     * */
 
     int level = 0;
 
     double timeSinceLevelup = Double.POSITIVE_INFINITY;
-    Texture texture = new Texture("r.png");
+    Texture texture = new Texture("level_up.png");
 
     SpriteBatch batch = GameController.getInstance().getBatch();
 
@@ -37,6 +44,7 @@ public class LevelupSystem extends IteratingSystem {
     protected void processEntity(Entity entity, float deltaTime) {
         // Make game more difficult by increasing the speed of all rats
         VelocityComponent velocity = entity.getComponent(VelocityComponent.class);
+        BulletEffectComponent bulletEffect = entity.getComponent(BulletEffectComponent.class);
 
         if ((Player.getScore() >= GameSettings.changeLevelScore[level]) && (level < GameSettings.ratSpeed.length - 1)) {
             level += 1; // Upgrade one level
@@ -44,7 +52,9 @@ public class LevelupSystem extends IteratingSystem {
             GameSettings.ratSpawnrate = GameSettings.spawnRates[level];
         }
 
-        velocity.y = GameSettings.ratSpeed[level];
+        if (velocity.y != GameSettings.freezeVelocity) {
+            velocity.y = GameSettings.ratSpeed[level];
+        }
 
         //Show feedback to the user
         if(timeSinceLevelup < 2) {

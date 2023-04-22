@@ -1,4 +1,4 @@
-package com.ratattack.game.model.components;
+package com.ratattack.game.model.ecs.components;
 
 import com.badlogic.ashley.core.Component;
 import com.badlogic.gdx.math.Circle;
@@ -16,7 +16,6 @@ public abstract class BoundsComponent implements Component {
         if (thisBounds instanceof Rectangle && otherBounds instanceof Rectangle) {
             return Intersector.overlaps((Rectangle) thisBounds, (Rectangle) otherBounds);
         } else if (thisBounds instanceof Circle && otherBounds instanceof Circle) {
-            System.out.println("De traff");
             return Intersector.overlaps((Circle) thisBounds, (Circle) otherBounds);
         } else if (thisBounds instanceof Circle && otherBounds instanceof Rectangle) {
             return Intersector.overlaps((Circle) thisBounds, (Rectangle) otherBounds);

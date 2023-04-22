@@ -16,64 +16,54 @@ import com.ratattack.game.backend.FirebaseInterface;
 import com.ratattack.game.gamecontroller.GameController;
 
 public class MenuScreen implements Screen {
-    //HighscoreList highscoreList;
-    FirebaseInterface _FBIC;
-    DataHolderClass _dataHolderClass;
-
     /***
      * TODO: LEGG TIL KOMMENTARER
      * */
-
+    FirebaseInterface _FBIC;
+    DataHolderClass _dataHolderClass;
     private final GameController gameController = GameController.getInstance();
-
     SpriteBatch batch = GameController.getInstance().getBatch();
-
-    Texture title = new Texture("ratattackbestlogo.png");
-    Texture background = new Texture("darkgreenbackground.png");
-
-    Texture playGameTexture = new Texture("2play.png");
-    Texture watchTutorialTexture = new Texture("2tutorial.png");
-    Texture highscoreTexture = new Texture("2highscores.png");
-    int width = Gdx.graphics.getWidth();
-    int height = Gdx.graphics.getHeight();
-
+    Texture background = new Texture("background_dark.png");
+    Texture playBtnTexture = new Texture("btn_play.png");
+    Texture tutorialBtnTexture = new Texture("btn_tutorial.png");
+    Texture highscoreBtnTexture = new Texture("btn_highscores.png");
+    int screenWidth = Gdx.graphics.getWidth();
+    int screenHeight = Gdx.graphics.getHeight();
     private final Stage stage = gameController.getStage();
+    Texture titleTexture = new Texture("title_ratattack.png");
 
     public MenuScreen(FirebaseInterface FBIC, DataHolderClass dataHolderClass) {
        _FBIC = FBIC;
        _dataHolderClass = dataHolderClass;
-
-        System.out.println(stage);
     }
 
     @Override
     public void show() {
-        final Image titleImage = new Image(title);
-        titleImage.setSize(titleImage.getWidth()*1.6f,  titleImage.getHeight()*1.6f);
-        titleImage.setPosition(Gdx.graphics.getWidth()/2 - titleImage.getWidth()/2f, Gdx.graphics.getHeight()/2 - 600);
+        Image title = new Image(titleTexture);
+        title.setSize(title.getWidth()*1.6f,  title.getHeight()*1.6f);
+        title.setPosition(screenWidth/2 - title.getWidth()/2f, screenHeight/2 - 600 );
 
-        //Button highscoreButton = makeButton(highscoreTexture,5f,"HIGHSCORE");
-        Button highscoreButton = makeButton(highscoreTexture,5f, 3.5f, Gdx.graphics.getWidth()/5f, Gdx.graphics.getHeight()/3f,"HIGHSCORE");
-        Button playGameButton = makeButton(playGameTexture,2f,3f,"NAME");
-        Button watchTutorialButton = makeButton(watchTutorialTexture,1.25f,3.5f, Gdx.graphics.getWidth()/5f, Gdx.graphics.getHeight()/3f, "GAMERULES");
+        Button highscoreBtn = makeButton(highscoreBtnTexture,5f, 3.5f, screenWidth/5f, screenHeight/3f,"HIGHSCORE");
+        Button playBtn = makeButton(playBtnTexture,2f,3f,"NAME");
+        Button tutorialBtn = makeButton(tutorialBtnTexture,1.25f,3.5f, screenWidth/5f, screenHeight/3f, "GAMERULES");
 
-        stage.addActor(titleImage);
-        stage.addActor(highscoreButton);
-        stage.addActor(playGameButton);
-        stage.addActor(watchTutorialButton);
+        stage.addActor(title);
+        stage.addActor(highscoreBtn);
+        stage.addActor(playBtn);
+        stage.addActor(tutorialBtn);
     }
 
     @Override
     public void render(float delta) {
         batch.begin();
-        batch.draw(background, 0, 0, width, height);
+        batch.draw(background, 0, 0, screenWidth, screenHeight);
         batch.end();
     }
 
     private Button makeButton(Texture texture, float xPos, float yPos, final String nextScreen){
         Button b = new Button(new TextureRegionDrawable(new TextureRegion(texture)));
-        b.setSize(Gdx.graphics.getWidth()/4f  ,   Gdx.graphics.getHeight()/2f);
-        b.setPosition(Gdx.graphics.getWidth() / xPos - b.getWidth()/2f,Gdx.graphics.getHeight() / yPos - b.getHeight() / 2f);
+        b.setSize(screenWidth/4f  ,   screenHeight/2f);
+        b.setPosition(screenWidth / xPos - b.getWidth()/2f,screenHeight / yPos - b.getHeight() / 2f);
         b.addListener(new ClickListener() {
             @Override
             public void clicked(InputEvent inputEvent, float xpos, float ypos) {
@@ -87,7 +77,7 @@ public class MenuScreen implements Screen {
     private Button makeButton(Texture texture, float xPos, float yPos, float xSize, float ySize, final String nextScreen){
         Button b = new Button(new TextureRegionDrawable(new TextureRegion(texture)));
         b.setSize(xSize ,   ySize);
-        b.setPosition(Gdx.graphics.getWidth() / xPos - b.getWidth()/2f,Gdx.graphics.getHeight() / yPos - b.getHeight() / 2f);
+        b.setPosition(screenWidth / xPos - b.getWidth()/2f,screenHeight / yPos - b.getHeight() / 2f);
         b.addListener(new ClickListener() {
             @Override
             public void clicked(InputEvent inputEvent, float xpos, float ypos) {
@@ -101,32 +91,28 @@ public class MenuScreen implements Screen {
 
     @Override
     public void resize(int width, int height) {
-
     }
 
     @Override
     public void pause() {
-
     }
 
     @Override
     public void resume() {
-
     }
 
     @Override
     public void hide() {
-
     }
 
     @Override
     public void dispose() {
         batch.dispose();
-        DisposeHelper.HelpTexture(title);
+        DisposeHelper.HelpTexture(titleTexture);
         DisposeHelper.HelpTexture(background);
-        DisposeHelper.HelpTexture(playGameTexture);
-        DisposeHelper.HelpTexture(watchTutorialTexture);
-        DisposeHelper.HelpTexture(highscoreTexture);
+        DisposeHelper.HelpTexture(playBtnTexture);
+        DisposeHelper.HelpTexture(tutorialBtnTexture);
+        DisposeHelper.HelpTexture(highscoreBtnTexture);
         stage.dispose();
     }
 }

@@ -9,9 +9,7 @@ public class Player {
     public static final ArrayList<Observer> balanceObservers = new ArrayList<>();
     private static final ArrayList<Observer> scoreObservers = new ArrayList<>();
     private static int score;
-
     private String name;
-
     private static int balance;
 
     public Player(String name) {
@@ -48,10 +46,6 @@ public class Player {
 
     public void attachBalanceObserver(Observer observer){
         balanceObservers.add(observer);
-    }
-
-    public void attachScoreObserver(Observer observer){
-        scoreObservers.add(observer);
     }
 
     public static void notifyBalanceObservers(){

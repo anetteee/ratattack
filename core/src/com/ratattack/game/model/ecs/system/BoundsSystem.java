@@ -1,19 +1,22 @@
-package com.ratattack.game.model.system;
+package com.ratattack.game.model.ecs.system;
 
-import static com.ratattack.game.model.ComponentMappers.positionMapper;
-import static com.ratattack.game.model.ComponentMappers.spriteMapper;
+import static com.ratattack.game.model.ecs.ComponentMappers.positionMapper;
+import static com.ratattack.game.model.ecs.ComponentMappers.spriteMapper;
 
 import com.badlogic.ashley.core.Entity;
 import com.badlogic.ashley.core.Family;
 import com.badlogic.ashley.systems.IteratingSystem;
-import com.ratattack.game.model.components.BoundsComponent;
-import com.ratattack.game.model.components.CircleBoundsComponent;
-import com.ratattack.game.model.components.PositionComponent;
-import com.ratattack.game.model.components.RectangleBoundsComponent;
-import com.ratattack.game.model.components.SpriteComponent;
+import com.ratattack.game.model.ecs.components.BoundsComponent;
+import com.ratattack.game.model.ecs.components.CircleBoundsComponent;
+import com.ratattack.game.model.ecs.components.PositionComponent;
+import com.ratattack.game.model.ecs.components.RectangleBoundsComponent;
+import com.ratattack.game.model.ecs.components.SpriteComponent;
 
 public class BoundsSystem extends IteratingSystem {
 
+    /***
+     * TODO: LEGG TIL KOMMENTARER
+     * */
     private static final Family boundsFamily = Family.one(RectangleBoundsComponent.class, CircleBoundsComponent.class).get();
 
     public BoundsSystem() {

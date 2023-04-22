@@ -1,13 +1,11 @@
 package com.ratattack.game.view.screens;
 
-import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Screen;
 import com.ratattack.game.GameSettings;
 import com.ratattack.game.backend.DataHolderClass;
 import com.ratattack.game.backend.FirebaseInterface;
 import com.ratattack.game.gamecontroller.GameController;
-import com.ratattack.game.model.system.LevelupSystem;
-import com.ratattack.game.view.screenState.GameRulesState;
+import com.ratattack.game.model.ecs.system.LevelupSystem;
 
 public class ScreenFactory {
 

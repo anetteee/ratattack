@@ -1,27 +1,26 @@
 package com.ratattack.game.model.shootingStrategy;
 
 
-import static com.ratattack.game.model.ComponentMappers.circleBoundsMapper;
-import static com.ratattack.game.model.ComponentMappers.positionMapper;
-import static com.ratattack.game.model.ComponentMappers.spriteMapper;
-import static com.ratattack.game.model.ComponentMappers.strengthMapper;
-import static com.ratattack.game.model.ComponentMappers.velocityMapper;
+import static com.ratattack.game.model.ecs.ComponentMappers.circleBoundsMapper;
+import static com.ratattack.game.model.ecs.ComponentMappers.positionMapper;
+import static com.ratattack.game.model.ecs.ComponentMappers.spriteMapper;
+import static com.ratattack.game.model.ecs.ComponentMappers.strengthMapper;
+import static com.ratattack.game.model.ecs.ComponentMappers.velocityMapper;
 
 import com.badlogic.ashley.core.Entity;
-import com.badlogic.gdx.Game;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.ratattack.game.GameSettings;
 import com.ratattack.game.gamecontroller.GameController;
-import com.ratattack.game.model.components.CircleBoundsComponent;
-import com.ratattack.game.model.components.PositionComponent;
-import com.ratattack.game.model.components.SpriteComponent;
-import com.ratattack.game.model.components.StrengthComponent;
-import com.ratattack.game.model.components.VelocityComponent;
+import com.ratattack.game.model.ecs.components.CircleBoundsComponent;
+import com.ratattack.game.model.ecs.components.PositionComponent;
+import com.ratattack.game.model.ecs.components.SpriteComponent;
+import com.ratattack.game.model.ecs.components.StrengthComponent;
+import com.ratattack.game.model.ecs.components.VelocityComponent;
 
 public class NormalBulletStrategy implements ShootingStrategy{
 
-    Texture bulletTexture = new Texture("bullet.png");
+    Texture bulletTexture = new Texture("bullet_normal.png");
 
     @Override
     public void shoot(int x, int y) {

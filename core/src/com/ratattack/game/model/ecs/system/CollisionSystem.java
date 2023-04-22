@@ -1,34 +1,29 @@
-package com.ratattack.game.model.system;
+package com.ratattack.game.model.ecs.system;
 
-import static com.ratattack.game.model.ComponentMappers.bulletEffectMapper;
-import static com.ratattack.game.model.ComponentMappers.circleBoundsMapper;
-import static com.ratattack.game.model.ComponentMappers.healthMapper;
-import static com.ratattack.game.model.ComponentMappers.positionMapper;
-import static com.ratattack.game.model.ComponentMappers.rectangleBoundsMapper;
-import static com.ratattack.game.model.ComponentMappers.strengthMapper;
-import static com.ratattack.game.model.ComponentMappers.velocityMapper;
+import static com.ratattack.game.model.ecs.ComponentMappers.bulletEffectMapper;
+import static com.ratattack.game.model.ecs.ComponentMappers.circleBoundsMapper;
+import static com.ratattack.game.model.ecs.ComponentMappers.healthMapper;
+import static com.ratattack.game.model.ecs.ComponentMappers.rectangleBoundsMapper;
+import static com.ratattack.game.model.ecs.ComponentMappers.strengthMapper;
+import static com.ratattack.game.model.ecs.ComponentMappers.velocityMapper;
 
 import com.badlogic.ashley.core.Entity;
 import com.badlogic.ashley.core.Family;
-import com.badlogic.ashley.core.PooledEngine;
 import com.badlogic.ashley.systems.IteratingSystem;
 import com.badlogic.ashley.utils.ImmutableArray;
 import com.ratattack.game.GameSettings;
 import com.ratattack.game.gamecontroller.GameController;
-import com.ratattack.game.model.components.BalanceComponent;
-import com.ratattack.game.model.components.BoundsComponent;
-import com.ratattack.game.model.components.BulletEffectComponent;
-import com.ratattack.game.model.components.CircleBoundsComponent;
-import com.ratattack.game.model.components.HealthComponent;
-import com.ratattack.game.model.components.PositionComponent;
-import com.ratattack.game.model.components.SpriteComponent;
-import com.ratattack.game.model.components.StrengthComponent;
-import com.ratattack.game.model.components.VelocityComponent;
+import com.ratattack.game.model.ecs.components.BalanceComponent;
+import com.ratattack.game.model.ecs.components.BoundsComponent;
+import com.ratattack.game.model.ecs.components.BulletEffectComponent;
+import com.ratattack.game.model.ecs.components.CircleBoundsComponent;
+import com.ratattack.game.model.ecs.components.HealthComponent;
+import com.ratattack.game.model.ecs.components.SpriteComponent;
+import com.ratattack.game.model.ecs.components.StrengthComponent;
+import com.ratattack.game.model.ecs.components.VelocityComponent;
 
 
 public class CollisionSystem extends IteratingSystem {
-
-    PooledEngine engine;
 
     private static final Family hittableEntitiesFamily = Family.all(HealthComponent.class).get();
     private static final Family bulletEntitiesFamily = Family.all(CircleBoundsComponent.class).get();
@@ -66,10 +61,8 @@ public class CollisionSystem extends IteratingSystem {
 
                 entityHealth.setHealth((entityHealth.getHealth()-hitStrength.strength));
 
-                //Legg inn sjekk av om kula har en powerup, og apply effekten til entiteten
-
+                //Sjekk om kula har en powerup, og apply effekten til entiteten
                 if (bulletEffect.getEffect().equals("FREEZE")) {
-
                     VelocityComponent velocity = velocityMapper.get(hittableEntity);
                     velocity.y = GameSettings.freezeVelocity;
                 }
@@ -85,20 +78,7 @@ public class CollisionSystem extends IteratingSystem {
                         int playerScore = gameController.getPlayer().getScore();
                         int updateScore = scoreFromGrandchild + playerScore;
                         gameController.getPlayer().setScore(updateScore);
-                        System.out.println(gameController.getPlayer().getScore());
                     }
-
-                    // Decrease score if grandchild is shot
-                    if (hittableEntity.getComponent(BalanceComponent.class) != null) {
-
-                        // Update highscore on grandchild arriving
-                        int scoreFromGrandchild = -10;
-                        int playerScore = gameController.getPlayer().getScore();
-                        int updateScore = scoreFromGrandchild + playerScore;
-                        gameController.getPlayer().setScore(updateScore);
-                        System.out.println(gameController.getPlayer().getScore());
-                    }
-
 
                     getEngine().removeEntity(hittableEntity);
                     hittableEntity.getComponent(SpriteComponent.class).sprite.getTexture().dispose();
