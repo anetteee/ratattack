@@ -30,7 +30,7 @@ To run the application you can either connect an Android device or use an Androi
 
 - After clicking allowing USB debugging, your device will automaticallly pop up in "Running devices".
 
-- Run the project. Once the application has been installed, it will automatically launch on your device. You can now use your application on your Android device.
+- Run the project. Once the application has been installed, it will automatically launch on your device. You can now use the application on your Android device.
 
 
 #### Connecting trough Wi-Fi
@@ -42,9 +42,9 @@ To run the application you can either connect an Android device or use an Androi
 
 - On your device, go to Developer options and the Debugging section. Turn on "Wireless debugging". An "Allow wireless debugging on this network?" popup will then appear. Click "Allow".
 
-- You can either connect your device using a QR-code or a paring code. To connect using QR-code, simply scan the code on your computer. To connect using a pairing code, enter the 6-digit code on you computer. The code is visable on your device. Your device will automatically pop up in "Running devices".
+- You can either connect your device using a QR-code or a pairing code. To connect using QR-code, simply scan the code on your computer. To connect using a pairing code, enter the 6-digit code on you computer. The code is visible on your device. Your device will automatically pop up in "Running devices".
 
-- Run the project. Once the application has been installed, it will automatically launch on your device. You can now use your application on your Android device.
+- Run the project. Once the application has been installed, it will automatically launch on your device. You can now use the application on your Android device.
 
 
 
