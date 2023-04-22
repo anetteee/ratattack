@@ -39,6 +39,9 @@ private final GameController gameController = GameController.getInstance();
     private final Label score;
     SpriteBatch batch = GameController.getInstance().getBatch();
 
+    int screenWidth = Gdx.graphics.getWidth();
+    int screenHeight = Gdx.graphics.getHeight();
+
 
     public TutorialScreen() {
         gameController.setUpLanes(GameSettings.tutorialLaneNr);
@@ -46,7 +49,7 @@ private final GameController gameController = GameController.getInstance();
 
         quitBtn = new Button(new TextureRegionDrawable(new TextureRegion(quitTexture)));
         quitBtn.setSize(quitTexture.getWidth(), quitTexture.getHeight()-30);
-        quitBtn.setPosition( Gdx.graphics.getWidth()- quitTexture.getWidth()-25,Gdx.graphics.getHeight() - 140);
+        quitBtn.setPosition( screenWidth- quitTexture.getWidth()-25,screenHeight - 140);
         quitBtn.addListener(
                 new ClickListener() {
             @Override
@@ -62,8 +65,8 @@ private final GameController gameController = GameController.getInstance();
         playPauseBtn = new Button(pauseTexture);
 
 
-        playPauseBtn.setSize(Gdx.graphics.getWidth()/20f  ,   Gdx.graphics.getHeight()/10f);
-        playPauseBtn.setPosition(Gdx.graphics.getWidth() / 30f - playPauseBtn.getWidth()/2f,Gdx.graphics.getHeight() - playPauseBtn.getHeight()-10);
+        playPauseBtn.setSize(screenWidth/20f  ,   screenHeight/10f);
+        playPauseBtn.setPosition(screenWidth / 30f - playPauseBtn.getWidth()/2f,screenHeight - playPauseBtn.getHeight()-10);
         playPauseBtn.addListener(new ClickListener() {
             @Override
             public void clicked(InputEvent inputEvent, float xpos, float ypos) {
@@ -97,12 +100,12 @@ private final GameController gameController = GameController.getInstance();
             }
         });
 
-        coins.setPosition(Gdx.graphics.getWidth()-400, Gdx.graphics.getHeight() - 130);
-        coins.setSize(Gdx.graphics.getWidth()/20f, Gdx.graphics.getHeight()/15f);
-        navBar.setPosition(Gdx.graphics.getWidth() / 1.1f - Gdx.graphics.getWidth(), Gdx.graphics.getHeight() / 1.045f - (Gdx.graphics.getHeight()/7f) / 2f);
-        navBar.setSize(Gdx.graphics.getWidth() * 1.2f, Gdx.graphics.getHeight()/7f);
-        seeScoreText.setPosition(230, Gdx.graphics.getHeight() - 510);
-        seeBalanceText.setPosition(Gdx.graphics.getWidth()- seeBalanceText.getWidth()-250, Gdx.graphics.getHeight() - 500);
+        coins.setPosition(screenWidth-400, screenHeight - 130);
+        coins.setSize(screenWidth/20f, screenHeight/15f);
+        navBar.setPosition(screenWidth / 1.1f - screenWidth, screenHeight / 1.045f - (screenHeight/7f) / 2f);
+        navBar.setSize(screenWidth * 1.2f, screenHeight/7f);
+        seeScoreText.setPosition(230, screenHeight - 510);
+        seeBalanceText.setPosition(screenWidth- seeBalanceText.getWidth()-250, screenHeight - 500);
         clickGrandmaText.setPosition(350, 200);
 
         balance = makeBalance();
@@ -137,7 +140,7 @@ private final GameController gameController = GameController.getInstance();
         //If screen is paused, draw pauseTexture
         if (GameController.getInstance().getPaused().equals(true)) {
             batch.begin();
-            batch.draw(pausedScreenTexture,0,0, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
+            batch.draw(pausedScreenTexture,0,0, screenWidth, screenHeight);
             batch.end();
         }
     }
@@ -170,7 +173,7 @@ private final GameController gameController = GameController.getInstance();
 
     private Label makeScore(){
         float xPositionScore = 200;
-        float yPositionScore = Gdx.graphics.getHeight() - 130;
+        float yPositionScore = screenHeight - 130;
         BitmapFont fontScore = new BitmapFont();
         fontScore.getData().setScale(5);
         Label.LabelStyle labelStyleScore = new Label.LabelStyle();
@@ -185,8 +188,8 @@ private final GameController gameController = GameController.getInstance();
     }
 
     private Label makeBalance(){
-        float xPositionBalance = Gdx.graphics.getWidth() - 600;
-        float yPositionBalance = Gdx.graphics.getHeight() - 130;
+        float xPositionBalance = screenWidth - 600;
+        float yPositionBalance = screenHeight - 130;
         BitmapFont fontBalance = new BitmapFont();
         fontBalance.getData().setScale(5);
         Label.LabelStyle labelStyleBalance = new Label.LabelStyle();
