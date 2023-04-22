@@ -92,9 +92,9 @@ The files are structured according to the Model-View-Controller pattern. The mod
 </pre>
 
 ## Developed by:
-- Ingebjørg Tørresen
+- Ingebjørg Semb Tørresen
 - Ingvild Almåsbakk
 - Eva Anette Johansen
-- Tuva Djupvik
+- Tuva Langedal Djupvik
 - Marthe Thorbjørnsen
 - Rebecca Ljøen Strandkleiv
