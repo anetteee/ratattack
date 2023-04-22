@@ -10,7 +10,6 @@ import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.utils.TimeUtils;
 import com.ratattack.game.GameSettings;
 import com.ratattack.game.gamecontroller.GameController;
-import com.ratattack.game.model.ecs.GameWorld;
 import com.ratattack.game.model.ecs.components.BalanceComponent;
 import com.ratattack.game.model.ecs.components.BoundsComponent;
 import com.ratattack.game.model.ecs.components.HealthComponent;
