@@ -6,7 +6,7 @@
 To run the application you will need Android Studio (or a similar IDE). 
 
 ### Cloning the project
-clone the project to a folder of your chosing:
+clone the project to a folder of your choosing:
 
 <pre><code id="git-clone-command">git clone https://gitlab.stud.idi.ntnu.no/ingval/ratattack.git</code></pre>
 <button class="btn" data-clipboard-target="#git-clone-command"></button>
@@ -20,7 +20,7 @@ Open Android Studio and choose Open an existing Android Studio project. Navigate
 
 ## Compiling and running
 
-To run the application you can either connect an Android device or use an Android emulator. Make sure that the device or emulator has an Android version with API higher than or equal to 31.
+To run the application you can either connect an Android device or use an Android emulator. Make sure that the device or emulator has an Android version with API lower than or equal to 31. 
 
 ### Running on Android device
 #### Conneting trough USB-cable
@@ -111,7 +111,7 @@ VIEW Rebecca
 
 
 ## Known errors
-During testing we discovered that a ConccurrentModificationException occurs once in a while when going from Gamescreen to Highscorescreen. The error is most likeley caused by the fact that the highscorelist can be modified while iterating over it in the render method in highscorescreen. Due to the time limit and that the error occurs rarely it has not been fixed, but we believe that the problem can be fixed by creating a copy of the linked list. 
+During testing we discovered that a ConccurrentModificationException occurs once in a while when going from Gamescreen to Highscorescreen. The error is most likeley caused by the fact that the highscorelist can be modified while iterating over it in the render method in highscorescreen. Due to the time limit and that the error occurs rarely, fixing the error has not been prioritized. We believe that the problem can be fixed by creating a copy of the linked list. We have tried to fix the error by iteariting over a copy of the list instead of the list itself, but are not quite sure if it worked.
 
 ## Developed by:
 - Ingebjørg Semb Tørresen
