@@ -3,7 +3,7 @@
 ![Logo](assets/readme/readmelogo.png){:height="10px"}
 
 ## Installation 
-To run the application you will need Android Studio(or a similar IDE). 
+To run the application you will need Android Studio (or a similar IDE). 
 
 ### Cloning the project
 clone the project to a folder of your chosing:
@@ -16,23 +16,26 @@ clone the project to a folder of your chosing:
     var clipboard = new ClipboardJS('.btn');
 </script>
 
-Open Android studios and choose Open an existing Android Studio project. Navigate and choose the cloned project.
+Open Android Studio and choose Open an existing Android Studio project. Navigate and choose the cloned project.
 
 ## Compiling and running
 
-To run the application you can either connect an android device or use an android emulator. Make sure that the device or emulator has an Android version with API higher than or equal to 31.
+To run the application you can either connect an Android device or use an Android emulator. Make sure that the device or emulator has an Android version with API higher than or equal to 31.
 
-### Running on android device
-
+### Running on Android device
+#### Conneting trough USB-cable
 -  Connect your Android device to your computer via USB cable. Make sure that your device has developer mode enabled and USB debugging enabled.
 
 - Open the project in Android Studio. Sync the project with gradle, build and run the project.
 
-- Select your device in the "Select Deployment Target" dialog box and click "OK".
-
-- Install the application and click "OK" to proceed.
+- After clicking allowing USB debugging, your device will automaticallly pop up in "Running devices".
 
 - Once the application has been installed, it will automatically launch on your device. You can now use your application on your Android device.
+
+#### Connecting trough Wi-files
+- Make sure that your computer and device are connected to the same Wi-Fi.
+- Open the project in Android Studio. Sync the project with gradle, build and run the project. 
+
 
 ### Running with emulator
 
@@ -63,7 +66,7 @@ The project are structure as shown in the tree below.
 </pre>
 
 ### Android folder
-The android folder contains the files *AndroidinterfaceClass* and *androidLauncher* wich contains logic for connecting to the realtime firebase database. The same folder also contains the *assets* folder, with images used in the design of the application. 
+The Android folder contains the files *AndroidinterfaceClass* and *AndroidLauncher* wich contains logic for connecting to the realtime firebase database. The same folder also contains the *assets* folder, with images used in the design of the application. 
 
 ### Core folder
 <pre> 
