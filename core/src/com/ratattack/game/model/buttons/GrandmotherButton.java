@@ -27,7 +27,7 @@ public class GrandmotherButton {
 
         button = new Button(new TextureRegionDrawable(new TextureRegion(grandMotherTexture)));
 
-        //må være slik størrelse og posisjon
+        // The size and position must be like this
         button.setSize(grandMotherTexture.getWidth(), grandMotherTexture.getHeight());
         button.setPosition(laneWidth*i + (float)((laneWidth/2) - (grandMotherTexture.getWidth()/2)), GameSettings.grandmotherLine);
 
@@ -48,8 +48,8 @@ public class GrandmotherButton {
     }
 
     public void upgrade() {
-        //Må sjekke om balansen er høy nok for å betale for oppgraderinga
-        // Må inkludere prisen for oppgraderinga
+        // Checking if the balance is high enough in order to pay for upgrades
+        // The price is inculded in the upgrade
         if (currentUpgrade != ShootingStrategy.shootingStrategies.length - 1) {
             currentUpgrade += 1;
             button.getStyle().down = new TextureRegionDrawable(new TextureRegion(new Texture(ShootingStrategy.grandmaTextures[currentUpgrade])));

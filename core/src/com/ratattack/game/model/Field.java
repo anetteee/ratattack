@@ -21,8 +21,8 @@ public class Field {
     int laneWidth;
 
     public Field(int laneNumber) {
-        // Setter opp hvor lanesene er separert.
-        // Brukes til å finne ut hvor de skal tegnes, og hvor enheter skal spawne/tegnes.
+        // Setting up where the lanes are seperated
+        // Used to know where the lanes should be drawn, and where the different entities should be spawned/drawn.
 
         laneWidth = widthOfScreen /laneNumber;
         for (int i = 0; i < laneNumber; i++) {

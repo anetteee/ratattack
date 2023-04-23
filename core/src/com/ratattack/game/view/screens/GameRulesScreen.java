@@ -45,7 +45,7 @@ public class GameRulesScreen implements Screen {
         b.addListener(new ClickListener() {
             @Override
             public void clicked(InputEvent inputEvent, float xpos, float ypos) {
-                //screencontext bytter screen vha state
+                //Screencontext change the screen with the help of state
                 gameController.screenContext.changeScreen(nextScreen);
             }
         });

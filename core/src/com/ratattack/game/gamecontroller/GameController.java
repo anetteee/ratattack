@@ -74,7 +74,6 @@ public class GameController {
         engine = new PooledEngine();
         ashleyWorld = new GameWorld(engine);
 
-        //Add systems to engine
         addSystems(engine);
 
     }

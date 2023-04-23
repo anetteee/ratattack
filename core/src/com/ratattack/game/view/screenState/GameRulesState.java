@@ -6,9 +6,7 @@ import com.ratattack.game.model.ecs.system.SpawnSystem;
 import com.ratattack.game.view.screens.ScreenFactory;
 
 public class GameRulesState implements State {
-    /***
-     * TODO: LEGG TIL KOMMENTARER
-     * */
+
     private ScreenContext screenContext;
     private Screen currentScreen;
 

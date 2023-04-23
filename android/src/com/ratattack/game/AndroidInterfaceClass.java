@@ -17,7 +17,7 @@ import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
-// Her er logikk for Firebase
+// Logic related to Firebase
 public class AndroidInterfaceClass implements FirebaseInterface {
     FirebaseDatabase database;
 
@@ -32,9 +32,7 @@ public class AndroidInterfaceClass implements FirebaseInterface {
 
     @Override
     public void getHighscores(LinkedHashMap<String, Score> scoreMap) {
-        System.out.println("Getting highcores");
         highscores.orderByChild("score").get().addOnCompleteListener(task -> {
-            System.out.println("Got highcores");
             if (task.isSuccessful()) {
                 List<Map.Entry<String, Score>> entryList = new ArrayList<>();
                 for (DataSnapshot child : task.getResult().getChildren()) {
@@ -66,7 +64,6 @@ public class AndroidInterfaceClass implements FirebaseInterface {
         myKey = database.getReference("highscores").push().getKey();
         DatabaseReference highscoreRef = database.getReference("highscores/" + myKey);
         highscoreRef.setValue(score);
-        //System.out.println("HER ER MYKEY: "+ myKey);
         dataHolder.setKeyValue(myKey);
     }
 }

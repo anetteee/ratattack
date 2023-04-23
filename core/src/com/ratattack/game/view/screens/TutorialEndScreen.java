@@ -63,7 +63,7 @@ public class TutorialEndScreen implements Screen {
         b.addListener(new ClickListener() {
             @Override
             public void clicked(InputEvent inputEvent, float xpos, float ypos) {
-                //screencontext bytter screen vha state
+                //Screencontext change the screen with the help of state
                 GameSettings.ratSpawnrate = GameSettings.spawnRates[0];
                 Player.setBalance(0);
                 Player.setScore(0);
@@ -80,7 +80,7 @@ public class TutorialEndScreen implements Screen {
         b.addListener(new ClickListener() {
             @Override
             public void clicked(InputEvent inputEvent, float xpos, float ypos) {
-                //screencontext bytter screen vha state
+                //sScreencontext change the screen with the help of state
                 GameSettings.ratSpawnrate = GameSettings.spawnRates[0];
                 Player.setBalance(0);
                 Player.setScore(0);

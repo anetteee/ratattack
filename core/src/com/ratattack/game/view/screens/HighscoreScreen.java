@@ -61,16 +61,13 @@ public class HighscoreScreen implements Screen {
         highscoreList = new HighscoreList(_FBIC);
         titleGameOver = false;
 
-        //Hvis det nettopp har blitt spilt et spill er gameOver variabelen true, og scoren skal pushes til databasen
+        // gameOver is true ff a game is just finished, and the score is pushed to the database
         if (gameController.getIsGameOver()) {
             highscoreList.submitHighscore(gameController.getPlayer().getName(), gameController.getPlayer().getScore());
             gameController.setIsGameOver(false);
             titleGameOver =true;
         }
         highscoreList.fetchHighscores();
-
-        //Ellers skal bare scorelisten vises
-        //TODO: betyr det her at det burde være en else under if-en? hilsen Rebecca
 
         _dataHolderClass = dataHolderClass;
     }

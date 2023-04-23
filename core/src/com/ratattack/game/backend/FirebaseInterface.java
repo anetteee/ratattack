@@ -2,8 +2,10 @@ package com.ratattack.game.backend;
 
 import java.util.LinkedHashMap;
 
-// Her initialiserer vi bare hvilke functioner de andre klassene skal ha
-// Med "de andre" mener jeg AndroidInterfaceClass, CoreInterfaceClass og DesktopInterfaceClass
+/**
+ * Initializing the funtions that the classes AndroidInterfaceClass, CoreInterfaceClass and DesktopInterfaceClass will have
+ */
+
 public interface FirebaseInterface {
 
     /***

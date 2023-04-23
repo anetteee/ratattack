@@ -7,9 +7,7 @@ import com.ratattack.game.view.screens.ScreenFactory;
 
 public class GameState implements State {
 
-    /***
-     * TODO: LEGG TIL KOMMENTARER
-     * */
+
     private final ScreenContext screenContext;
     private Screen currentScreen;
 

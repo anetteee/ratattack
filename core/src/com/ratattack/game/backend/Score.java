@@ -8,7 +8,9 @@ public class Score implements Comparable<Score> {
     public int score;
     public String name;
 
-    // Default konstruktør. Denne må være med
+    /**
+     * Default contructor
+     */
     public Score() {
         score = 0;
         name = "";

@@ -7,10 +7,6 @@ import java.util.Stack;
 public class ScreenContext {
 
 
-    /***
-     * TODO: LEGG TIL KOMMENTARER
-     * */
-
     public Stack<State> states;
     public GameController gameController = GameController.getInstance();
 
@@ -38,8 +34,6 @@ public class ScreenContext {
         gameController.getStage().clear();
         gameController.getEngine().removeAllEntities();
         states.peek().changeScreen(type);
-        //TODO: kommentere ut denne
-        System.out.println("Dette er state id-en" + states.peek());
     }
 
 }
