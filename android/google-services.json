@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "5542360579",
+    "firebase_url": "https://ratattack-b29c8-default-rtdb.europe-west1.firebasedatabase.app",
+    "project_id": "ratattack-b29c8",
+    "storage_bucket": "ratattack-b29c8.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:5542360579:android:babdf21df57223eae98036",
+        "android_client_info": {
+          "package_name": "com.ratattack.game"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "5542360579-7r663nafqi6k0f41khph5hhkjdkolf7l.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDvBl1IHzRoV5S8lCoB5-dOP3ozGGs3RZU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "5542360579-7r663nafqi6k0f41khph5hhkjdkolf7l.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
