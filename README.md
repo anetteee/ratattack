@@ -23,8 +23,8 @@ Open Android Studio and choose Open an existing Android Studio project. Navigate
 To run the application you can either connect an Android device or use an Android emulator. Make sure that the device or emulator has an Android version with API lower than or equal to 33. 
 
 ### Running on Android device
-#### Conneting trough USB-cable
--  Connect your Android device to your computer via USB cable. Make sure that your device has developer mode enabled and USB debugging enabled.
+#### Conneting trough cable
+-  Connect your Android device to your computer via cable. Make sure that your device has developer mode enabled and USB debugging enabled.
 
 - Open the project in Android Studio. Sync the project with gradle and build the project.
 
