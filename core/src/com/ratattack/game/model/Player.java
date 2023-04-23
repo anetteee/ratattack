@@ -7,7 +7,6 @@ import java.util.ArrayList;
 public class Player {
 
     public static final ArrayList<Observer> balanceObservers = new ArrayList<>();
-    private static final ArrayList<Observer> scoreObservers = new ArrayList<>();
     private static int score;
     private String name;
     private static int balance;
@@ -20,7 +19,6 @@ public class Player {
 
     public static void setScore(int newScore) {
         score = newScore;
-        notifyScoreObservers();
     }
 
     public void setName(String name) {
@@ -50,12 +48,6 @@ public class Player {
 
     public static void notifyBalanceObservers(){
         for (Observer observer: balanceObservers) {
-            observer.update();
-        }
-    }
-
-    public static void notifyScoreObservers() {
-        for (Observer observer: scoreObservers) {
             observer.update();
         }
     }
