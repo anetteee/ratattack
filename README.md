@@ -1,22 +1,9 @@
 # RATATTACK - Project in TDT4240 Software Architecture
 
-![Logo](assets/readme/readmelogo.png){:height="10px"}
+![Logo](assets/readme/readmelogo.png)
 
 ## Installation 
 To run the application you will need Android Studio (or a similar IDE). 
-
-### Cloning the project
-clone the project to a folder of your choosing:
-
-<pre><code id="git-clone-command">git clone https://gitlab.stud.idi.ntnu.no/ingval/ratattack.git</code></pre>
-<button class="btn" data-clipboard-target="#git-clone-command"></button>
-
-<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.8/clipboard.min.js"></script>
-<script>
-    var clipboard = new ClipboardJS('.btn');
-</script>
-
-Open Android Studio and choose Open an existing Android Studio project. Navigate and choose the cloned project.
 
 ## Compiling and running
 
@@ -54,15 +41,15 @@ To run the application you can either connect an Android device or use an Androi
 - Choose Device Manager, then click on "Create device".
 - Select a hardware, for exampel Nexus 6 and press next.
 
-![Logo](assets/readme/hardware.png){:height="10px"}
+![Logo](assets/readme/hardware.png)
 
 - Select a system image with API level 31 or higher and press next.
 
-![Logo](assets/readme/systemimage.png){:height="10px"}
+![Logo](assets/readme/systemimage.png)
 
 - Choose landscape and press finish.
 
-![Logo](assets/readme/androidvirtualdevice.png){:height="10px"}
+![Logo](assets/readme/androidvirtualdevice.png)
 
 
 ## Structure
@@ -96,7 +83,6 @@ The *core* folder contains the folders *backend*, *gamecontroller*, *model* and 
 
 The files are structured according to the Model-View-Controller pattern. The model and view folders are structured as shown in the tree below. The logic for the buttons used to play the game is placed in the buttons folder. The components are also placed in a seperate folder. The strategy pattern logic, which is used to control the different types of bullets, is placed in the *ShootingStrategy* folder. The different systems such as the collision- and the rendersystem is placed in the *system* folder. 
 
-VIEW Rebecca
 
 <pre> 
 .      ...
